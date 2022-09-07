@@ -1,0 +1,239 @@
+/* paleta de cores */
+* {
+    box-sizing: border-box;
+    transition: 0.5s;
+    --corLaranja: #FF5C01;
+    --corLaranja100:   #FE9D66;
+    --corLaranja200: #d93300;
+
+    --corVerde: #21D929;
+    --corVerde100: #72FE77;
+    --corverde200: #17961c;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    place-items: center;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+.container {
+    min-width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bar {
+    width: 130%;
+    height: 200px;
+    border-radius: 10rem;
+    top: 100px;
+    left: -100%;
+    animation: bar 5s infinite;
+    background-image: linear-gradient(45deg, #d93300, #FF5C01, #FE9D66);
+    position: fixed;
+}
+
+.bar2 {
+    width: 130%;
+    height: 200px;
+    border-radius: 10rem;
+    bottom: 100px;
+    left: -100%;
+    animation: bar 5s infinite reverse ease;
+    background-image: linear-gradient(45deg, #17961c, #21D929, #72FE77);
+    position: fixed;
+}
+
+
+@keyframes bar {
+    0% {
+        left: -130%;
+    }
+    100% {
+        left: 130%;
+    }
+}
+
+@keyframes gradient {
+0% {
+    background-position: 0% 50%;
+}
+50% {
+    background-position: 100% 50%;
+}
+100% {
+    background-position: 0% 50%;
+}
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.logo-cont {
+    width: 150px;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.b1 {
+    width: 70px;
+    height: 45px;
+    background-image: linear-gradient(45deg, #17961c, #21D929, #72FE77);
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+    border-radius: 0 10rem 10rem 0;
+}
+.b2 {
+    width: 70px;
+    height: 45px;
+    background-image: linear-gradient(45deg, #17961c, #21D929, #72FE77);
+    background-size: 400% 400%;
+    animation: gradient 5s ease infinite;
+    border-radius: 0 10rem 10rem 0;
+}
+.d {
+    width: 70px;
+    height: 90px;
+    background-color: yellow;
+    border-radius: 0 10rem 10rem 0;
+    background-image: linear-gradient(45deg, #d93300, #FF5C01, #FE9D66);
+    background-size: 800% 800%;
+    animation: gradient 5s ease infinite;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1;
+    background-color: rgb(255, 255, 255, 0.8);
+    backdrop-filter: blur(15px);
+    width: 18.75rem;
+    height: 25rem;
+    border-radius: 2rem;
+    padding: 10px;
+    box-shadow: 0px 0px 20px rgba(255, 92, 1, 0.3);
+}
+
+.oneline {
+    margin-top: 30px;
+    width: 90%;
+}
+
+.oneline > input{
+    margin: 10px 0;
+    width: 100%;
+    height: 40px;
+    border-radius: 2rem;
+    box-shadow: 0px 0px 15px rgba(255, 90, 1, 0.219);       background-color: rgb(255, 255, 255, 0.5);
+    border: none;
+    position: relative;
+} 
+
+.oneline > input::placeholder {
+    color: var(--corVerde100);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 20px;
+    font-size: 15px;
+}
+
+.oneline > input:focus {
+    border: none;
+    outline: none;
+    background-color: var(--corLaranja);
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 0 12px;
+}
+
+/* toggle */
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.219);
+    box-shadow: 0px 0px 15px rgba(255, 90, 1, 0.219);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 4px;
+    bottom: 3px;
+    background-color: var(--corLaranja100);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: var(--corLaranja);
+  }
+  
+  input:checked + .slider:before {
+    background-color: white;
+    -webkit-transform: translateX(28px);
+    -ms-transform: translateX(28px);
+    transform: translateX(28px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+
+  .show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .show .title {
+    margin: 10px;
+    color: var(--corLaranja100);
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-left: 20px;
+    font-size: 15px;
+  }
+
+
+
+
