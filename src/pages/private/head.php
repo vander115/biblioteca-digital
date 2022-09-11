@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="<?php require('src/functions/devs.php'); devs(); ?>">
+<html lang="pt-br" class="<?php require('src/functions/devs.php');
+                            devs(); ?>">
 
 <head>
     <meta charset="UTF-8">
@@ -7,6 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/styles/global.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <style>
         .material-symbols-rounded {
             font-variation-settings:

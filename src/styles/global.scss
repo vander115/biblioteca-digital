@@ -585,3 +585,27 @@ form {
         }
     }
 }
+
+
+
+.modal {
+    transition: all 0.5s ease;
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--sombraLaranja);
+    backdrop-filter: blur(10px);
+    position: absolute;
+    margin: auto;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    .modal-cont {
+        backdrop-filter: blur(10px);
+        margin: auto auto;
+        background-color: var(--fundoFosco);
+        width: 40vw;
+        height: 90vh;
+        border-radius: 1rem;
+    }
+}

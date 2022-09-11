@@ -1,4 +1,12 @@
 </body>
-<script type="text/javascript" src="src/scripts/script.js"></script>
 
+<script>
+    const acao = () => {
+    
+    let modal = document.querySelector('.modal');
+
+    modal.style.display = 'flex';
+
+}
+</script>
 </html>

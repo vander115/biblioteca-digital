@@ -9,7 +9,7 @@
                     Emprestar Livro
                 </label>
             </div>
-            <div class="option-item">
+            <div class="option-item trigger" onclick="acao()">
                 <span class="material-symbols-rounded">
                     bookmark_add
                 </span>
@@ -28,3 +28,7 @@
         </div>
     </section>
 </main>
+
+<div class="modal">
+    <div class="modal-cont"></div>
+</div>
