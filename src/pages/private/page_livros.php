@@ -30,5 +30,5 @@
 </main>
 
 <div class="modal">
-    <div class="modal-cont"></div>
+    <div class="modal-cont"><button class="close"></button></div>
 </div>

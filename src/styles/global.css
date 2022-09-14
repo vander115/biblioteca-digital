@@ -29,32 +29,32 @@
   --corLaranja: rgb(255, 92, 1);
   --corLaranja100: rgb(254, 157, 102);
   --corLaranja200: rgb(217, 51, 0);
-  --corVerde: rgb(32, 217, 42);
+  --corVerde: rgb(27, 182, 35);
   --corVerde100: rgb(114, 254, 119);
   --corverde200: rgb(23, 150, 28);
   --sombraLaranja: rgba(255, 92, 1, 0.2);
-  --sombraVerde: rgba(32, 217, 42, 0.2);
-  --fundoVerde: hsl(122, 100%, 97%);
+  --sombraVerde: rgba(32, 217, 42, 0.3);
+  --fundoVerde: hsl(122, 100%, 93%);
   --fundoLaranja: hsl(22, 100%, 97%);
   --fundoFosco: rgb(255, 255, 255, 0.8);
   --gadrientLaranja: 45deg, rgb(254, 157, 102), rgb(255, 92, 1), rgb(217, 51, 0);
-  --gadrientVerde: 45deg, rgb(114, 254, 119), rgb(32, 217, 42), rgb(23, 150, 28);
+  --gadrientVerde: 45deg, rgb(114, 254, 119), rgb(27, 182, 35), rgb(23, 150, 28);
   --fontFamily: "Poppins", Arial, Helvetica, sans-serif;
 }
 
 .purple:root {
-  --corLaranja: #C402FC;
+  --corLaranja: #c402fc;
   --corLaranja100: #df6cff;
   --corLaranja200: #9500be;
-  --corVerde: #6C0CF2;
+  --corVerde: #6c0cf2;
   --corVerde100: #ab70ff;
   --corVerde200: #4c00b6;
   --sombraLaranja: rgba(196, 2, 252, 0.3);
   --sombraVerde: rgba(108, 12, 242, 0.3);
   --fundoVerde: hsl(265, 91%, 93%);
   --fundoLaranja: hsl(287, 98%, 93%);
-  --gadrientLaranja: 45deg, #df6cff, #C402FC, #9500be;
-  --gadrientVerde: 45deg, #ab70ff, #6C0CF2, #4c00b6;
+  --gadrientLaranja: 45deg, #df6cff, #c402fc, #9500be;
+  --gadrientVerde: 45deg, #ab70ff, #6c0cf2, #4c00b6;
 }
 
 body {
@@ -216,7 +216,7 @@ form {
 }
 
 .oneline > input::-moz-placeholder {
-  color: var(--corVerde100);
+  color: var(--corVerde);
   font-weight: bold;
   font-family: var(--fontFamily);
   margin-left: 20px;
@@ -224,7 +224,7 @@ form {
 }
 
 .oneline > input:-ms-input-placeholder {
-  color: var(--corVerde100);
+  color: var(--corVerde);
   font-weight: bold;
   font-family: var(--fontFamily);
   margin-left: 20px;
@@ -232,7 +232,7 @@ form {
 }
 
 .oneline > input::placeholder {
-  color: var(--corVerde100);
+  color: var(--corVerde);
   font-weight: bold;
   font-family: var(--fontFamily);
   margin-left: 20px;
@@ -571,7 +571,7 @@ input:checked + .title {
   height: 100%;
   font-weight: bold;
   color: var(--corVerde);
-  box-shadow: 0 0 2px var(--sombraVerde);
+  box-shadow: 0 0 5px var(--sombraVerde);
   border: none;
   border-radius: 5rem;
   background-color: var(--fundoFosco);

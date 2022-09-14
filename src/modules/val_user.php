@@ -8,9 +8,8 @@ require_once './conection.php';
 if (!isset($_SESSION)) {
     session_start();
 }
-echo $_SESSION['user'];
 // Validação do Usuário.
-if (!empty($_SESSION['user'])) {
+if (!isset($_SESSION['user'])) {
 
     $login = $_POST['login'];
     $pass = $_POST['pass'];
