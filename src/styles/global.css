@@ -9,7 +9,7 @@
   /* Handle on hover */
 }
 * ::-webkit-scrollbar {
-  display: none;
+  display: none !important;
 }
 * ::-webkit-scrollbar-track {
   background: transparent;
@@ -36,7 +36,7 @@
   --sombraVerde: rgba(32, 217, 42, 0.2);
   --fundoVerde: hsl(122, 100%, 97%);
   --fundoLaranja: hsl(22, 100%, 97%);
-  --fundoFosco: rgb(255, 255, 255, 0.8);
+  --fundoFosco: rgb(255, 255, 255, 0.85);
   --gadrientLaranja: 45deg, rgb(254, 157, 102), rgb(255, 92, 1), rgb(217, 51, 0);
   --gadrientVerde: 45deg, rgb(114, 254, 119), rgb(32, 217, 42), rgb(23, 150, 28);
   --fontFamily: "Poppins", Arial, Helvetica, sans-serif;
@@ -55,6 +55,26 @@
   --fundoLaranja: hsl(287, 98%, 93%);
   --gadrientLaranja: 45deg, #df6cff, #C402FC, #9500be;
   --gadrientVerde: 45deg, #ab70ff, #6C0CF2, #4c00b6;
+}
+
+.toast {
+  background-color: #030303;
+}
+
+.toast-success {
+  background-color: var(--corVerde) !important;
+}
+
+.toast-error {
+  background-color: var(--corLaranja) !important;
+}
+
+.toast-info {
+  background-color: #2F96B4;
+}
+
+.toast-warning {
+  background-color: #F89406;
 }
 
 body {
@@ -550,11 +570,12 @@ input:checked + .title {
   font-family: var(--fontFamily);
 }
 .livros .search .icon {
-  width: 50px;
-  height: 50px;
+  min-width: 50px;
+  min-height: 50px;
   border: none;
   outline: none;
   margin-left: 10px;
+  box-shadow: 0 0 10px var(--sombraVerde);
   border-radius: 5rem;
   background-color: var(--fundoFosco);
   color: var(--corVerde);
@@ -571,7 +592,7 @@ input:checked + .title {
   height: 100%;
   font-weight: bold;
   color: var(--corVerde);
-  box-shadow: 0 0 2px var(--sombraVerde);
+  box-shadow: 0 0 10px var(--sombraVerde);
   border: none;
   border-radius: 5rem;
   background-color: var(--fundoFosco);
@@ -662,7 +683,48 @@ input:checked + .title {
           backdrop-filter: blur(10px);
   margin: auto auto;
   background-color: var(--fundoFosco);
+  min-width: 450px;
   width: 40vw;
   height: 90vh;
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.modal .modal-cont .modal-header {
+  border-radius: 1rem;
+  background-color: var(--corVerde);
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+.modal .modal-cont .modal-header h1 {
+  color: white;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+.modal .modal-cont .modal-header h1 span {
+  padding: 10px;
+}
+.modal .modal-cont .modal-header button {
+  background-color: var(--corLaranja);
+  color: white;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  width: 40px;
+  height: 40px;
+}
+.modal .modal-cont .modal-header button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 30px var(--sombraLaranja);
+}
+.modal .modal-cont .modal-header button:active {
+  background-color: var(--corLaranja200);
+  transform: translateY(0);
 }/*# sourceMappingURL=global.css.map */

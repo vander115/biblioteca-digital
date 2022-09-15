@@ -30,5 +30,16 @@
 </main>
 
 <div class="modal">
-    <div class="modal-cont"></div>
+    <div class="modal-cont">
+        <div class="modal-header">
+            <h1><span class="material-symbols-rounded">
+                    bookmark_add
+                </span>
+
+                Cadrastar Livro</h1>
+            <button class="close"><span class="material-symbols-rounded">
+                    close
+                </span></button>
+        </div>
+    </div>
 </div>

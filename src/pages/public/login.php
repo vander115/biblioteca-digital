@@ -15,12 +15,12 @@
 
             <div class="oneline">
                 <input placeholder="  Usuário" name="login" type="text">
-                <input placeholder="  Senha" name="pass" type="text">
+                <input id="pass" placeholder="  Senha" name="pass" type="password">
             </div>
 
             <div class="show">
                 <label class="switch">
-                    <input type="checkbox">
+                    <input class="show" type="checkbox">
                     <span class="slider round"></span>
                 </label>
                 <p class="title">Mostrar Senha</p>
