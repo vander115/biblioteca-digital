@@ -23,6 +23,15 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
   }
+  /* Cor de fundo do autocomplete */
+input:-webkit-autofill {
+  box-shadow: none;
+}
+
+/* Cor do texto do autocomplete */
+input:-webkit-autofill {
+  -webkit-text-fill-color: none;
+}
 }
 :root {
   margin: 0;
@@ -280,7 +289,7 @@ form {
   width: 24px;
   left: 4px;
   bottom: 3px;
-  background-color: var(--corVerde100);
+  background-color: var(--corVerde);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }
@@ -312,13 +321,13 @@ input:checked + .slider:before {
   align-items: center;
 }
 
-input:checked + .title {
+input:checked + .show .title {
   color: var(--corLaranja);
 }
 
 .show .title {
   margin: 10px;
-  color: var(--corVerde100);
+  color: var(--corVerde);
   font-family: var(--fontFamily);
   font-weight: bold;
   margin-left: 20px;
@@ -339,9 +348,9 @@ input:checked + .title {
 }
 .submit:hover {
   cursor: pointer;
-  background-color: var(--corLaranja);
+  background-color: var(--corVerde200);
   transform: translateY(-2px);
-  box-shadow: 0 0 5px var(--sombraLaranja);
+  box-shadow: 0 0 5px var(--sombraVerde);
 }
 
 /* sidenav */
