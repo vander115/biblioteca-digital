@@ -29,16 +29,16 @@
   --corLaranja: rgb(255, 92, 1);
   --corLaranja100: rgb(254, 157, 102);
   --corLaranja200: rgb(217, 51, 0);
-  --corVerde: rgb(32, 217, 42);
+  --corVerde: rgb(27, 182, 35);
   --corVerde100: rgb(114, 254, 119);
   --corVerde200: rgb(23, 150, 28);
   --sombraLaranja: rgba(255, 92, 1, 0.2);
-  --sombraVerde: rgba(32, 217, 42, 0.2);
-  --fundoVerde: hsl(122, 100%, 97%);
+  --sombraVerde: rgba(32, 217, 42, 0.3);
+  --fundoVerde: hsl(122, 100%, 93%);
   --fundoLaranja: hsl(22, 100%, 97%);
   --fundoFosco: rgb(255, 255, 255, 0.85);
   --gadrientLaranja: 45deg, rgb(254, 157, 102), rgb(255, 92, 1), rgb(217, 51, 0);
-  --gadrientVerde: 45deg, rgb(114, 254, 119), rgb(32, 217, 42), rgb(23, 150, 28);
+  --gadrientVerde: 45deg, rgb(114, 254, 119), rgb(27, 182, 35), rgb(23, 150, 28);
   --fontFamily: "Poppins", Arial, Helvetica, sans-serif;
 }
 

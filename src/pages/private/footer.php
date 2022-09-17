@@ -1,7 +1,10 @@
 </body>
 
-<script>
+
+<script type="text/javascript">
+
     const modal = document.querySelector('.modal');
+
     const acao = () => {
         modal.style.display = 'flex';
     };
@@ -9,11 +12,20 @@
         modal.style.display = 'none';
     };
 
+    modal.style.display = 'flex';
+    }
+
+    const close = () => {
+    
+    let modal = document.querySelector('.modal');
+
+    modal.style.display = 'none';
+
+    }
+
     const button = document.querySelector('.close');
 
     button.addEventListener('click', close, false);
-
-
 
     const pass = document.querySelector('#pass');
 
