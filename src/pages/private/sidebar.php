@@ -38,5 +38,8 @@
         <li class="list <?php active('devs') ?>" onclick="location.href='?p=devs'"><span class="material-symbols-rounded">
                 code
             </span>Developers</li>
+            <li class="list" onclick="location.href='src/modules/logout.php'"><span class="material-symbols-rounded">
+                logout
+            </span>Sair</li>
     </ul>
 </nav>

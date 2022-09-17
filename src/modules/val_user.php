@@ -8,6 +8,8 @@ require_once './conection.php';
 if (!isset($_SESSION)) {
     session_start();
 }
+
+
 // Validação do Usuário.
 if (!isset($_SESSION['user'])) {
 
@@ -23,29 +25,30 @@ if (!isset($_SESSION['user'])) {
         $verificar = password_verify($pass, $user['passAdm']);
         if ($verificar) {
             $_SESSION['user'] = $user['idAdm'];
+            $_SESSION['toast_success'] = "Bem Vindo!!!";
             echo '
                  <script type="text/javascript">
                      window.location = "../../index.php";
                  </script>
                  ';
         } else {
+            $_SESSION['toast_success'] = "Usuário ou Senha incorretos!";
             echo '
                  <script type="text/javascript">
-                     alert("Senha Incorreta!");
                      window.location = "../../index.php";
                  </script>
                  ';
         }
     } else {
+        $_SESSION['toast_success'] = "Usuário ou Senha incorretos!";
         echo '
          <script type="text/javascript">
-             alert("Usuário ou Senha Incorretos!");
              window.location = "../../index.php";
          </script>
          ';
     }
-}else{
-    header('../../index.php');echo '
+} else {
+    echo '
     <script type="text/javascript">
         window.location = "../../index.php";
     </script>
