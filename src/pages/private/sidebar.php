@@ -24,7 +24,7 @@
                 error
             </span>Pendentes</li>
 
-        <li class="list"><span class="material-symbols-rounded">
+        <li class="list" onclick="location.href='src/modules/logout.php'"><span class="material-symbols-rounded">
                 hotel_class
             </span>Turmas</li>
 

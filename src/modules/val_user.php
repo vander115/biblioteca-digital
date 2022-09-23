@@ -9,6 +9,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
+
 // Validação do Usuário.
 if (!isset($_SESSION['user'])) {
 

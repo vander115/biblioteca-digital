@@ -233,11 +233,11 @@ form {
   width: 100%;
   height: 40px;
   border-radius: 2rem;
-  color: var(--corVerde200);
-  border: 1px solid var(--sombraVerde);
+  box-shadow: 0px 0px 15px var(--sombraVerde);
   background-color: var(--fundoFosco);
+  border: none;
   position: relative;
-  box-shadow: 0 0 7px var(--sombraVerde);
+  color: var(--corverde200);
   font-family: var(--fontFamily);
   font-weight: 500;
   padding-left: 20px;
