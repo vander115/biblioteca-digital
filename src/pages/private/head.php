@@ -21,7 +21,8 @@
                 'opsz'48
         }
     </style>
-    <title>Login</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="src/assets/favicon.png">
+    <title><?php echo gerarTitulo() ?></title>
 </head>
 
 <body>

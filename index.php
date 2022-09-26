@@ -1,8 +1,12 @@
 <?php
 
-require 'src/pages/private/head.php';
+require_once 'src/functions/gerar_titulo.php';
 
-require 'src/functions/toast.php';
+require_once 'src/modules/conection.php';
+
+require_once 'src/pages/private/head.php';
+
+require_once 'src/functions/toast.php';
 
 if (!isset($_SESSION)) {
     session_start();
@@ -10,18 +14,19 @@ if (!isset($_SESSION)) {
 
 if (!isset($_SESSION['user'])) {
 
-    require 'src/pages/public/login.php';
+    require_once 'src/pages/public/login.php';
 
-    toast_success();
 } else {
 
-    require 'src/functions/catch_page.php';
+    require_once 'src/functions/catch_page.php';
 
-    require 'src/pages/private/sidebar.php';
+    require_once 'src/pages/private/sidebar.php';
 
     loadPage();
 
-    toast_success();
 }
 
-require 'src/pages/private/footer.php';
+toast_success();
+toast_error();
+
+require_once 'src/pages/private/footer.php';

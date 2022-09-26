@@ -32,7 +32,7 @@ if (!isset($_SESSION['user'])) {
                  </script>
                  ';
         } else {
-            $_SESSION['toast_success'] = "Usuário ou Senha incorretos!";
+            $_SESSION['toast_error'] = "Usuário ou Senha incorretos!";
             echo '
                  <script type="text/javascript">
                      window.location = "../../index.php";
@@ -40,7 +40,7 @@ if (!isset($_SESSION['user'])) {
                  ';
         }
     } else {
-        $_SESSION['toast_success'] = "Usuário ou Senha incorretos!";
+        $_SESSION['toast_error'] = "Usuário ou Senha incorretos!";
         echo '
          <script type="text/javascript">
              window.location = "../../index.php";

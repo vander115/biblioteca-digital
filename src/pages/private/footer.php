@@ -12,7 +12,6 @@
         modal.style.display = 'none';
     };
 
-
     const button = document.querySelector('.close');
 
     button.addEventListener('click', close, false);

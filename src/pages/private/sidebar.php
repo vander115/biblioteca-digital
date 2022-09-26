@@ -20,6 +20,10 @@
                 menu_book
             </span>Livros</li>
 
+            <li class="list <?php active('genders') ?>" onclick="location.href='?p=genders'"><span class="material-symbols-rounded">
+            auto_awesome
+            </span>Gêneros</li>
+
         <li class="list"><span class="material-symbols-rounded">
                 error
             </span>Pendentes</li>
