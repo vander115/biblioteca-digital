@@ -24,7 +24,7 @@ $qtd = $_POST['qtd'];
 $edit = mb_strtoupper($_POST['edit']);
 
 
-$sql_cad_livro = "INSERT INTO tb_livros VALUES(0, '$title', '$gender', '$author', '$tombo', '$qtd', 'disponivel');";
+$sql_cad_livro = "INSERT INTO tb_livros VALUES(0, '$title', '$gender', '$author', '$edit', '$tombo', '$qtd', 'disponivel');";
 
 $query_cad_livro = mysqli_query($conn, $sql_cad_livro);
 

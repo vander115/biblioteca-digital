@@ -18,14 +18,15 @@
                 </label>
             </div>
         </div>
-        <div class="search">
-            <input type="text" placeholder="Pesquisar Livro">
+        <form method="GET" class="search">
+        <input type="hidden" name="p" value="livros">
+        <input type="text" name="qb" placeholder="Pesquisar Livro">
             <button class="icon" title="Pesquisar">
                 <span class="material-symbols-rounded">
                     search
                 </span>
             </button>
-        </div>
+        </form>
 
         <?php 
 
@@ -39,8 +40,8 @@
                 while($gender_info = mysqli_fetch_assoc($query_gender_livro)) {
                     $id_gender = $gender_info['idGenero'];
                     if(isset($_GET['qb'])) {
-                        $qb = $_GET['qb'];
-                        $sql_livro_info = "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero WHERE generoLivro = '$id_gender' AND CONCAT(tituloLivro, autorLivro, nomeGenero) LIKE '%$qb%' ORDER BY nomeGenero, tituloLivro;";
+                        $qb = mb_strtoupper($_GET['qb']);
+                        $sql_livro_info = "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero WHERE generoLivro = '$id_gender' AND CONCAT(tituloLivro, autorLivro, editoraLivro, nomeGenero) LIKE '%$qb%' ORDER BY nomeGenero, tituloLivro;";
                     } else {
                         $sql_livro_info = "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero WHERE generoLivro = '$id_gender' ORDER BY nomeGenero, tituloLivro;";
                     }

@@ -13,8 +13,8 @@ if (!isset($_SESSION)) {
 // Validação do Usuário.
 if (!isset($_SESSION['user'])) {
 
-    $login = $_POST['login'];
-    $pass = $_POST['pass'];
+    $login = trim($_POST['login']);
+    $pass = trim($_POST['pass']);
 
     //Utilizando password_hash para descriptografar a senha do usuário
     $sql_pass = "SELECT * FROM tb_adm WHERE loginAdm = '$login' LIMIT 1;";

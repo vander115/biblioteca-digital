@@ -51,9 +51,9 @@
 
   --fundoVerde: hsl(122, 100%, 97%);
   --fundoLaranja: hsl(22, 100%, 97%);
-  --fundoFosco: rgb(255, 255, 255, 0.85);
+  --fundoFosco: rgba(255, 255, 255, 0.85);
 
-  --gadrientLaranja: 45deg, rgb(254, 157, 102), rgb(232, 113, 58),
+  --gadrientLaranja: 225deg, rgb(254, 157, 102), rgb(232, 113, 58),
     rgb(241, 73, 22);
   --gadrientVerde: 45deg, rgb(114, 254, 119), rgb(46, 150, 51), rgb(11, 107, 14);
 
@@ -480,6 +480,10 @@ input:checked + .show .title {
 // livros
 
 .livros {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   .options {
     border-radius: 1rem;
     width: 100%;
@@ -593,8 +597,12 @@ input:checked + .show .title {
     height: 100%;
     display: flex;
     flex-direction: column;
+    margin: 1rem;
+    padding: 1rem;
+    border-top: 2px dashed var(--corVerde100);
     header {
       h1 {
+        margin: 0;
         color: var(--corVerde200);
       }
     }
@@ -613,8 +621,14 @@ input:checked + .show .title {
         border-radius: 1rem;
         height: 80px;
         margin: 1rem;
-        background-image: linear-gradient(var(--gadrientLaranja));
+        background-color: var(--fundoFosco);
+        box-shadow: 0 0 15px var(--sombraVerde);
         min-width: 500px;
+        &:hover {
+          transform: translateY(-4px);
+          outline: 2px solid var(--corLaranja);
+          box-shadow: 0 0 20px var(--sombraLaranja);
+        }
         .card-info {
           display: flex;
           flex-direction: column;
@@ -623,12 +637,12 @@ input:checked + .show .title {
           h1 {
             margin: 0;
             font-size: 18px;
-            color: white;
+            color: var(--corVerde);
           }
           h2 {
             margin: 0;
             font-size: 16px;
-            color: white;
+            color: var(--corVerde100);
           }
         }
       }
