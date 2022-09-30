@@ -17,66 +17,38 @@
                     Adicionar Livro
                 </label>
             </div>
-        </div>
-        <form method="GET" class="search">
-        <input type="hidden" name="p" value="livros">
-        <input type="text" name="qb" placeholder="Pesquisar Livro">
-            <button class="icon" title="Pesquisar">
+            <div class="option-item <?php if (isset($_GET['mod'])) {
+                                        echo 'active';
+                                    } else {
+                                        echo '';
+                                    } ?>" onclick="location.href='<?php if (isset($_GET['mod'])) {
+                                                                                                                                    echo '?p=livros';
+                                                                                                                                } else {
+                                                                                                                                    echo '?p=livros&mod=simple';
+                                                                                                                                } ?>'">
                 <span class="material-symbols-rounded">
-                    search
+                    <span class="material-symbols-rounded">
+                        format_list_bulleted
+                    </span>
                 </span>
-            </button>
-        </form>
+                <label for="">
+                    Listagem Simples
+                </label>
+            </div>
+        </div>
 
-        <?php 
-
-            require 'src/modules/conection.php';
-
-            $sql_gender_livro = "SELECT * FROM tb_genero_livro ORDER BY nomeGenero;"; 
-
-            $query_gender_livro = mysqli_query($conn, $sql_gender_livro);
-
-            if ($query_gender_livro) {
-                while($gender_info = mysqli_fetch_assoc($query_gender_livro)) {
-                    $id_gender = $gender_info['idGenero'];
-                    if(isset($_GET['qb'])) {
-                        $qb = mb_strtoupper($_GET['qb']);
-                        $sql_livro_info = "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero WHERE generoLivro = '$id_gender' AND CONCAT(tituloLivro, autorLivro, editoraLivro, nomeGenero) LIKE '%$qb%' ORDER BY nomeGenero, tituloLivro;";
-                    } else {
-                        $sql_livro_info = "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero WHERE generoLivro = '$id_gender' ORDER BY nomeGenero, tituloLivro;";
-                    }
-
-                    $query_livro_info = mysqli_query($conn, $sql_livro_info);
-                    if(mysqli_num_rows($query_livro_info)){
-
-            ?>
-
-                        <div class="livro-cont">
-                            <header>
-                                <h1><?php echo $gender_info['nomeGenero']; ?></h1>
-                            </header>
-                            <main>
-                            <?php
-                                while ($livro_data = mysqli_fetch_assoc($query_livro_info)) {
-                            ?>
-                                <div class="livro-card">
-                                    <div class="card-info">
-                                        <h1><?php echo $livro_data['tituloLivro']?></h1>
-                                        <h2><?php echo $livro_data['autorLivro']?></h2>
-                                    </div>
-                                </div>
-                            <?php
-                                }
-                            ?>
-                            </main>
-                        </div>
-
-            <?php
-                    }
-                }
+        <?php
+        if (isset($_GET['mod'])) {
+            if ($_GET['mod'] == "simple") {
+                require 'src/modules/simply_render_livros.php';
+            } else {
+                require 'src/modules/render_livros.php';
             }
-        
+        } else {
+            require 'src/modules/render_livros.php';
+        }
         ?>
+
     </section>
 </main>
 
@@ -109,20 +81,21 @@
                     <label for="">Gênero</label>
                     <select name="gender">
                         <option selected disabled>Escolha um gênero</option>
-                        <?php 
-                            require 'src/modules/conection.php';
+                        <?php
+                        require 'src/modules/conection.php';
 
-                            $sql_select_gender = "SELECT * FROM tb_genero_livro ORDER BY nomeGenero";
+                        $sql_select_gender = "SELECT * FROM tb_genero_livro ORDER BY nomeGenero";
 
-                            $query_select_gender = mysqli_query($conn, $sql_select_gender);
+                        $query_select_gender = mysqli_query($conn, $sql_select_gender);
 
-                            if ($query_select_gender) {
-                                while ($select_gender = mysqli_fetch_assoc($query_select_gender)) {
-                        ?> 
-                        <option value="<?php echo $select_gender['idGenero']?>">
-                        <?php echo $select_gender['nomeGenero']?>
-                        </option>
-                        <?php }} ?>
+                        if ($query_select_gender) {
+                            while ($select_gender = mysqli_fetch_assoc($query_select_gender)) {
+                        ?>
+                                <option value="<?php echo $select_gender['idGenero'] ?>">
+                                    <?php echo $select_gender['nomeGenero'] ?>
+                                </option>
+                        <?php }
+                        } ?>
                     </select>
                 </fieldset>
                 <fieldset class="oneline-livro">
@@ -134,7 +107,7 @@
                         <div class="qtd-container">
                             <span class="next"></span>
                             <span class="prev"></span>
-                            <input id="number" value="1" type="number" maxlength="3" name="qtd"/>
+                            <input id="number" value="1" type="number" maxlength="3" name="qtd" />
                         </div>
                     </div>
                 </fieldset>
@@ -157,15 +130,14 @@
 
     const nextNum = () => {
         inputQtd.value = Number(inputQtd.value) + 1;
-      };
+    };
 
-      const prevNum = () => {
+    const prevNum = () => {
         if (inputQtd.value != 1) {
-          inputQtd.value = Number(inputQtd.value) - 1;
+            inputQtd.value = Number(inputQtd.value) - 1;
         }
-      };
+    };
 
-      next.addEventListener('click', nextNum, false);
-      prev.addEventListener('click', prevNum, false);
-
+    next.addEventListener('click', nextNum, false);
+    prev.addEventListener('click', prevNum, false);
 </script>

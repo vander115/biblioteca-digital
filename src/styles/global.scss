@@ -52,6 +52,7 @@
   --fundoVerde: hsl(122, 100%, 97%);
   --fundoLaranja: hsl(22, 100%, 97%);
   --fundoFosco: rgba(255, 255, 255, 0.85);
+  --fundoFoscoVerde: rgba(240, 255, 240, 0.85);
 
   --gadrientLaranja: 225deg, rgb(254, 157, 102), rgb(232, 113, 58),
     rgb(241, 73, 22);
@@ -472,9 +473,52 @@ input:checked + .show .title {
 }
 
 /* home */
-.cont .home-banner {
-  width: 100%;
-  border-radius: 1rem;
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  header {
+    position: relative;
+    margin-bottom: 4rem;
+    img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+    h1 {
+      span {
+        color: var(--corLaranja);
+      }
+      text-align: center;
+      color: var(--corVerde);
+      font-size: 2rem;
+      position: absolute;
+      bottom: 0;
+      right: 50%;
+      transform: translate(50%, 70%);
+      padding: 2rem;
+      background-color: var(--fundoFoscoVerde);
+      border-radius: 1rem;
+      backdrop-filter: blur(10px);
+    }
+  }
+  main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    article {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      p {
+        text-align: center;
+        font-size: 1.3rem;
+        max-width: 70%;
+      }
+    }
+  }
 }
 
 // livros
@@ -514,7 +558,8 @@ input:checked + .show .title {
         font-family: var(--fontFamily);
         font-weight: bold;
       }
-      &:hover {
+      &:hover,
+      &.active {
         background-color: var(--corLaranja);
         transform: translateY(-2px);
         box-shadow: 0 0 15px var(--sombraLaranja);
@@ -643,6 +688,41 @@ input:checked + .show .title {
             margin: 0;
             font-size: 16px;
             color: var(--corVerde100);
+          }
+        }
+      }
+    }
+    table {
+      width: 90%;
+      max-width: 75rem;
+      border-collapse: collapse;
+      margin: 1rem;
+      border: 0;
+      th,
+      td {
+        padding: 0.3rem;
+        border-top: 1px solid var(--corVerde200);
+        border-bottom: 1px solid var(--corVerde200);
+      }
+      tr {
+        &:hover {
+          td {
+            padding: 0.7rem 0.3rem;
+          }
+        }
+      }
+      thead {
+        th {
+          text-align: left;
+        }
+      }
+      tbody {
+        tr {
+          &:nth-child(even) {
+            background-color: var(--fundoFosco);
+          }
+          &:nth-child(odd) {
+            background-color: var(--fundoFoscoVerde);
           }
         }
       }

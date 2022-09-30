@@ -45,6 +45,7 @@
   --fundoVerde: hsl(122, 100%, 97%);
   --fundoLaranja: hsl(22, 100%, 97%);
   --fundoFosco: rgba(255, 255, 255, 0.85);
+  --fundoFoscoVerde: rgba(240, 255, 240, 0.85);
   --gadrientLaranja: 225deg, rgb(254, 157, 102), rgb(232, 113, 58),
     rgb(241, 73, 22);
   --gadrientVerde: 45deg, rgb(114, 254, 119), rgb(46, 150, 51), rgb(11, 107, 14);
@@ -522,9 +523,52 @@ input:checked + .show .title {
 }
 
 /* home */
-.cont .home-banner {
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.home header {
+  position: relative;
+  margin-bottom: 4rem;
+}
+.home header img {
   width: 100%;
   border-radius: 1rem;
+}
+.home header h1 {
+  text-align: center;
+  color: var(--corVerde);
+  font-size: 2rem;
+  position: absolute;
+  bottom: 0;
+  right: 50%;
+  transform: translate(50%, 70%);
+  padding: 2rem;
+  background-color: var(--fundoFoscoVerde);
+  border-radius: 1rem;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.home header h1 span {
+  color: var(--corLaranja);
+}
+.home main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home main article {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.home main article p {
+  text-align: center;
+  font-size: 1.3rem;
+  max-width: 70%;
 }
 
 .livros {
@@ -565,7 +609,7 @@ input:checked + .show .title {
   font-family: var(--fontFamily);
   font-weight: bold;
 }
-.livros .options .option-item:hover {
+.livros .options .option-item:hover, .livros .options .option-item.active {
   background-color: var(--corLaranja);
   transform: translateY(-2px);
   box-shadow: 0 0 15px var(--sombraLaranja);
@@ -716,6 +760,31 @@ input:checked + .show .title {
   margin: 0;
   font-size: 16px;
   color: var(--corVerde100);
+}
+.livros .livro-cont table {
+  width: 90%;
+  max-width: 75rem;
+  border-collapse: collapse;
+  margin: 1rem;
+  border: 0;
+}
+.livros .livro-cont table th,
+.livros .livro-cont table td {
+  padding: 0.3rem;
+  border-top: 1px solid var(--corVerde200);
+  border-bottom: 1px solid var(--corVerde200);
+}
+.livros .livro-cont table tr:hover td {
+  padding: 0.7rem 0.3rem;
+}
+.livros .livro-cont table thead th {
+  text-align: left;
+}
+.livros .livro-cont table tbody tr:nth-child(even) {
+  background-color: var(--fundoFosco);
+}
+.livros .livro-cont table tbody tr:nth-child(odd) {
+  background-color: var(--fundoFoscoVerde);
 }
 
 .dev-banner {

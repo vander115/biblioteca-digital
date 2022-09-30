@@ -20,15 +20,15 @@
                 menu_book
             </span>Livros</li>
 
-            <li class="list <?php active('genders') ?>" onclick="location.href='?p=genders'"><span class="material-symbols-rounded">
-            auto_awesome
+        <li class="list <?php active('genders') ?>" onclick="location.href='?p=genders'"><span class="material-symbols-rounded">
+                auto_awesome
             </span>Gêneros</li>
 
         <li class="list"><span class="material-symbols-rounded">
                 error
             </span>Pendentes</li>
 
-        <li class="list" onclick="location.href='src/modules/logout.php'"><span class="material-symbols-rounded">
+        <li class="list"><span class="material-symbols-rounded">
                 hotel_class
             </span>Turmas</li>
 
@@ -39,10 +39,13 @@
         <li class="list"><span class="material-symbols-rounded">
                 person
             </span>Funcionários</li>
+        <li class="list"><span class="material-symbols-rounded">
+                tips_and_updates
+            </span>Sobre Nós</li>
         <li class="list <?php active('devs') ?>" onclick="location.href='?p=devs'"><span class="material-symbols-rounded">
                 code
             </span>Developers</li>
-            <li class="list" onclick="location.href='src/modules/logout.php'"><span class="material-symbols-rounded">
+        <li class="list" onclick="location.href='src/modules/logout.php'"><span class="material-symbols-rounded">
                 logout
             </span>Sair</li>
     </ul>
