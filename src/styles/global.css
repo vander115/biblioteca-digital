@@ -730,6 +730,7 @@ input:checked + .show .title {
   justify-content: space-around;
 }
 .livros .livro-cont main .livro-card {
+  position: relative;
   display: flex;
   padding: 0.6rem 1rem;
   width: 45%;
@@ -740,10 +741,26 @@ input:checked + .show .title {
   box-shadow: 0 0 15px var(--sombraVerde);
   min-width: 500px;
 }
+.livros .livro-cont main .livro-card.indisp {
+  box-shadow: 0 0 15px lightgrey;
+}
+.livros .livro-cont main .livro-card.indisp .card-info h1 {
+  color: #030303;
+}
+.livros .livro-cont main .livro-card.indisp .card-info h2 {
+  color: grey;
+}
+.livros .livro-cont main .livro-card.indisp .livro-info {
+  background-color: #555;
+}
 .livros .livro-cont main .livro-card:hover {
   transform: translateY(-4px);
   outline: 2px solid var(--corLaranja);
   box-shadow: 0 0 20px var(--sombraLaranja);
+}
+.livros .livro-cont main .livro-card:active {
+  transform: scale(0.9);
+  opacity: 0.7;
 }
 .livros .livro-cont main .livro-card .card-info {
   display: flex;
@@ -761,6 +778,30 @@ input:checked + .show .title {
   font-size: 16px;
   color: var(--corVerde100);
 }
+.livros .livro-cont main .livro-card .livro-info {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: var(--corVerde);
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 1rem;
+}
+.livros .livro-cont main .livro-card .livro-info h1 {
+  margin: 0.2rem;
+  font-size: 15px;
+}
+.livros .livro-cont main .livro-card .livro-info p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 25px;
+}
 .livros .livro-cont table {
   width: 90%;
   max-width: 75rem;
@@ -776,6 +817,10 @@ input:checked + .show .title {
 }
 .livros .livro-cont table tr:hover td {
   padding: 0.7rem 0.3rem;
+}
+.livros .livro-cont table tr:active {
+  transform: scale(0.9);
+  opacity: 0.7;
 }
 .livros .livro-cont table thead th {
   text-align: left;
@@ -818,6 +863,9 @@ input:checked + .show .title {
   z-index: 1000;
   align-items: center;
   justify-content: center;
+}
+.modal.open {
+  display: flex;
 }
 .modal .modal-cont {
   -webkit-backdrop-filter: blur(10px);
@@ -890,21 +938,21 @@ input:checked + .show .title {
 .modal .modal-main .form-modal fieldset div {
   width: 100%;
 }
-.modal .modal-main .form-modal fieldset.oneline-livro {
+.modal .modal-main .form-modal fieldset.oneline-modal {
   width: 100%;
   flex-direction: row;
 }
-.modal .modal-main .form-modal fieldset.oneline-livro .qtd-div {
+.modal .modal-main .form-modal fieldset.oneline-modal .qtd-div {
   position: relative;
   width: 40%;
 }
-.modal .modal-main .form-modal fieldset.oneline-livro .qtd-div div {
+.modal .modal-main .form-modal fieldset.oneline-modal .qtd-div div {
   width: 100%;
 }
-.modal .modal-main .form-modal fieldset.oneline-livro .qtd-div div .qtd-container {
+.modal .modal-main .form-modal fieldset.oneline-modal .qtd-div div .qtd-container {
   width: 100%;
 }
-.modal .modal-main .form-modal fieldset.oneline-livro .qtd-div .next {
+.modal .modal-main .form-modal fieldset.oneline-modal .qtd-div .next {
   position: absolute;
   top: 55%;
   right: 20px;
@@ -914,10 +962,10 @@ input:checked + .show .title {
   border-top: 3px solid var(--corVerde);
   border-left: 3px solid var(--corVerde);
   z-index: 1;
-  transform: translateY(-50%) rotate(135deg);
+  transform: translateY(-20%) rotate(45deg);
   cursor: pointer;
 }
-.modal .modal-main .form-modal fieldset.oneline-livro .qtd-div .prev {
+.modal .modal-main .form-modal fieldset.oneline-modal .qtd-div .prev {
   position: absolute;
   top: 55%;
   left: 20px;
@@ -927,10 +975,10 @@ input:checked + .show .title {
   border-top: 3px solid var(--corVerde);
   border-left: 3px solid var(--corVerde);
   z-index: 1;
-  transform: translateY(-50%) rotate(315deg);
+  transform: translateY(-70%) rotate(225deg);
   cursor: pointer;
 }
-.modal .modal-main .form-modal fieldset.oneline-livro .qtd-div input {
+.modal .modal-main .form-modal fieldset.oneline-modal .qtd-div input {
   font-size: 20px;
   padding-left: 0;
   font-weight: bold;
@@ -988,18 +1036,33 @@ input:checked + .show .title {
   border: none;
   outline: none;
 }
-.modal .modal-main .form-modal button {
+.modal .modal-main .form-modal button,
+.modal .modal-main .form-modal a {
+  text-decoration: none;
   margin-top: 30px;
   width: 100%;
   height: 40px;
   border-radius: 10rem;
   border: none;
   background-color: var(--corVerde);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
   font-weight: bold;
   font-size: 15px;
 }
-.modal .modal-main .form-modal button:hover {
+.modal .modal-main .form-modal button span,
+.modal .modal-main .form-modal a span {
+  font-size: 20px;
+  margin: 0 0.5rem 0 0;
+}
+.modal .modal-main .form-modal button.del,
+.modal .modal-main .form-modal a.del {
+  background-color: rgb(255, 67, 67);
+}
+.modal .modal-main .form-modal button:hover,
+.modal .modal-main .form-modal a:hover {
   cursor: pointer;
   background-color: var(--corLaranja);
   transform: translateY(-2px);

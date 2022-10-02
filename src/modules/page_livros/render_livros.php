@@ -39,10 +39,16 @@ if ($query_gender_livro) {
           <?php
           while ($livro_data = mysqli_fetch_assoc($query_livro_info)) {
           ?>
-            <div class="livro-card">
+            <div onclick="location.href='?p=livros&edit_livro=<?php echo $livro_data['idLivro']; ?>'" class="livro-card <?php if (($livro_data['statusLivro']) != 'disponivel') {
+                                                                                                                          echo 'indisp';
+                                                                                                                        } ?>">
               <div class="card-info">
                 <h1><?php echo $livro_data['tituloLivro'] ?></h1>
                 <h2><?php echo $livro_data['autorLivro'] ?></h2>
+              </div>
+              <div class="livro-info">
+                <h1>Quant.</h1>
+                <p><?php echo $livro_data['qtdLivro'] ?></p>
               </div>
             </div>
           <?php

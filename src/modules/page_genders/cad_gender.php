@@ -1,18 +1,18 @@
-<?php 
+<?php
 
-require_once './conection.php';
+require_once '../conection.php';
 
 if (!isset($_SESSION)) {
   session_start();
 }
 
 if (!isset($_SESSION['user'])) {
-  
+
   $_SESSION['toast_error'] = "Essa página não pode ser acessada sem login!";
 
   die('
       <script type="text/javascript">
-          window.location = "../login.php";
+          window.location = "../../../pages/public/login.php";
       </script>
       ');
 }
@@ -23,7 +23,7 @@ $sql = "INSERT INTO tb_genero_livro VALUES (0, '$title');";
 
 $query = mysqli_query($conn, $sql);
 
-if($query) {
+if ($query) {
   $_SESSION['toast_success'] = "Gênero cadrastado com sucesso!";
-  header('Location: ../../index.php?p=genders');
+  header('Location: ../../../index.php?p=genders');
 }

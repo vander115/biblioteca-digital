@@ -1,12 +1,12 @@
-<?php 
-require_once './conection.php';
+<?php
+require_once '../conection.php';
 
 if (!isset($_SESSION)) {
   session_start();
 }
 
 if (!isset($_SESSION['user'])) {
-  
+
   $_SESSION['toast_error'] = "Essa página não pode ser acessada sem login!";
 
   die('
@@ -28,10 +28,10 @@ $sql_cad_livro = "INSERT INTO tb_livros VALUES(0, '$title', '$gender', '$author'
 
 $query_cad_livro = mysqli_query($conn, $sql_cad_livro);
 
-if($query_cad_livro) {
+if ($query_cad_livro) {
   $_SESSION['toast_success'] = "Livro cadrastado com sucesso!";
-  header('Location: ../../index.php?p=livros');
+  header('Location: ../../../index.php?p=livros');
 } else {
   $_SESSION['toast_error'] = "Erro ao cadrastar livro! :(";
-  header('Location: ../../index.php?p=livros');
+  header('Location: ../../../index.php?p=livros');
 }
