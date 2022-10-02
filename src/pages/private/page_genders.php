@@ -25,8 +25,6 @@ if (!isset($_GET['editGender'])) {
                     </span>
                 </button>
             </form>
-            </div>
-
             <article>
                 <?php
 

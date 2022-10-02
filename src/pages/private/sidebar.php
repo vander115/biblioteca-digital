@@ -28,7 +28,7 @@
                 error
             </span>Pendentes</li>
 
-        <li class="list"><span class="material-symbols-rounded">
+        <li class="list <?php active('turmas') ?>" onclick="location.href='?p=turmas'"><span class="material-symbols-rounded">
                 hotel_class
             </span>Turmas</li>
 

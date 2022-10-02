@@ -52,7 +52,9 @@ if ($query_gender_livro) {
               while ($livro_data = mysqli_fetch_assoc($query_livro_info)) {
               ?>
 
-                <tr onclick="location.href='?p=livros&mod=simple&edit_livro=<?php echo $livro_data['idLivro']; ?>'">
+                <tr class="<?php if (($livro_data['statusLivro']) != 'disponivel') {
+                              echo 'indisp';
+                            } ?>" onclick="location.href='?p=livros&mod=simple&edit_livro=<?php echo $livro_data['idLivro']; ?>'">
                   <td><?php echo $livro_data['tituloLivro']; ?></td>
                   <td><?php echo $livro_data['autorLivro']; ?></td>
                   <td><?php echo $livro_data['editoraLivro']; ?></td>
