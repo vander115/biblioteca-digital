@@ -1,27 +1,35 @@
-<?php 
-  function gerarTitulo() {
-    (isset($_GET['p'])) ? $titulo_pagina = $_GET['p'] : $titulo_pagina = 'home';
-    switch ($titulo_pagina) {
-      case 'home':
-        $titulo = "Início";
-        break;
+<?php
+function gerarTitulo()
+{
+  (isset($_GET['p'])) ? $titulo_pagina = $_GET['p'] : $titulo_pagina = 'home';
+  switch ($titulo_pagina) {
+    case 'home':
+      $titulo = "Início";
+      break;
 
-      case 'livros':
-        $titulo = "Livros";
-        break;
+    case 'livros':
+      $titulo = "Livros";
+      break;
 
-      case 'genders':
-        $titulo = 'Gêneros';
-        break;
-      
-      case 'devs':
-        $titulo = 'Desenvolvedores';
-        break;
+    case 'genders':
+      $titulo = 'Gêneros';
+      break;
 
-      default:
-        $titulo = "Início";
-        break;
-    } 
-    return $titulo;
+    case 'devs':
+      $titulo = 'Desenvolvedores';
+      break;
+
+    case 'turmas':
+      $titulo = 'Turmas';
+      break;
+
+    case 'alunos':
+      $titulo = 'Alunos';
+      break;
+
+    default:
+      $titulo = "Início";
+      break;
   }
-?>
+  return $titulo;
+}
