@@ -32,7 +32,7 @@
                 hotel_class
             </span>Turmas</li>
 
-        <li class="list"><span class="material-symbols-rounded">
+        <li class="list <?php active('alunos') ?>" onclick="location.href='?p=alunos'"><span class="material-symbols-rounded">
                 school
             </span>Alunos</li>
 

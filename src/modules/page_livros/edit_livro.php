@@ -36,6 +36,8 @@ if ($qtd == 0 && $status == "disponivel") {
   $status_livro = "emprestado";
 } else if ($qtd > 0 && $status == "emprestado") {
   $status_livro = "disponivel";
+} else {
+  $status_livro = $status;
 }
 
 $sql_edit = "UPDATE tb_livros SET tituloLivro = '$title', autorLivro = '$author', generoLivro = '$gender', tomboLivro = '$tombo', qtdLivro = '$qtd', editoraLivro = '$edit', statusLivro = '$status_livro' WHERE idLivro = '$id';";

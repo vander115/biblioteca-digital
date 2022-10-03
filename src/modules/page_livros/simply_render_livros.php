@@ -45,6 +45,7 @@ if ($query_gender_livro) {
                 <th>Editora</th>
                 <th>Qtd</th>
                 <th>Status</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -54,12 +55,19 @@ if ($query_gender_livro) {
 
                 <tr class="<?php if (($livro_data['statusLivro']) != 'disponivel') {
                               echo 'indisp';
-                            } ?>" onclick="location.href='?p=livros&mod=simple&edit_livro=<?php echo $livro_data['idLivro']; ?>'">
-                  <td><?php echo $livro_data['tituloLivro']; ?></td>
+                            } ?>">
+                  <td onclick="location.href='?p=livros&mod=simple&edit_livro=<?php echo $livro_data['idLivro']; ?>'"><?php echo $livro_data['tituloLivro']; ?></td>
                   <td><?php echo $livro_data['autorLivro']; ?></td>
                   <td><?php echo $livro_data['editoraLivro']; ?></td>
                   <td><?php echo $livro_data['qtdLivro']; ?></td>
                   <td><?php echo $livro_data['statusLivro']; ?></td>
+                  <td>
+                    <a class="edit-livro" href="?p=livros&mod=simple&edit_livro=<?php echo $livro_data['idLivro']; ?>">
+                      <span class="material-symbols-rounded">
+                        edit
+                      </span>
+                    </a>
+                  </td>
                 </tr>
 
               <?php

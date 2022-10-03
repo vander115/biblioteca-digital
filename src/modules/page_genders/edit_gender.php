@@ -2,6 +2,10 @@
 
 require '../conection.php';
 
+if (!isset($_SESSION)) {
+  session_start();
+}
+
 $id = $_POST['id'];
 $titulo = mb_strtoupper($_POST['title']);
 
