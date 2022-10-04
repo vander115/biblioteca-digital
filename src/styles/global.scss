@@ -926,6 +926,9 @@ input:checked + .show .title {
           .ano {
             width: 30%;
           }
+          .ident {
+            width: 25%;
+          }
           .qtd-div {
             position: relative;
             width: 40%;
@@ -1437,6 +1440,115 @@ input:checked + .show .title {
             box-shadow: 0 0 20px var(--sombraLaranja);
           }
         }
+      }
+    }
+  }
+}
+
+// Alunos
+
+.alunos {
+  .options {
+    border-radius: 1rem;
+    width: 100%;
+    height: 110px;
+    background-color: var(--fundoFosco);
+    display: flex;
+    align-items: center;
+    .option-item {
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border-radius: 1rem;
+      width: 90px;
+      height: 90px;
+      margin: 10px;
+      background-color: var(--corVerde);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      span {
+        font-size: 35px;
+        margin: 3px;
+      }
+      label {
+        font-size: 15px;
+        text-align: center;
+        font-family: var(--fontFamily);
+        font-weight: bold;
+      }
+      &:hover {
+        background-color: var(--corLaranja);
+        transform: translateY(-2px);
+        box-shadow: 0 0 15px var(--sombraLaranja);
+      }
+      &:active {
+        background-color: var(--corLaranja200);
+        transform: translateY(1px);
+      }
+    }
+  }
+  .search {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    font-family: var(--fontFamily);
+    .icon {
+      min-width: 50px;
+      min-height: 50px;
+      border: none;
+      outline: none;
+      margin-left: 10px;
+      box-shadow: 0 0 10px var(--sombraVerde);
+      border-radius: 5rem;
+      background-color: var(--fundoFosco);
+      color: var(--corVerde);
+      transition: all 0.3s ease;
+      &:hover {
+        box-shadow: 0 0 10px var(--sombraLaranja);
+        cursor: pointer;
+        background-color: var(--corLaranja);
+        color: white;
+      }
+    }
+
+    input {
+      width: 90%;
+      height: 100%;
+      font-weight: bold;
+      color: var(--corVerde);
+      box-shadow: 0 0 10px var(--sombraVerde);
+      border: none;
+      border-radius: 5rem;
+      background-color: var(--fundoFosco);
+      padding-left: 10px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      font-family: var(--fontFamily);
+      &::placeholder {
+        margin: 10px;
+        font-weight: bold;
+        color: var(--corVerde);
+        font-size: 15px;
+        transition: all 0.3s ease;
+        font-family: var(--fontFamily);
+      }
+      &:focus {
+        box-shadow: 0 0 15px var(--sombraLaranja);
+        transition: all 0.3s ease;
+        background-color: var(--corLaranja);
+        color: white;
+        border: none;
+        outline: none;
+        &::placeholder {
+          color: white;
+        }
+        font-family: var(--fontFamily);
       }
     }
   }
