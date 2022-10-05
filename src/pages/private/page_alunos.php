@@ -12,13 +12,33 @@
     </div>
     <form class="search" method="GET" action="">
       <input type="hidden" name="p" value="alunos">
-      <input type="text" name="qa" placeholder="Pesquisar Aluno" value="<?php if (isset($_GET['qt'])) echo $_GET['qa']; ?>">
+      <input type="text" name="qa" placeholder="Pesquisar Aluno" value="<?php if (isset($_GET['qa'])) echo $_GET['qa']; ?>">
       <button class="icon" title="Pesquisar">
         <span class="material-symbols-rounded">
           search
         </span>
       </button>
     </form>
+    <div class="alunos-cont">
+      <header>
+        <h1>3° Informática</h1>
+      </header>
+      <main>
+        <div class="card-cont">
+          <div class="card-aluno">
+            <header>
+              <span class="material-symbols-rounded">
+                person
+              </span>
+            </header>
+            <main>
+              <h1>José Vanderlei Furtuna Tomé</h1>
+              <p>3º Informática</p>
+            </main>
+          </div>
+        </div>
+      </main>
+    </div>
   </section>
 </main>
 
@@ -38,7 +58,7 @@
       </button>
     </div>
     <div class="modal-main">
-      <form class="form-modal" method="POST" action="src/modules/page_turmas/cad_turma.php">
+      <form class="form-modal" method="POST" action="src/modules/page_alunos/cad_aluno.php">
         <fieldset>
           <label for="">Nome</label>
           <input name="nome" type="text">
@@ -74,8 +94,8 @@
             <label for="">Tipo</label>
             <select name="tipoIdent" id="">
               <option selected disabled>Selecione o tipo de dado</option>
-              <option value="">CPF</option>
-              <option value="">Mátricula</option>
+              <option value="CPF">CPF</option>
+              <option value="Matricula">Matrícula</option>
             </select>
           </div>
         </fieldset>

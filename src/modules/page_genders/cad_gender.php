@@ -26,4 +26,7 @@ $query = mysqli_query($conn, $sql);
 if ($query) {
   $_SESSION['toast_success'] = "Gênero cadrastado com sucesso!";
   header('Location: ../../../index.php?p=genders');
+} else {
+  $_SESSION['toast_error'] = "Erro ao cadrastar Gênero! :(";
+  header('Location: ../../../index.php?p=livros');
 }

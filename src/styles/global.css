@@ -1434,13 +1434,12 @@ input:checked + .show .title {
   color: white;
 }
 .turmas .turmas-cont {
-  min-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-top: 2px dashed var(--corVerde100);
-  margin: 1rem;
   padding: 1rem;
 }
 .turmas .turmas-cont header h1 {
@@ -1459,6 +1458,7 @@ input:checked + .show .title {
   display: flex;
   position: relative;
   width: 40%;
+  min-width: 25rem;
 }
 .turmas .turmas-cont main .card-cont:hover .edit-turma {
   opacity: 1;
@@ -1649,4 +1649,65 @@ input:checked + .show .title {
 }
 .alunos .search input:focus::placeholder {
   color: white;
+}
+.alunos .alunos-cont {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 1rem;
+}
+.alunos .alunos-cont header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.alunos .alunos-cont header h1 {
+  font-size: 20px;
+  color: var(--corVerde200);
+  text-align: center;
+}
+.alunos .alunos-cont .card-cont {
+  display: flex;
+  width: 20%;
+}
+.alunos .alunos-cont .card-cont .card-aluno {
+  display: flex;
+  width: 100%;
+  min-width: 16rem;
+  height: 80px;
+  background-color: var(--fundoFosco);
+  box-shadow: 0 0 15px var(--sombraVerde);
+  border-radius: 1rem;
+}
+.alunos .alunos-cont .card-cont .card-aluno header {
+  min-height: 60px;
+  max-width: 60px;
+  min-width: 60px;
+  max-width: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.alunos .alunos-cont .card-cont .card-aluno header span {
+  background: linear-gradient(var(--gadrientVerde));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 30px;
+}
+.alunos .alunos-cont .card-cont .card-aluno main {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 0.7rem;
+}
+.alunos .alunos-cont .card-cont .card-aluno main h1 {
+  color: var(--corVerde200);
+  font-size: 16px;
+  margin: 0;
+}
+.alunos .alunos-cont .card-cont .card-aluno main p {
+  color: var(--corVerde);
+  font-size: 14px;
+  margin: 0;
 }/*# sourceMappingURL=global.css.map */
