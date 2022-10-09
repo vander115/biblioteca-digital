@@ -24,9 +24,9 @@
                 auto_awesome
             </span>Gêneros</li>
 
-        <li class="list"><span class="material-symbols-rounded">
-                error
-            </span>Pendentes</li>
+        <li class="list <?php active('requisicoes') ?>" onclick="location.href='?p=requisicoes'"><span class="material-symbols-rounded">
+                swap_horiz
+            </span>Requisições</li>
 
         <li class="list <?php active('turmas') ?>" onclick="location.href='?p=turmas'"><span class="material-symbols-rounded">
                 hotel_class
@@ -39,6 +39,9 @@
         <li class="list"><span class="material-symbols-rounded">
                 person
             </span>Funcionários</li>
+        <li class="list"><span class="material-symbols-rounded">
+                description
+            </span>Gerar Relatório</li>
         <li class="list"><span class="material-symbols-rounded">
                 tips_and_updates
             </span>Sobre Nós</li>

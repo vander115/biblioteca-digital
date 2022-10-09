@@ -22,7 +22,7 @@ if ($anoTurma == 1) {
   $anoFinal = $anoAtual;
 }
 
-$sql_cad_turma = "INSERT INTO tb_turma VALUES(NULL, '$nome', '$anoTurma', '$anoInicial', '$anoFinal');";
+$sql_cad_turma = "INSERT INTO tb_turma VALUES(NULL, '$nome', '$anoTurma', '$anoInicial', '$anoFinal', 'egressa');";
 $query_cad_turma = mysqli_query($conn, $sql_cad_turma);
 
 if ($query_cad_turma) {

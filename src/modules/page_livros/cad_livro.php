@@ -22,9 +22,10 @@ $gender = $_POST['gender'];
 $tombo = $_POST['tombo'];
 $qtd = $_POST['qtd'];
 $edit = mb_strtoupper($_POST['edit']);
+$data = date('Y-m-d');
 
 
-$sql_cad_livro = "INSERT INTO tb_livros VALUES(0, '$title', '$gender', '$author', '$edit', '$tombo', '$qtd', 'disponivel');";
+$sql_cad_livro = "INSERT INTO tb_livros VALUES(0, '$title', '$gender', '$author', '$edit', '$tombo', '$qtd', 'disponivel', '$data');";
 
 $query_cad_livro = mysqli_query($conn, $sql_cad_livro);
 

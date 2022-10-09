@@ -15,7 +15,6 @@ if (!isset($_SESSION)) {
 if (!isset($_SESSION['user'])) {
 
     require_once 'src/pages/public/login.php';
-
 } else {
 
     require_once 'src/functions/catch_page.php';
@@ -23,10 +22,10 @@ if (!isset($_SESSION['user'])) {
     require_once 'src/pages/private/sidebar.php';
 
     loadPage();
-
 }
 
 toast_success();
 toast_error();
+toast_aviso();
 
 require_once 'src/pages/private/footer.php';

@@ -6,7 +6,7 @@ if (!isset($_SESSION)) {
 }
 
 $id = $_GET['del_turma'];
-$query_del_alunos = mysqli_query($conn, "DELETE FROM tb_aluno WHERE turmaAluno = '$id';");
+$query_del_alunos = mysqli_query($conn, "DELETE FROM tb_pessoa WHERE turmaPessoa = '$id';");
 
 if ($query_del_alunos) {
   $query = mysqli_query($conn, "DELETE FROM tb_turma WHERE idTurma = '$id';");

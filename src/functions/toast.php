@@ -1,5 +1,6 @@
-<?php 
-function toast_success() {
+<?php
+function toast_success()
+{
     if (isset($_SESSION['toast_success'])) {
         $message_sucess = $_SESSION['toast_success'];
     } else {
@@ -12,13 +13,14 @@ function toast_success() {
             toastr.success(message_sucess);
         }
     </script>
-    
-<?php 
+
+<?php
     unset($_SESSION['toast_success']);
-} 
+}
 
 
-function toast_error() {
+function toast_error()
+{
     if (isset($_SESSION['toast_error'])) {
         $message_error = $_SESSION['toast_error'];
     } else {
@@ -33,7 +35,27 @@ function toast_error() {
         }
     </script>
 
-<?php 
-        unset($_SESSION['toast_error']);
+<?php
+    unset($_SESSION['toast_error']);
+}
+
+function toast_aviso()
+{
+    if (isset($_SESSION['toast_aviso'])) {
+        $message_aviso = $_SESSION['toast_aviso'];
+    } else {
+        $message_aviso = " ";
     }
+?>
+
+    <script>
+        let message_aviso = "<?php echo $message_aviso; ?>";
+        if (message_aviso != " ") {
+            toastr.info(message_aviso);
+        }
+    </script>
+
+<?php
+    unset($_SESSION['toast_aviso']);
+}
 ?>
