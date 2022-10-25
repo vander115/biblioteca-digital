@@ -1,4 +1,9 @@
 <?php
+
+require 'src/functions/mudar_ano_turma.php';
+
+mudar_ano_turma();
+
 if (!isset($_GET['edit_turma'])) {
 ?>
 
@@ -37,9 +42,9 @@ if (!isset($_GET['edit_turma'])) {
         if (isset($_GET['qt'])) {
           $qt = mb_strtoupper(trim($_GET['qt']));
 
-          $sql = "SELECT * FROM tb_turma WHERE CONCAT(nomeTurma, anoTurma) LIKE '%$qt%' AND anoTurma = '$key' ORDER BY nomeTurma;";
+          $sql = "SELECT * FROM tb_turma WHERE CONCAT(nomeTurma, anoTurma) LIKE '%$qt%' AND anoTurma = '$key' AND statusTurma = 'egressa' ORDER BY nomeTurma;";
         } else {
-          $sql = "SELECT * FROM tb_turma WHERE anoTurma = '$key' ORDER BY nomeTurma;";
+          $sql = "SELECT * FROM tb_turma WHERE anoTurma = '$key' AND statusTurma = 'egressa' ORDER BY nomeTurma;";
         }
 
         $query = mysqli_query($conn, $sql);

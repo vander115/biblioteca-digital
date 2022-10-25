@@ -1,5 +1,5 @@
 <?php
-if (!isset($_GET['edit_aluno'])) {
+if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
 ?>
 
 
@@ -64,7 +64,7 @@ if (!isset($_GET['edit_aluno'])) {
                       </header>
                       <main>
                         <h1><?php echo $aluno_data['nomePessoa']; ?></h1>
-                        <p><?php echo $aluno_data['anoTurma'] . 'º ' . $aluno_data['nomeTurma']; ?></p>
+                        <p><?php echo $aluno_data['anoTurma'] . 'º ' . strtok($aluno_data['nomeTurma'], " "); ?></p>
                       </main>
                     </div>
                     <a href="?p=alunos&edit_aluno=<?php echo $aluno_data['idPessoa']; ?>" class="edit-aluno">
@@ -136,7 +136,7 @@ if (!isset($_GET['edit_aluno'])) {
           <fieldset class="oneline-modal">
             <div>
               <label name="ident" for="">Indentificação</label>
-              <input type="text">
+              <input type="text" name="ident">
             </div>
             <div class="ident">
               <label for="">Tipo</label>
@@ -154,11 +154,11 @@ if (!isset($_GET['edit_aluno'])) {
   </div>
 
 <?php
-} else {
+} else if (isset($_GET['edit_aluno'])) {
   require 'src/modules/conection.php';
   $id_aluno = $_GET['edit_aluno'];
   $query_edit_aluno = mysqli_query($conn, "SELECT * FROM tb_pessoa WHERE idPessoa = '$id_aluno';");
-  $edit_turma = mysqli_fetch_assoc($query_edit_aluno);
+  $edit_aluno = mysqli_fetch_assoc($query_edit_aluno);
 ?>
 
   <main class="cont"></main>
@@ -170,7 +170,7 @@ if (!isset($_GET['edit_aluno'])) {
           <span class="material-symbols-rounded">
             magic_button
           </span>
-          Editar Turma
+          Editar Aluno
         </h1>
         <button class="close" onclick="location.href='?p=alunos'">
           <span class="material-symbols-rounded">
@@ -180,10 +180,10 @@ if (!isset($_GET['edit_aluno'])) {
       </div>
       <div class="modal-main">
         <form class="form-modal" method="POST" action="src/modules/page_alunos/edit_aluno.php">
-          <input type="hidden" name="id" value="<?php echo $edit_turma['idPessoa']; ?>">
+          <input type="hidden" name="id" value="<?php echo $edit_aluno['idPessoa']; ?>">
           <fieldset>
             <label for="">Nome</label>
-            <input name="nome" type="text" value="<?php echo $edit_turma['nomePessoa']; ?>">
+            <input name="nome" type="text" value="<?php echo $edit_aluno['nomePessoa']; ?>">
           </fieldset>
           <fieldset>
             <label for="">Turma</label>
@@ -199,7 +199,7 @@ if (!isset($_GET['edit_aluno'])) {
                 while ($turmas = mysqli_fetch_assoc($query_turma_aluno)) {
               ?>
 
-                  <option <?php if ($edit_turma['turmaPessoa'] == $turmas['idTurma']) {
+                  <option <?php if ($edit_aluno['turmaPessoa'] == $turmas['idTurma']) {
                             echo ' selected ';
                           }; ?> value="<?php echo $turmas['idTurma']; ?>"><?php echo $turmas['anoTurma'] . "º " . $turmas['nomeTurma']; ?></option>
 
@@ -208,6 +208,96 @@ if (!isset($_GET['edit_aluno'])) {
               }
               ?>
             </select>
+          </fieldset>
+          <fieldset class="oneline-modal">
+            <button class="del">
+              <span class="material-symbols-rounded">
+                delete_forever
+              </span>
+              Excluir Aluno
+            </button>
+            <button>
+              <span class="material-symbols-rounded">
+                edit
+              </span>
+              Alterar Aluno
+            </button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+
+<?php } else if (isset($_GET['edit_senha_aluno'])) {
+
+  require 'src/modules/conection.php';
+  $id_aluno = $_GET['edit_aluno'];
+  $query_edit_aluno = mysqli_query($conn, "SELECT * FROM tb_pessoa WHERE idPessoa = '$id_aluno';");
+  $edit_aluno = mysqli_fetch_assoc($query_edit_aluno);
+
+?>
+
+  <main class="cont"></main>
+
+  <div class="modal open">
+    <div class="modal-cont">
+      <div class="modal-header">
+        <h1>
+          <span class="material-symbols-rounded">
+            magic_button
+          </span>
+          Alterar Identificação do Aluno
+        </h1>
+        <button class="close" onclick="location.href='?p=alunos'">
+          <span class="material-symbols-rounded">
+            close
+          </span>
+        </button>
+      </div>
+      <div class="modal-main">
+        <form class="form-modal" method="POST" action="src/modules/page_alunos/edit_aluno.php">
+          <input type="hidden" name="id" value="<?php echo $edit_aluno['idPessoa']; ?>">
+          <fieldset>
+            <label for="">Nome</label>
+            <input name="nome" type="text" readonly value="<?php echo $edit_aluno['nomePessoa']; ?>">
+          </fieldset>
+          <fieldset>
+            <label for="">Turma</label>
+            <select readonly name="turma">
+              <option selected disabled>Escolha uma turma</option>
+
+              <?php
+              require 'src/modules/conection.php';
+
+              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma ORDER BY anoTurma, nomeTurma;");
+
+              if ($query_turma_aluno) {
+                while ($turmas = mysqli_fetch_assoc($query_turma_aluno)) {
+              ?>
+
+                  <option <?php if ($edit_aluno['turmaPessoa'] == $turmas['idTurma']) {
+                            echo ' selected ';
+                          }; ?> value="<?php echo $turmas['idTurma']; ?>"><?php echo $turmas['anoTurma'] . "º " . $turmas['nomeTurma']; ?></option>
+
+              <?php
+                }
+              }
+              ?>
+            </select>
+          </fieldset>
+          <fieldset class="oneline-modal">
+            <div>
+              <label name="ident" for="">Indentificação</label>
+              <input type="text">
+            </div>
+            <div class="ident">
+              <label for="">Tipo</label>
+              <select name="tipoIdent" id="">
+                <option selected disabled>Selecione o tipo de dado</option>
+                <option value="CPF">CPF</option>
+                <option value="Matricula">Matrícula</option>
+              </select>
+            </div>
           </fieldset>
           <fieldset class="oneline-modal">
             <button class="del">

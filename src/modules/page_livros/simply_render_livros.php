@@ -56,7 +56,7 @@ if ($query_gender_livro) {
                 <tr class="<?php if (($livro_data['statusLivro']) != 'disponivel') {
                               echo 'indisp';
                             } ?>">
-                  <td onclick="location.href='?p=livros&mod=simple&edit_livro=<?php echo $livro_data['idLivro']; ?>'"><?php echo $livro_data['tituloLivro']; ?></td>
+                  <td onclick="location.href='src/modules/page_req/gerar_req.php?id_livro_req=<?php echo $livro_data['idLivro']; ?>'"><?php echo $livro_data['tituloLivro']; ?></td>
                   <td><?php echo $livro_data['autorLivro']; ?></td>
                   <td><?php echo $livro_data['editoraLivro']; ?></td>
                   <td><?php echo $livro_data['qtdLivro']; ?></td>

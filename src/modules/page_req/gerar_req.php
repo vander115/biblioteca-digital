@@ -20,7 +20,11 @@ if (isset($_GET['id_func_req'])) {
   $id_func = $_GET['id_func_req'];
   $_SESSION['req']['func'] = $id_func;
 }
-if (!isset($_SESSION['id_func_req'])) {
+
+if (!isset($_SESSION['req']['livro']) and !isset($_SESSION['req']['aluno']) and !isset($_SESSION['req']['func'])) {
+  $_SESSION['toast_aviso'] = "ESCOLHA UM LIVRO:";
+  header('Location: ../../../index.php?p=livros');
+} else if (!isset($_SESSION['id_func_req'])) {
 
   if (isset($_SESSION['req']['livro']) and !isset($_SESSION['req']['aluno'])) {
 
@@ -31,8 +35,8 @@ if (!isset($_SESSION['id_func_req'])) {
     $_SESSION['toast_aviso'] = "ESCOLHA UM LIVRO:";
     header('Location: ../../../index.php?p=livros');
   } else if (isset($_SESSION['req']['livro']) and isset($_SESSION['req']['aluno'])) {
-
-    echo 'Requisição feita com sucesso';
+    $_SESSION['req']['status'] = "pendente";
+    header('Location: ../../../index.php?p=requisicoes');
   }
 } else if (!isset($_SESSION['req']['livro'])) {
 

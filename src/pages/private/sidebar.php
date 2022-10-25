@@ -12,44 +12,76 @@
         </div>
     </div>
     <ul class="bar-cont">
-        <li class="list <?php active('home') ?>" onclick="location.href='?p=home'"><span class="material-symbols-rounded">
+        <li class="list <?php active('home') ?>" onclick="location.href='?p=home'">
+            <span class="material-symbols-rounded">
                 home
-            </span>Início</li>
+            </span>Início
+        </li>
 
-        <li class="list <?php active('livros') ?>" onclick="location.href='?p=livros'"><span class="material-symbols-rounded">
+        <li class="list <?php active('livros') ?>" onclick="location.href='?p=livros'">
+            <span class="material-symbols-rounded">
                 menu_book
-            </span>Livros</li>
+            </span>Livros
+        </li>
 
-        <li class="list <?php active('genders') ?>" onclick="location.href='?p=genders'"><span class="material-symbols-rounded">
+        <li class="list <?php active('genders') ?>" onclick="location.href='?p=genders'">
+            <span class="material-symbols-rounded">
                 auto_awesome
-            </span>Gêneros</li>
+            </span>Gêneros
+        </li>
 
-        <li class="list <?php active('requisicoes') ?>" onclick="location.href='?p=requisicoes'"><span class="material-symbols-rounded">
+        <li class="list <?php active('requisicoes');
+                        if (isset($_SESSION['req']['status'])) {
+                            if ($_SESSION['req']['status'] == "pendente") {
+                                echo ' req ';
+                            }
+                        } ?>" onclick="location.href='?p=requisicoes'">
+            <div class="not"></div>
+            <span class="material-symbols-rounded">
                 swap_horiz
-            </span>Requisições</li>
+            </span>Requisições
+        </li>
 
-        <li class="list <?php active('turmas') ?>" onclick="location.href='?p=turmas'"><span class="material-symbols-rounded">
+        <li class="list <?php active('turmas') ?>" onclick="location.href='?p=turmas'">
+            <span class="material-symbols-rounded">
                 hotel_class
-            </span>Turmas</li>
+            </span>Turmas
+        </li>
 
-        <li class="list <?php active('alunos') ?>" onclick="location.href='?p=alunos'"><span class="material-symbols-rounded">
+        <li class="list <?php active('alunos') ?>" onclick="location.href='?p=alunos'">
+            <span class="material-symbols-rounded">
                 school
-            </span>Alunos</li>
+            </span>Alunos
+        </li>
 
-        <li class="list"><span class="material-symbols-rounded">
+        <li class="list">
+            <span class="material-symbols-rounded">
                 person
-            </span>Funcionários</li>
-        <li class="list"><span class="material-symbols-rounded">
+            </span>Funcionários
+        </li>
+
+        <li class="list">
+            <span class="material-symbols-rounded">
                 description
-            </span>Gerar Relatório</li>
-        <li class="list"><span class="material-symbols-rounded">
+            </span>Gerar Relatório
+        </li>
+
+        <li class="list">
+            <span class="material-symbols-rounded">
                 tips_and_updates
-            </span>Sobre Nós</li>
-        <li class="list <?php active('devs') ?>" onclick="location.href='?p=devs'"><span class="material-symbols-rounded">
+            </span>Sobre Nós
+        </li>
+
+        <li class="list <?php active('devs') ?>" onclick="location.href='?p=devs'">
+            <span class="material-symbols-rounded">
                 code
-            </span>Developers</li>
-        <li class="list" onclick="location.href='src/modules/logout.php'"><span class="material-symbols-rounded">
+            </span>Developers
+        </li>
+
+        <li class="list" onclick="location.href='src/modules/logout.php'">
+            <span class="material-symbols-rounded">
                 logout
-            </span>Sair</li>
+            </span>Sair
+        </li>
     </ul>
 </nav>
