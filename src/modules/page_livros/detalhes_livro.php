@@ -1,97 +1,93 @@
 <?php
 require 'src/modules/conection.php';
 $idLivro = $_GET['edit_livro'];
-$sql_edit_livro = "SELECT * FROM tb_livros WHERE idLivro = '$idLivro';";
+$sql_edit_livro = "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero WHERE l.idLivro = '$idLivro';";
 $query_edit_livro = mysqli_query($conn, $sql_edit_livro);
 $editLivro = mysqli_fetch_assoc($query_edit_livro);
 ?>
 
-<main class="cont"></main>
-<div class="modal open">
-  <div class="modal-cont">
-    <div class="modal-header">
-      <h1>
-        <span class="material-symbols-rounded">
-          bookmark_add
-        </span>
-        Detalhes do Livro
-      </h1>
-      <button onclick="location.href='?p=livros<?php if (isset($_GET['mod'])) {
-                                                  echo '&mod=simple';
-                                                } ?>'" class="close">
-        <span class="material-symbols-rounded">
-          close
-        </span>
-      </button>
-    </div>
-    <div class="modal-main">
-      <form class="form-modal" method="POST" action="src/modules/page_livros/edit_livro.php">
-        <?php if (isset($_GET['mod'])) {
-          echo '<input type="hidden" name="mod" value="1">';
-        } ?>
-        <input type="hidden" name="idLivro" value="<?php echo $editLivro['idLivro'] ?>">
-        <input type="hidden" name="statusLivro" value="<?php echo $editLivro['statusLivro'] ?>">
-        <fieldset>
-          <label for="">Título</label><input name="title" type="text" value="<?php echo $editLivro['tituloLivro'] ?>">
-        </fieldset>
-        <fieldset>
-          <label for="">Autor</label><input name="author" type="text" value="<?php echo $editLivro['autorLivro'] ?>">
-        </fieldset>
-        <fieldset>
-          <label for="">Gênero</label>
-          <select name="gender">
-            <option selected disabled>Escolha um gênero</option>
-            <?php
-            require 'src/modules/conection.php';
-
-            $sql_select_gender = "SELECT * FROM tb_genero_livro ORDER BY nomeGenero";
-
-            $query_select_gender = mysqli_query($conn, $sql_select_gender);
-
-            if ($query_select_gender) {
-              while ($select_gender = mysqli_fetch_assoc($query_select_gender)) {
-            ?>
-                <option <?php if ($editLivro['generoLivro'] == $select_gender['idGenero']) {
-                          echo 'selected ';
-                        } ?>value="<?php echo $select_gender['idGenero']; ?>">
-                  <?php echo $select_gender['nomeGenero'] ?>
-                </option>
-            <?php }
-            } ?>
-          </select>
-        </fieldset>
-        <fieldset class="oneline-modal">
-          <div>
-            <label for="">Tombo</label><input name="tombo" type="text" value="<?php echo $editLivro['tomboLivro'] ?>">
-          </div>
-          <div class="qtd-div">
-            <label for="">Quantidade</label>
-            <div class="qtd-container">
-              <span class="next"></span>
-              <span class="prev"></span>
-              <input id="number" value="<?php echo $editLivro['qtdLivro'] ?>" type="number" maxlength="3" name="qtd" />
+<main class="cont">
+  <section class="detalhes-livro">
+    <header>
+      <h1><?php echo $editLivro['tituloLivro']; ?></h1>
+    </header>
+    <main>
+      <div class="details">
+        <div class="info-cont">
+          <div class="info">
+            <div>
+              <label for="">Gênero:</label>
+              <p><?php echo $editLivro['nomeGenero']; ?></p>
+            </div>
+            <div>
+              <label for="">Autor:</label>
+              <p><?php echo $editLivro['autorLivro']; ?></p>
+            </div>
+            <div>
+              <label for="">Editora:</label>
+              <p><?php echo $editLivro['editoraLivro']; ?></p>
             </div>
           </div>
-        </fieldset>
-        <fieldset>
-          <label for="">Editora</label><input name="edit" type="text" value="<?php echo $editLivro['editoraLivro'] ?>">
-        </fieldset>
-        <fieldset>
-          <label for="">Temáticas</label><input maxlenght="255" name="tags" type="text">
-        </fieldset>
-        <fieldset class="oneline-modal">
-          <a href="#" class="del">
+          <div class="info">
+            <div>
+              <label for="">Quantidade:</label>
+              <p><?php echo $editLivro['qtdLivro'] . ' unidades'; ?></p>
+            </div>
+            <div>
+              <label for="">Tombo:</label>
+              <p><?php echo $editLivro['tomboLivro']; ?></p>
+            </div>
+            <div>
+              <label for="">Status:</label>
+              <p><?php echo mb_strtoupper($editLivro['statusLivro']); ?></p>
+            </div>
+          </div>
+        </div>
+        <div class="options">
+          <a onclick="return confirm('Você deseja realmente APAGAR o livro?')" href="src/modules/page_livros/del_livro.php?id_del=<?php echo $editLivro['idLivro'] ?>" class="del">
             <span class="material-symbols-rounded">
               delete_forever
             </span>
             Deletar Livro</a>
-          <button>
+          <button onclick="location.href='?p=livros&editar_livro=<?php echo $editLivro['idLivro'] ?>'">
             <span class="material-symbols-rounded">
               edit
             </span>
             Alterar Livro</button>
-        </fieldset>
-      </form>
-    </div>
-  </div>
-</div>
+        </div>
+      </div>
+
+      <?php
+      if ($editLivro['qtdLivro'] <= 0) {
+      ?>
+        <div class="espera">
+          <header>
+            <h2>Fila de Espera</h2>
+          </header>
+          <main>
+            <div class="pessoa">
+              <div class="numero">
+                <h2>2</h2>
+              </div>
+              <div class="dados">
+                <h3>Vanderlei Furtuna</h3>
+                <p>3° Informática</p>
+              </div>
+            </div>
+          </main>
+          <footer>
+            <div class="options">
+              <button onclick="location.href='src/modules/page_livros/gerar_fila.php?id_livro_fila=<?php echo $editLivro['idLivro'] ?>'">
+                <span class="material-symbols-rounded">
+                  edit
+                </span>
+                Adicionar na lista de espera</button>
+            </div>
+          </footer>
+        </div>
+      <?php
+      }
+      ?>
+    </main>
+  </section>
+</main>

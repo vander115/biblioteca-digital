@@ -154,6 +154,22 @@ if (isset($_SESSION['req']['status'])) {
           </span>
         </button>
       </form>
+      <div class="req-cont">
+        <header>
+          <h1>Requisições</h1>
+        </header>
+        <main>
+          <div class="req-info">
+            <div class="req-card">
+              <div class="req-dados">
+                <div class="req-livro"></div>
+                <div class="req-pessoa"></div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+
     </section>
   </main>
 

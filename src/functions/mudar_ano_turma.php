@@ -17,7 +17,7 @@ function mudar_ano_turma()
     } else if ($turma['anoFinal'] == ($data + 2)) {
       mysqli_query($conn, "UPDATE tb_turma SET anoTurma = 1, statusTurma = 'egressa' WHERE idTurma = '$id';");
     }
-    if ($turma['anoFinal'] == ($data - 1)) {
+    if ($turma['anoFinal'] <= ($data - 1)) {
       mysqli_query($conn, "UPDATE tb_turma SET statusTurma = 'concluida' WHERE idTurma = '$id';");
     }
   }

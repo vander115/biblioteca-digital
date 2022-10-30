@@ -40,14 +40,28 @@ if ($tipoIdent == 1) {
 }
 
 if ($verificar) {
-  $query_cad_req = mysqli_query($conn, "INSERT INTO tb_req VALUES(0, '$idPessoa', '$idLivro', '$dataAtual', '$dataEntrega', 'em vigor');");
-  if ($query_cad_req) {
-    $_SESSION['toast_success'] = "Requisição criada com sucesso!";
-    header('Location: ../../../index.php?p=requisicoes');
-    unset($_SESSION['req']);
+  $query_qtd = mysqli_query($conn, "SELECT qtdLivro FROM tb_livros WHERE idLivro ='$idLivro';");
+  $livro = mysqli_fetch_assoc($query_qtd);
+  $nova_qtd = $livro['qtdLivro'] - 1;
+  $fila = [$idPessoa];
+  $fila_string = implode(',', $fila);
+  if ($nova_qtd > 0) {
+    $query_mudar_qtd = mysqli_query($conn, "UPDATE tb_livros SET qtdLivro ='$nova_qtd', filaEsperaLivro = '$fila_string' WHERE idLivro = '$idLivro';");
   } else {
-    $_SESSION['toast_error'] = "Erro ao criar requisição :(";
-    header('Location: ../../../index.php?p=requisicoes');
+    $query_mudar_qtd = mysqli_query($conn, "UPDATE tb_livros SET qtdLivro ='$nova_qtd', filaEsperaLivro = '$fila_string', statusLivro = 'emprestado' WHERE idLivro = '$idLivro';");
+  }
+
+  if ($query_mudar_qtd) {
+    $query_cad_req = mysqli_query($conn, "INSERT INTO tb_req VALUES(0, '$idPessoa', '$idLivro', '$dataAtual', '$dataEntrega', 'em vigor');");
+
+    if ($query_cad_req) {
+      $_SESSION['toast_success'] = "Requisição criada com sucesso!";
+      header('Location: ../../../index.php?p=requisicoes');
+      unset($_SESSION['req']);
+    } else {
+      $_SESSION['toast_error'] = "Erro ao criar requisição :(";
+      header('Location: ../../../index.php?p=requisicoes');
+    }
   }
 } else {
   $_SESSION['toast_error'] = "A identificação está incorreta!";

@@ -7,8 +7,14 @@ if (!isset($_SESSION)) {
 }
 
 if (isset($_GET['id_livro_req'])) {
-  $id_livro = $_GET['id_livro_req'];
-  $_SESSION['req']['livro'] = $id_livro;
+  if ($_GET['id_livro_req'] === 'n') {
+    $_SESSION['toast_aviso'] = "Livro indisponivel no momento!";
+    header('Location: ../../../index.php?p=livros');
+    return;
+  } else {
+    $id_livro = $_GET['id_livro_req'];
+    $_SESSION['req']['livro'] = $id_livro;
+  }
 }
 
 if (isset($_GET['id_aluno_req'])) {

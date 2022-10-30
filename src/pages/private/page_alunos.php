@@ -55,7 +55,11 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
                 while ($aluno_data = mysqli_fetch_assoc($query_aluno_info)) {
                 ?>
 
-                  <div class="card-cont" onclick="location.href='src/modules/page_req/gerar_req.php?id_aluno_req=<?php echo $aluno_data['idPessoa']; ?>'">
+                  <div class="card-cont" onclick="location.href='src/modules/<?php if (isset($_SESSION['fila']['livro'])) {
+                                                                                echo 'page_livros/gerar_fila.php?id_pessoa_fila=' . $aluno_data['idPessoa'];
+                                                                              } else {
+                                                                                echo 'page_req/gerar_req.php?id_aluno_req=' . $aluno_data['idPessoa'];
+                                                                              } ?>'">
                     <div class="card-aluno">
                       <header>
                         <span class="material-symbols-rounded">

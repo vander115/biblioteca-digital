@@ -1,6 +1,6 @@
 <?php
 
-if (!isset($_GET['edit_livro'])) {
+if (!isset($_GET['edit_livro']) and !isset($_GET['editar_livro'])) {
 ?>
 
     <main class="cont">
@@ -75,17 +75,17 @@ if (!isset($_GET['edit_livro'])) {
                 </button>
             </div>
             <div class="modal-main">
-                <form class="form-modal" method="POST" action="src/modules/page_livros/cad_livro.php">
+                <form class="form-modal" method="POST" action="src/modules/page_livros/cad_livro.php" id="livro-form">
                     <fieldset>
-                        <label for="">Título</label><input name="title" type="text">
+                        <label for="">Título</label><input name="title" id="title" type="text">
                     </fieldset>
                     <fieldset>
-                        <label for="">Autor</label><input name="author" type="text">
+                        <label for="">Autor</label><input name="author" id="author" type="text">
                     </fieldset>
                     <fieldset>
                         <label for="">Gênero</label>
-                        <select name="gender">
-                            <option selected disabled>Escolha um gênero</option>
+                        <select name="gender" id="gender">
+                            <option value="0" selected disabled>Escolha um gênero</option>
                             <?php
                             require 'src/modules/conection.php';
 
@@ -105,7 +105,7 @@ if (!isset($_GET['edit_livro'])) {
                     </fieldset>
                     <fieldset class="oneline-modal">
                         <div>
-                            <label for="">Tombo</label><input name="tombo" type="text">
+                            <label for="">Tombo</label><input name="tombo" id="tombo" type="text">
                         </div>
                         <div class="qtd-div">
                             <label for="">Quantidade</label>
@@ -117,18 +117,63 @@ if (!isset($_GET['edit_livro'])) {
                         </div>
                     </fieldset>
                     <fieldset>
-                        <label for="">Editora</label><input name="edit" type="text">
+                        <label for="">Editora</label><input name="edit" id="edit" type="text">
                     </fieldset>
                     <fieldset>
-                        <label for="">Temáticas</label><input maxlenght="255" name="tags" type="text">
+                        <label for="">Temáticas</label><input maxlenght="255" name="tags" id="tags" type="text">
                     </fieldset>
-                    <fieldset><button>Cadrastar Livro</button></fieldset>
+                    <fieldset><button type="button" onclick="livrosVerify()">Cadrastar Livro</button></fieldset>
                 </form>
             </div>
         </div>
     </div>
 
-<?php } else {
+    <script>
+        const livroForm = document.getElementById('livro-form');
+
+        const titleInput = document.getElementById('title');
+        const authorInput = document.getElementById('author');
+        const genderInput = document.getElementById('gender');
+        const tomboInput = document.getElementById('tombo');
+        const numberInput = document.getElementById('number');
+        const editInput = document.getElementById('edit');
+        const tagsInput = document.getElementById('tags');
+
+        console.log('aqui está o valor do genero', genderInput.value);
+
+        const livrosVerify = () => {
+            if (titleInput.value === "") {
+                toastr.warning("Informe o titulo do livro!");
+                titleInput.focus();
+                return;
+            }
+            if (authorInput.value === "") {
+                toastr.warning("Informe o autor do livro!");
+                authorInput.focus();
+                return;
+            }
+            if (genderInput.value == 0) {
+                toastr.warning("Escolha o gênero do livro!");
+                genderInput.focus();
+                return;
+            }
+            if (tomboInput.value === "") {
+                toastr.warning("Informe o tombo do livro!");
+                tomboInput.focus();
+                return;
+            }
+            if (editInput.value === "") {
+                toastr.warning("Informe a editora do livro!");
+                editInput.focus();
+                return;
+            }
+            livroForm.submit();
+        }
+    </script>
+
+<?php } else if (isset($_GET['editar_livro'])) {
+    require_once 'src/modules/page_livros/editar_livro.php';
+} else {
     require 'src/modules/page_livros/detalhes_livro.php';
 } ?>
 

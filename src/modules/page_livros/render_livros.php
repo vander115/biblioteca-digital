@@ -40,9 +40,13 @@ if ($query_gender_livro) {
           while ($livro_data = mysqli_fetch_assoc($query_livro_info)) {
           ?>
             <div class="card-cont">
-              <div onclick="location.href='src/modules/page_req/gerar_req.php?id_livro_req=<?php echo $livro_data['idLivro']; ?>'" class="livro-card <?php if (($livro_data['statusLivro']) != 'disponivel') {
-                                                                                                                                                        echo 'indisp';
-                                                                                                                                                      } ?>">
+              <div onclick="location.href='src/modules/page_req/gerar_req.php?id_livro_req=<?php if ($livro_data['statusLivro'] == 'disponivel') {
+                                                                                              echo $livro_data['idLivro'];
+                                                                                            } else {
+                                                                                              echo 'n';
+                                                                                            } ?>'" class="livro-card <?php if (($livro_data['statusLivro']) != 'disponivel') {
+                                                                            echo 'indisp';
+                                                                          } ?>">
                 <div class="card-info">
                   <h1><?php echo $livro_data['tituloLivro'] ?></h1>
                   <h2><?php echo $livro_data['autorLivro'] ?></h2>
