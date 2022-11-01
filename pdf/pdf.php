@@ -1,12 +1,3 @@
-<?php
-require '../src/modules/conection.php';
-
-$sql = mysqli_query($conn, "SELECT COUNT(*) FROM tb_livros;");
-
-$livro = mysqli_fetch_assoc($sql);
-
-?>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
