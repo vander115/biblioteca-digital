@@ -25,21 +25,21 @@ $editLivro = mysqli_fetch_assoc($query_edit_livro);
       </button>
     </div>
     <div class="modal-main">
-      <form class="form-modal" method="POST" action="src/modules/page_livros/edit_livro.php">
+      <form class="form-modal" method="POST" id="livro-form" action="src/modules/page_livros/edit_livro.php">
         <?php if (isset($_GET['mod'])) {
           echo '<input type="hidden" name="mod" value="1">';
         } ?>
         <input type="hidden" name="idLivro" value="<?php echo $editLivro['idLivro'] ?>">
         <input type="hidden" name="statusLivro" value="<?php echo $editLivro['statusLivro'] ?>">
         <fieldset>
-          <label for="">Título</label><input name="title" type="text" value="<?php echo $editLivro['tituloLivro'] ?>">
+          <label for="">Título</label><input name="title" id="title" type="text" value="<?php echo $editLivro['tituloLivro'] ?>">
         </fieldset>
         <fieldset>
-          <label for="">Autor</label><input name="author" type="text" value="<?php echo $editLivro['autorLivro'] ?>">
+          <label for="">Autor</label><input name="author" id="author" type="text" value="<?php echo $editLivro['autorLivro'] ?>">
         </fieldset>
         <fieldset>
           <label for="">Gênero</label>
-          <select name="gender">
+          <select name="gender" id="gender">
             <option selected disabled>Escolha um gênero</option>
             <?php
             require 'src/modules/conection.php';
@@ -62,25 +62,25 @@ $editLivro = mysqli_fetch_assoc($query_edit_livro);
         </fieldset>
         <fieldset class="oneline-modal">
           <div>
-            <label for="">Tombo</label><input name="tombo" type="text" value="<?php echo $editLivro['tomboLivro'] ?>">
+            <label for="">Tombo</label><input name="tombo" id="tombo" type="text" value="<?php echo $editLivro['tomboLivro'] ?>">
           </div>
           <div class="qtd-div">
             <label for="">Quantidade</label>
             <div class="qtd-container">
               <span class="next"></span>
               <span class="prev"></span>
-              <input id="number" value="<?php echo $editLivro['qtdLivro'] ?>" type="number" maxlength="3" name="qtd" />
+              <input id="number" id="number" value="<?php echo $editLivro['qtdLivro'] ?>" type="number" maxlength="3" name="qtd" />
             </div>
           </div>
         </fieldset>
         <fieldset>
-          <label for="">Editora</label><input name="edit" type="text" value="<?php echo $editLivro['editoraLivro'] ?>">
+          <label for="">Editora</label><input name="edit" id="edit" type="text" value="<?php echo $editLivro['editoraLivro'] ?>">
         </fieldset>
         <fieldset>
-          <label for="">Temáticas</label><input maxlenght="255" name="tags" type="text">
+          <label for="">Temáticas</label><input maxlenght="255" name="tags" id="tags" type="text">
         </fieldset>
         <fieldset class="oneline-modal">
-          <button>
+          <button type="buttton" onclick="livrosVerify()">
             <span class="material-symbols-rounded">
               edit
             </span>
@@ -90,3 +90,44 @@ $editLivro = mysqli_fetch_assoc($query_edit_livro);
     </div>
   </div>
 </div>
+
+<script>
+  const livroForm = document.getElementById('livro-form');
+
+  const titleInput = document.getElementById('title');
+  const authorInput = document.getElementById('author');
+  const genderInput = document.getElementById('gender');
+  const tomboInput = document.getElementById('tombo');
+  const numberInput = document.getElementById('number');
+  const editInput = document.getElementById('edit');
+  const tagsInput = document.getElementById('tags');
+
+  const livrosVerify = () => {
+    if (titleInput.value === "") {
+      toastr.warning("Informe o titulo do livro!");
+      titleInput.focus();
+      return;
+    }
+    if (authorInput.value === "") {
+      toastr.warning("Informe o autor do livro!");
+      authorInput.focus();
+      return;
+    }
+    if (genderInput.value == 0) {
+      toastr.warning("Escolha o gênero do livro!");
+      genderInput.focus();
+      return;
+    }
+    if (tomboInput.value === "") {
+      toastr.warning("Informe o tombo do livro!");
+      tomboInput.focus();
+      return;
+    }
+    if (editInput.value === "") {
+      toastr.warning("Informe a editora do livro!");
+      editInput.focus();
+      return;
+    }
+    livroForm.submit();
+  }
+</script>

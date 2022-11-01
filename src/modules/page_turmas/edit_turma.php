@@ -33,7 +33,7 @@ if ($anoTurma == 1) {
   $anoFinal = $anoAtual;
 }
 
-$query_edit_turma = mysqli_query($conn, "UPDATE tb_turma SET nomeTurma = '$nomeTurma', anoTurma = '$anoTurma', anoInicio = '$anoInicial', anoTermino = '$anoFinal' WHERE idTurma = '$idTurma';");
+$query_edit_turma = mysqli_query($conn, "UPDATE tb_turma SET nomeTurma = '$nomeTurma', anoTurma = '$anoTurma', anoInicial = '$anoInicial', anoFinal = '$anoFinal' WHERE idTurma = '$idTurma';");
 
 if ($query_edit_turma) {
   $_SESSION['toast_success'] = "Turma editada com sucesso!";
