@@ -162,8 +162,30 @@ if (isset($_SESSION['req']['status'])) {
           <div class="req-info">
             <div class="req-card">
               <div class="req-dados">
-                <div class="req-livro"></div>
-                <div class="req-pessoa"></div>
+                <section>
+                  <h2>Pessoa:</h2>
+                  <p>José Vanderlei Furtuna Tomé</p>
+                  <span>3º Informática</span>
+                </section>
+                <section>
+                  <h2>Livro:</h2>
+                  <p>José Vanderlei Furtuna Tomé</p>
+                  <span>3º Informática</span>
+                </section>
+                <section>
+                  <div>
+                    <h2>Data de Criação:</h2>
+                    <p>José Vanderlei Furtuna Tomé</p>
+                  </div>
+                  <div class="entrega">
+                    <h2>Data de Entrega:</h2>
+                    <p>José Vanderlei Furtuna Tomé</p>
+                  </div>
+                  <div>
+                    <h2>Status:</h2>
+                    <p>José Vanderlei Furtuna Tomé</p>
+                  </div>
+                </section>
               </div>
             </div>
           </div>

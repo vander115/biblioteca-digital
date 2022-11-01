@@ -57,8 +57,6 @@ if (!isset($_GET['edit_livro']) and !isset($_GET['editar_livro'])) {
         </section>
     </main>
 
-
-
     <div class="modal">
         <div class="modal-cont">
             <div class="modal-header">
@@ -138,8 +136,6 @@ if (!isset($_GET['edit_livro']) and !isset($_GET['editar_livro'])) {
         const numberInput = document.getElementById('number');
         const editInput = document.getElementById('edit');
         const tagsInput = document.getElementById('tags');
-
-        console.log('aqui está o valor do genero', genderInput.value);
 
         const livrosVerify = () => {
             if (titleInput.value === "") {

@@ -15,7 +15,7 @@ if (!isset($_GET['edit_turma'])) {
             hotel_class
           </span>
           <label for="">
-            Cadrastar Turma
+            Cadastrar Turma
           </label>
         </div>
       </div>
@@ -92,7 +92,7 @@ if (!isset($_GET['edit_turma'])) {
           <span class="material-symbols-rounded">
             magic_button
           </span>
-          Cadrastar Turma
+          Cadastrar Turma
         </h1>
         <button class="close">
           <span class="material-symbols-rounded">
@@ -114,7 +114,7 @@ if (!isset($_GET['edit_turma'])) {
               </select>
             </div>
           </fieldset>
-          <fieldset><button>Cadrastar Turma</button></fieldset>
+          <fieldset><button>Cadastrar Turma</button></fieldset>
         </form>
       </div>
     </div>
