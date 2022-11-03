@@ -45,8 +45,8 @@ if ($query_gender_livro) {
                                                                                             } else {
                                                                                               echo 'n';
                                                                                             } ?>'" class="livro-card <?php if (($livro_data['statusLivro']) != 'disponivel') {
-                                                                            echo 'indisp';
-                                                                          } ?>">
+                                                                                                                        echo 'indisp';
+                                                                                                                      } ?>">
                 <div class="card-info">
                   <h1><?php echo $livro_data['tituloLivro'] ?></h1>
                   <h2><?php echo $livro_data['autorLivro'] ?></h2>
@@ -56,7 +56,7 @@ if ($query_gender_livro) {
                   <p><?php echo $livro_data['qtdLivro'] ?></p>
                 </div>
               </div>
-              <a href="?p=livros&edit_livro=<?php echo $livro_data['idLivro']; ?>" class="edit-livro">
+              <a href="?p=livros&editar_livro=<?php echo $livro_data['idLivro']; ?>" class="edit-livro">
                 <span class="material-symbols-rounded">
                   edit
                 </span>

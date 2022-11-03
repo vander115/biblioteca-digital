@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 * {
-  box-sizing: border-box !important;
+  box-sizing: border-box;
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
   /* width */
@@ -807,197 +807,6 @@ input:checked + .show .title {
 }
 .livros .livro-cont table tbody tr:nth-child(odd) {
   background-color: var(--fundoFoscoVerde);
-}
-
-.detalhes-livro header {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.5rem;
-}
-.detalhes-livro header h1 {
-  font-size: 2rem;
-  color: var(--corVerde200);
-}
-.detalhes-livro main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  justify-content: center;
-  align-items: center;
-}
-.detalhes-livro main .details {
-  padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 20px var(--sombraVerde);
-}
-.detalhes-livro main .details .info-cont {
-  gap: 3rem;
-  display: flex;
-}
-.detalhes-livro main .details .info-cont .info {
-  min-width: 15rem;
-  width: 20rem;
-  height: 15rem;
-  border-radius: 1rem;
-  padding: 0.5rem 1rem;
-}
-.detalhes-livro main .details .info-cont .info div {
-  margin: 0.5rem 0;
-}
-.detalhes-livro main .details .info-cont .info div label {
-  margin: 0;
-  font-size: 0.9rem;
-  font-weight: bold;
-  color: var(--corVerde);
-}
-.detalhes-livro main .details .info-cont .info div p {
-  font-size: 1rem;
-  margin: 0;
-  font-weight: bold;
-  color: var(--corVerde200);
-}
-.detalhes-livro main .details .options {
-  width: 100%;
-  border-radius: 1rem;
-  height: 5rem;
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  gap: 1rem;
-}
-.detalhes-livro main .details .options button,
-.detalhes-livro main .details .options a {
-  text-decoration: none;
-  width: 100%;
-  height: 40px;
-  border-radius: 10rem;
-  border: none;
-  background-color: var(--corVerde);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-  font-size: 15px;
-}
-.detalhes-livro main .details .options button span,
-.detalhes-livro main .details .options a span {
-  font-size: 20px;
-  margin: 0 0.5rem 0 0;
-}
-.detalhes-livro main .details .options button.del,
-.detalhes-livro main .details .options a.del {
-  background-color: rgb(255, 67, 67);
-}
-.detalhes-livro main .details .options button:hover,
-.detalhes-livro main .details .options a:hover {
-  cursor: pointer;
-  background-color: var(--corLaranja);
-  transform: translateY(-2px);
-  box-shadow: 0 0 5px var(--sombraVerde);
-}
-.detalhes-livro main .espera {
-  padding: 1rem 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 0 20px var(--sombraVerde);
-  width: 47rem;
-}
-.detalhes-livro main .espera header {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-.detalhes-livro main .espera header h2 {
-  margin: 0;
-}
-.detalhes-livro main .espera main {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.detalhes-livro main .espera main .pessoa {
-  width: 100%;
-  border-radius: 1rem;
-  height: 4rem;
-  box-shadow: 0 0 20px var(--sombraVerde);
-  display: flex;
-}
-.detalhes-livro main .espera main .pessoa .numero {
-  width: 4rem;
-  height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.detalhes-livro main .espera main .pessoa .numero h2 {
-  background: linear-gradient(var(--gadrientVerde));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.detalhes-livro main .espera main .pessoa .dados {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.detalhes-livro main .espera main .pessoa .dados h3 {
-  margin: 0;
-  color: var(--corVerde200);
-}
-.detalhes-livro main .espera main .pessoa .dados p {
-  margin: 0;
-  color: var(--corVerde);
-}
-.detalhes-livro main .espera footer .options {
-  width: 100%;
-  border-radius: 1rem;
-  height: 4rem;
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  gap: 1rem;
-}
-.detalhes-livro main .espera footer .options button,
-.detalhes-livro main .espera footer .options a {
-  text-decoration: none;
-  width: 100%;
-  height: 40px;
-  border-radius: 10rem;
-  border: none;
-  background-color: var(--corVerde);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-weight: bold;
-  font-size: 15px;
-}
-.detalhes-livro main .espera footer .options button span,
-.detalhes-livro main .espera footer .options a span {
-  font-size: 20px;
-  margin: 0 0.5rem 0 0;
-}
-.detalhes-livro main .espera footer .options button.del,
-.detalhes-livro main .espera footer .options a.del {
-  background-color: rgb(255, 67, 67);
-}
-.detalhes-livro main .espera footer .options button:hover,
-.detalhes-livro main .espera footer .options a:hover {
-  cursor: pointer;
-  background-color: var(--corLaranja);
-  transform: translateY(-2px);
-  box-shadow: 0 0 5px var(--sombraVerde);
 }
 
 .dev-banner {
@@ -1921,13 +1730,15 @@ input:checked + .show .title {
   align-items: center;
 }
 .requisicoes .req-cont main .req-info .req-card {
-  width: 16rem;
+  width: 14rem;
   height: 20rem;
   border-radius: 1rem;
   box-shadow: 0 0 20px var(--sombraVerde);
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: content-box;
+  padding: 0.5rem;
 }
 .requisicoes .req-cont main .req-info .req-card .req-dados {
   width: 100%;
@@ -1938,9 +1749,53 @@ input:checked + .show .title {
   justify-content: space-around;
 }
 .requisicoes .req-cont main .req-info .req-card .req-dados section {
-  padding: 0.5rem;
+  padding: 0.3rem;
   border: 1px solid var(--corVerde);
   border-radius: 1rem;
+  width: 100%;
+}
+.requisicoes .req-cont main .req-info .req-card .req-dados section.people {
+  flex: 2;
+}
+.requisicoes .req-cont main .req-info .req-card .req-dados section.book {
+  flex: 2;
+}
+.requisicoes .req-cont main .req-info .req-card .req-dados section.information {
+  flex: 4;
+}
+.requisicoes .req-cont main .req-info .req-card .req-dados section.buttons {
+  display: flex;
+  flex: 1;
+}
+.requisicoes .req-cont main .req-info .req-card .req-dados section.buttons button,
+.requisicoes .req-cont main .req-info .req-card .req-dados section.buttons a {
+  text-decoration: none;
+  width: 100%;
+  height: 30px;
+  border-radius: 10rem;
+  border: none;
+  background-color: var(--corVerde);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  font-size: 10px;
+}
+.requisicoes .req-cont main .req-info .req-card .req-dados section.buttons button span,
+.requisicoes .req-cont main .req-info .req-card .req-dados section.buttons a span {
+  font-size: 20px;
+  margin: 0 0.5rem 0 0;
+}
+.requisicoes .req-cont main .req-info .req-card .req-dados section.buttons button.del,
+.requisicoes .req-cont main .req-info .req-card .req-dados section.buttons a.del {
+  background-color: rgb(255, 67, 67);
+}
+.requisicoes .req-cont main .req-info .req-card .req-dados section.buttons button:hover,
+.requisicoes .req-cont main .req-info .req-card .req-dados section.buttons a:hover {
+  cursor: pointer;
+  background-color: var(--corLaranja);
+  box-shadow: 0 0 5px var(--sombraVerde);
 }
 .requisicoes .req-cont main .req-info .req-card .req-dados section h2 {
   margin: 0 0 0.1rem 0;
@@ -1950,12 +1805,17 @@ input:checked + .show .title {
 .requisicoes .req-cont main .req-info .req-card .req-dados section p {
   margin: 0;
   color: var(--corVerde200);
-  font-size: 1rem;
+  font-size: 0.8rem;
+  font-weight: bold;
 }
-.requisicoes .req-cont main .req-info .req-card .req-dados section span {
+.requisicoes .req-cont main .req-info .req-card .req-dados section h3 {
   margin: 0;
   color: var(--corVerde200);
   font-size: 0.8rem;
+  font-weight: normal;
+}
+.requisicoes .req-cont main .req-info .req-card .req-dados section div p {
+  margin-bottom: 5px;
 }
 
 .validate-req {

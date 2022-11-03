@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="src/styles/toastr/toastr.mim.css">
     <link rel="stylesheet" href="src/styles/toastr.css">
     <link rel="stylesheet" href="src/styles/global.css">
-    <script src="src/scripts/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="src/jquery/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="src/styles/toastr/toastr.min.js"></script>
     <style>
         .material-symbols-rounded {

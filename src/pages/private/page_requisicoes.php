@@ -131,8 +131,6 @@ if (isset($_SESSION['req']['status'])) {
 } else {
 
   ?>
-
-
   <main class="cont">
     <section class="requisicoes">
       <div class="options">
@@ -162,17 +160,17 @@ if (isset($_SESSION['req']['status'])) {
           <div class="req-info">
             <div class="req-card">
               <div class="req-dados">
-                <section>
+                <section class='people'>
                   <h2>Pessoa:</h2>
                   <p>José Vanderlei Furtuna Tomé</p>
-                  <span>3º Informática</span>
+                  <h3>3º Informática</h3>
                 </section>
-                <section>
+                <section class='book'>
                   <h2>Livro:</h2>
                   <p>José Vanderlei Furtuna Tomé</p>
-                  <span>3º Informática</span>
+                  <h3>3º Informática</h3>
                 </section>
-                <section>
+                <section class='infomations'>
                   <div>
                     <h2>Data de Criação:</h2>
                     <p>José Vanderlei Furtuna Tomé</p>
@@ -185,6 +183,14 @@ if (isset($_SESSION['req']['status'])) {
                     <h2>Status:</h2>
                     <p>José Vanderlei Furtuna Tomé</p>
                   </div>
+                </section>
+                <section class="buttons">
+                  <button><span class="material-symbols-rounded">
+                      more_time
+                    </span>Prorrogar</button>
+                  <button><span class="material-symbols-rounded">
+                      restart_alt
+                    </span>Devolver</button>
                 </section>
               </div>
             </div>

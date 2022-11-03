@@ -61,14 +61,14 @@ if ($query_gender_livro) {
                                                                                               } else {
                                                                                                 echo 'n';
                                                                                               } ?>'" class="livro-card <?php if (($livro_data['statusLivro']) != 'disponivel') {
-                                                                                                                        echo 'indisp';
-                                                                                                                      } ?>"><?php echo $livro_data['tituloLivro']; ?></td>
+                                                                                                                          echo 'indisp';
+                                                                                                                        } ?>"><?php echo $livro_data['tituloLivro']; ?></td>
                   <td><?php echo $livro_data['autorLivro']; ?></td>
                   <td><?php echo $livro_data['editoraLivro']; ?></td>
                   <td><?php echo $livro_data['qtdLivro']; ?></td>
                   <td><?php echo $livro_data['statusLivro']; ?></td>
                   <td>
-                    <a class="edit-livro" href="?p=livros&mod=simple&edit_livro=<?php echo $livro_data['idLivro']; ?>">
+                    <a class="edit-livro" href="?p=livros&mod=simple&editar_livro=<?php echo $livro_data['idLivro']; ?>">
                       <span class="material-symbols-rounded">
                         edit
                       </span>
