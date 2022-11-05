@@ -54,7 +54,7 @@
             </span>Alunos
         </li>
 
-        <li class="list">
+        <li class="list <?php active('funcionarios') ?>" onclick="location.href='?p=funcionarios'">
             <span class="material-symbols-rounded">
                 person
             </span>Funcionários

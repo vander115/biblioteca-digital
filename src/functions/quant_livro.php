@@ -11,9 +11,9 @@ function quant_livro()
     $qtd = $livro['qtdLivro'];
     $id = $livro['idLivro'];
     $status = $livro['statusLivro'];
-    if ($qtd == 0 && $status == 'disponivel') {
+    if ($qtd == 0 and $status == 'disponivel') {
       mysqli_query($conn, "UPDATE tb_livros SET statusLivro = 'emprestado' WHERE idLivro = '$id';");
-    } else if ($qtd > 0 && $status == 'emprestado') {
+    } else if ($qtd > 0 and $status == 'emprestado') {
       mysqli_query($conn, "UPDATE tb_livros SET statusLivro = 'disponivel' WHERE idLivro = '$id';");
     }
   }

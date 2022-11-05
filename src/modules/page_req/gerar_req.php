@@ -27,6 +27,7 @@ if (isset($_GET['id_func_req'])) {
   $_SESSION['req']['func'] = $id_func;
 }
 
+
 if (!isset($_SESSION['req']['livro']) and !isset($_SESSION['req']['aluno']) and !isset($_SESSION['req']['func'])) {
   $_SESSION['toast_aviso'] = "ESCOLHA UM LIVRO:";
   header('Location: ../../../index.php?p=livros');
@@ -41,8 +42,17 @@ if (!isset($_SESSION['req']['livro']) and !isset($_SESSION['req']['aluno']) and 
     $_SESSION['toast_aviso'] = "ESCOLHA UM LIVRO:";
     header('Location: ../../../index.php?p=livros');
   } else if (isset($_SESSION['req']['livro']) and isset($_SESSION['req']['aluno'])) {
-    $_SESSION['req']['status'] = "pendente";
-    header('Location: ../../../index.php?p=requisicoes');
+    $idLivro = $_SESSION['req']['livro'];
+    $idAluno = $_SESSION['req']['aluno'];
+    $query_validar_req = mysqli_query($conn, "SELECT * FROM tb_req WHERE idLivro = '$idLivro' AND idPessoa = '$idAluno';");
+    if (mysqli_num_rows($query_validar_req)) {
+      $_SESSION['toast_error'] = "Essa requisição já existe!";
+      header('Location: ../../../index.php?p=requisicoes');
+      unset($_SESSION['req']);
+    } else {
+      $_SESSION['req']['status'] = "pendente";
+      header('Location: ../../../index.php?p=requisicoes');
+    }
   }
 } else if (!isset($_SESSION['req']['livro'])) {
 

@@ -43,16 +43,14 @@ if ($verificar) {
   $query_qtd = mysqli_query($conn, "SELECT qtdLivro FROM tb_livros WHERE idLivro ='$idLivro';");
   $livro = mysqli_fetch_assoc($query_qtd);
   $nova_qtd = $livro['qtdLivro'] - 1;
-  $fila = [$idPessoa];
-  $fila_string = implode(',', $fila);
   if ($nova_qtd > 0) {
-    $query_mudar_qtd = mysqli_query($conn, "UPDATE tb_livros SET qtdLivro ='$nova_qtd', filaEsperaLivro = '$fila_string' WHERE idLivro = '$idLivro';");
+    $query_mudar_qtd = mysqli_query($conn, "UPDATE tb_livros SET qtdLivro ='$nova_qtd' WHERE idLivro = '$idLivro';");
   } else {
-    $query_mudar_qtd = mysqli_query($conn, "UPDATE tb_livros SET qtdLivro ='$nova_qtd', filaEsperaLivro = '$fila_string', statusLivro = 'emprestado' WHERE idLivro = '$idLivro';");
+    $query_mudar_qtd = mysqli_query($conn, "UPDATE tb_livros SET qtdLivro ='$nova_qtd', statusLivro = 'emprestado' WHERE idLivro = '$idLivro';");
   }
 
   if ($query_mudar_qtd) {
-    $query_cad_req = mysqli_query($conn, "INSERT INTO tb_req VALUES(0, '$idPessoa', '$idLivro', '$dataAtual', '$dataEntrega', 'em vigor');");
+    $query_cad_req = mysqli_query($conn, "INSERT INTO tb_req VALUES(0, '$idPessoa', '$idLivro', '$dataAtual', '$dataEntrega', 'ativa');");
 
     if ($query_cad_req) {
       $_SESSION['toast_success'] = "Requisição criada com sucesso!";

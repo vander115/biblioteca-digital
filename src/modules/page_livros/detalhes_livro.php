@@ -56,38 +56,6 @@ $editLivro = mysqli_fetch_assoc($query_edit_livro);
             Alterar Livro</button>
         </div>
       </div>
-
-      <?php
-      if ($editLivro['qtdLivro'] <= 0) {
-      ?>
-        <div class="espera">
-          <header>
-            <h2>Fila de Espera</h2>
-          </header>
-          <main>
-            <div class="pessoa">
-              <div class="numero">
-                <h2>2</h2>
-              </div>
-              <div class="dados">
-                <h3>Vanderlei Furtuna</h3>
-                <p>3° Informática</p>
-              </div>
-            </div>
-          </main>
-          <footer>
-            <div class="options">
-              <button onclick="location.href='src/modules/page_livros/gerar_fila.php?id_livro_fila=<?php echo $editLivro['idLivro'] ?>'">
-                <span class="material-symbols-rounded">
-                  edit
-                </span>
-                Adicionar na lista de espera</button>
-            </div>
-          </footer>
-        </div>
-      <?php
-      }
-      ?>
     </main>
   </section>
 </main>

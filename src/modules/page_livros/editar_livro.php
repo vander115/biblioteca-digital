@@ -80,11 +80,11 @@ $editLivro = mysqli_fetch_assoc($query_edit_livro);
           <label for="">Temáticas</label><input maxlenght="255" name="tags" id="tags" type="text">
         </fieldset>
         <fieldset class="oneline-modal">
-          <button type="buttton" onclick="livrosVerify()">
+          <a type="buttton" onclick="livrosVerify()">
             <span class="material-symbols-rounded">
               edit
             </span>
-            Alterar Livro</button>
+            Alterar Livro</a>
         </fieldset>
       </form>
     </div>

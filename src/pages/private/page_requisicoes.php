@@ -1,10 +1,119 @@
 <?php
 
+require 'src/functions/verificar_req.php';
+
+verificarReq();
+
 if (!isset($_SESSION)) {
   session_start();
 }
 
-if (isset($_SESSION['req']['status'])) {
+if (isset($_GET['pr'])) {
+  $idReq = $_GET['pr'];
+  require 'src/modules/conection.php';
+  $query_req_modal = mysqli_query($conn, "SELECT p.nomePessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE idReq = '$idReq';");
+
+  $req_modal = mysqli_fetch_assoc($query_req_modal);
+  $date = date('Y-m-d');
+  $dataAtual = new DateTime($date);
+  $dataEntrega = new DateTime($req_modal['dataEntregaReq']);
+  $diasRestantes = $dataEntrega->diff($dataAtual)->format('%a');
+?>
+
+  <main class="cont"></main>
+
+  <div class="modal open">
+    <div class="modal-cont">
+      <div class="modal-header">
+        <h1>
+          <span class="material-symbols-rounded">
+            more_time
+          </span>
+          Prorrogar Requisição
+        </h1>
+        <button class="close" onclick="location.href='?p=requisicoes'">
+          <span class="material-symbols-rounded">
+            close
+          </span>
+        </button>
+      </div>
+      <div class="modal-main">
+        <div class="req-info">
+          <div class="req-dados">
+            <section class='people'>
+              <h2>Pessoa:</h2>
+              <p><?php echo $req_modal['nomePessoa'] ?></p>
+              <h3><?php echo $req_modal['anoTurma'] . 'º ' . strtok($req_modal['nomeTurma'], " "); ?></h3>
+            </section>
+            <section class='book'>
+              <h2>Livro:</h2>
+              <p><?php echo $req_modal['tituloLivro'] ?></p>
+              <h3>3º Informática</h3>
+            </section>
+            <section class='infomations'>
+              <div>
+                <h2>Data de Requisição:</h2>
+                <p><?php echo date("d/m/Y", strtotime($req_modal['dataReq'])) ?></p>
+              </div>
+              <div class="entrega">
+                <h2>Data de Entrega:</h2>
+                <p><?php echo date("d/m/Y", strtotime($req_modal['dataEntregaReq'])) ?></p>
+              </div>
+              <div>
+                <h2>Status:</h2>
+                <p><?php echo mb_strtoupper($req_modal['statusReq']) . '. Restam ' . $diasRestantes . ' dias.' ?></p>
+              </div>
+            </section>
+          </div>
+          <div class="req-dias">
+            <form action="src/modules/page_req/prorrogar_req.php" method="POST">
+              <input type="hidden" name="id" value="<?php echo $req_modal['idReq']; ?>">
+              <header>
+                <h1>Quantidade de Dias</h1>
+              </header>
+              <main>
+                <label for="">Prazo: Dias</label>
+                <div class="dias-input">
+                  <span class="next"></span>
+                  <span class="prev"></span>
+                  <input id="number" type="number" name="prazo" value="5">
+                </div>
+              </main>
+              <footer>
+                <button>
+                  <span class="material-symbols-rounded">
+                    more_time
+                  </span>
+                  Prorrogar
+                </button>
+              </footer>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="text/javascript">
+    const inputQtd = document.getElementById('number');
+    const next = document.querySelector('.next');
+    const prev = document.querySelector('.prev');
+
+    const nextNum = () => {
+      inputQtd.value = Number(inputQtd.value) + 5;
+    };
+
+    const prevNum = () => {
+      if (inputQtd.value != 5) {
+        inputQtd.value = Number(inputQtd.value) - 5;
+      }
+    };
+
+    next.addEventListener('click', nextNum, false);
+    prev.addEventListener('click', prevNum, false);
+  </script>
+
+  <?php
+} else if (isset($_SESSION['req']['status'])) {
   if ($_SESSION['req']['status'] == "pendente") {
     require 'src/modules/conection.php';
 
@@ -17,14 +126,14 @@ if (isset($_SESSION['req']['status'])) {
       $sql_pessoa = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE p.idPessoa = '$id_pessoa';";
     } else {
       $id_pessoa = $_SESSION['req']['func'];
-      $sql_pessoa = "SELECT * FROM tb_pessoa  WHERE idPessoa = '$id_pessoa';";
+      $sql_pessoa = "SELECT * FROM tb_pessoa WHERE idPessoa = '$id_pessoa';";
     }
 
     $query_pessoa = mysqli_query($conn, $sql_pessoa);
 
     $livro = mysqli_fetch_assoc($query_livro);
     $pessoa = mysqli_fetch_assoc($query_pessoa);
-?>
+  ?>
 
     <main class="cont">
       <section class="validate-req">
@@ -142,6 +251,14 @@ if (isset($_SESSION['req']['status'])) {
             Gerar Requisição
           </label>
         </div>
+        <div class="option-item trigger" onclick="location.href='?p=requisicoes&qr=pendente'">
+          <span class="material-symbols-rounded">
+            error
+          </span>
+          <label for="">
+            Ver Pendentes
+          </label>
+        </div>
       </div>
       <form class="search" method="GET" action="">
         <input type="hidden" name="p" value="requisicoes">
@@ -157,44 +274,73 @@ if (isset($_SESSION['req']['status'])) {
           <h1>Requisições</h1>
         </header>
         <main>
-          <div class="req-info">
-            <div class="req-card">
-              <div class="req-dados">
-                <section class='people'>
-                  <h2>Pessoa:</h2>
-                  <p>José Vanderlei Furtuna Tomé</p>
-                  <h3>3º Informática</h3>
-                </section>
-                <section class='book'>
-                  <h2>Livro:</h2>
-                  <p>José Vanderlei Furtuna Tomé</p>
-                  <h3>3º Informática</h3>
-                </section>
-                <section class='infomations'>
-                  <div>
-                    <h2>Data de Criação:</h2>
-                    <p>José Vanderlei Furtuna Tomé</p>
+          <?php
+          require 'src/modules/conection.php';
+
+          if (isset($_GET['qr'])) {
+            $qr = mb_strtoupper(trim($_GET['qr']));
+            $sql_req = "SELECT p.nomePessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE statusReq != 'concluida' AND CONCAT(p.nomePessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma) LIKE '%$qr%' ORDER BY r.dataEntregaReq;";
+          } else {
+            $sql_req = "SELECT p.nomePessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE statusReq != 'concluida' ORDER BY r.dataEntregaReq;";
+          }
+
+          $query_req = mysqli_query($conn, $sql_req);
+          if (mysqli_num_rows($query_req)) {
+            while ($req = mysqli_fetch_assoc($query_req)) {
+              $date = date('Y-m-d');
+              $dataAtual = new DateTime($date);
+              $dataEntrega = new DateTime($req['dataEntregaReq']);
+              $diasRestantes = $dataEntrega->diff($dataAtual)->format('%a');
+
+          ?>
+              <div class="req-info <?php if ($diasRestantes <= 0) {
+                                      echo 'pendente';
+                                    } ?>">
+                <div class="req-card">
+                  <div class="req-dados">
+                    <section class='people'>
+                      <h2>Pessoa:</h2>
+                      <p><?php echo $req['nomePessoa'] ?></p>
+                      <h3><?php echo $req['anoTurma'] . 'º ' . strtok($req['nomeTurma'], " "); ?></h3>
+                    </section>
+                    <section class='book'>
+                      <h2>Livro:</h2>
+                      <p><?php echo $req['tituloLivro'] ?></p>
+                      <h3>3º Informática</h3>
+                    </section>
+                    <section class='infomations'>
+                      <div>
+                        <h2>Data de Requisição:</h2>
+                        <p><?php echo date("d/m/Y", strtotime($req['dataReq'])) ?></p>
+                      </div>
+                      <div class="entrega">
+                        <h2>Data de Entrega:</h2>
+                        <p><?php echo date("d/m/Y", strtotime($req['dataEntregaReq'])) ?></p>
+                      </div>
+                      <div>
+                        <h2>Status:</h2>
+                        <p><?php echo mb_strtoupper($req['statusReq']) . '. Restam ' . $diasRestantes . ' dias.' ?></p>
+                      </div>
+                    </section>
+                    <section class="buttons">
+                      <a href="?p=requisicoes&pr=<?php echo $req['idReq'] ?>"><span class="material-symbols-rounded">
+                          more_time
+                        </span>Prorrogar</button>
+                        <a href="src/modules/page_req/devolver_req.php?r=<?php echo $req['idReq']; ?>" onclick="return confirm('Deseja realmente encerrar essa requisição?')"><span class="material-symbols-rounded">
+                            restart_alt
+                          </span>Devolver</a>
+                    </section>
                   </div>
-                  <div class="entrega">
-                    <h2>Data de Entrega:</h2>
-                    <p>José Vanderlei Furtuna Tomé</p>
-                  </div>
-                  <div>
-                    <h2>Status:</h2>
-                    <p>José Vanderlei Furtuna Tomé</p>
-                  </div>
-                </section>
-                <section class="buttons">
-                  <button><span class="material-symbols-rounded">
-                      more_time
-                    </span>Prorrogar</button>
-                  <button><span class="material-symbols-rounded">
-                      restart_alt
-                    </span>Devolver</button>
-                </section>
+                </div>
               </div>
-            </div>
-          </div>
+            <?php
+            }
+          } else {
+            ?>
+            <p>Nenhuma requisição correspondente :(</p>
+          <?php
+          }
+          ?>
         </main>
       </div>
 

@@ -1,5 +1,9 @@
 <?php
 
+require 'src/functions/quant_livro.php';
+
+quant_livro();
+
 if (!isset($_GET['edit_livro']) and !isset($_GET['editar_livro'])) {
 ?>
 

@@ -29,16 +29,16 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
 
       require 'src/modules/conection.php';
 
-      $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma ORDER BY anoTurma, nomeTurma;");
+      $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma WHERE idTurma != 0 ORDER BY anoTurma, nomeTurma;");
 
       if ($query_turma_aluno) {
         while ($turma_aluno = mysqli_fetch_assoc($query_turma_aluno)) {
           $id_turma = $turma_aluno['idTurma'];
           if (isset($_GET['qa'])) {
             $qa = mb_strtoupper($_GET['qa']);
-            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE turmaPessoa = '$id_turma' AND CONCAT(nomePessoa, nomeTurma, anoTurma) LIKE '%$qa%' ORDER BY turmaPessoa, nomePessoa;";
+            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 0 AND turmaPessoa = '$id_turma' AND CONCAT(nomePessoa, nomeTurma, anoTurma) LIKE '%$qa%' ORDER BY turmaPessoa, nomePessoa;";
           } else {
-            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE turmaPessoa = '$id_turma' ORDER BY turmaPessoa, nomePessoa; ";
+            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 0 AND turmaPessoa = '$id_turma' ORDER BY turmaPessoa, nomePessoa; ";
           }
 
           $query_aluno_info = mysqli_query($conn, $sql_aluno);
@@ -55,11 +55,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
                 while ($aluno_data = mysqli_fetch_assoc($query_aluno_info)) {
                 ?>
 
-                  <div class="card-cont" onclick="location.href='src/modules/<?php if (isset($_SESSION['fila']['livro'])) {
-                                                                                echo 'page_livros/gerar_fila.php?id_pessoa_fila=' . $aluno_data['idPessoa'];
-                                                                              } else {
-                                                                                echo 'page_req/gerar_req.php?id_aluno_req=' . $aluno_data['idPessoa'];
-                                                                              } ?>'">
+                  <div class="card-cont" onclick="location.href='src/modules/page_req/gerar_req.php?id_aluno_req=<?php echo $aluno_data['idPessoa']; ?>'">
                     <div class="card-aluno">
                       <header>
                         <span class="material-symbols-rounded">
@@ -123,7 +119,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
               <?php
               require 'src/modules/conection.php';
 
-              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma ORDER BY anoTurma, nomeTurma;");
+              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma WHERE idTurma != '0' ORDER BY anoTurma, nomeTurma;");
 
               if ($query_turma_aluno) {
                 while ($turmas = mysqli_fetch_assoc($query_turma_aluno)) {
@@ -197,7 +193,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
               <?php
               require 'src/modules/conection.php';
 
-              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma ORDER BY anoTurma, nomeTurma;");
+              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma WHERE idTurma != 0 ORDER BY anoTurma, nomeTurma;");
 
               if ($query_turma_aluno) {
                 while ($turmas = mysqli_fetch_assoc($query_turma_aluno)) {
@@ -273,7 +269,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
               <?php
               require 'src/modules/conection.php';
 
-              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma ORDER BY anoTurma, nomeTurma;");
+              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma WHERE idTurma != 0 ORDER BY anoTurma, nomeTurma;");
 
               if ($query_turma_aluno) {
                 while ($turmas = mysqli_fetch_assoc($query_turma_aluno)) {

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="<?php require('src/functions/devs.php');
-                            devs(); ?>">
+<html lang="pt-br" class="dark <?php require('src/functions/devs.php');
+                                devs(); ?>">
 
 <head>
     <meta charset="UTF-8">
@@ -25,4 +25,4 @@
     <title><?php echo gerarTitulo() ?></title>
 </head>
 
-<body>
+<body class="dark">
