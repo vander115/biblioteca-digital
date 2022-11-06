@@ -45,34 +45,42 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
 
           if (isset($_GET['qf'])) {
             $qf = mb_strtoupper($_GET['qf']);
-            $sql_funcionario = "SELECT * FROM tb_pessoa WHERE CONCAT(nomePessoa, nomeTurma, anoTurma) LIKE '%$qf%' AND tipoPessoa != 'Aluno' ORDER BY turmaPessoa, nomePessoa;";
+            $sql_funcionario = "SELECT * FROM tb_pessoa WHERE CONCAT(nomePessoa, nomeTurma, anoTurma) LIKE '%$qf%' AND tipoPessoa != 'Aluno' AND statusPessoa != 'inativo' ORDER BY turmaPessoa, nomePessoa;";
           } else {
-            $sql_funcionario = "SELECT * FROM tb_pessoa WHERE tipoPessoa != 'Aluno' ORDER BY tipoPessoa, nomePessoa; ";
+            $sql_funcionario = "SELECT * FROM tb_pessoa WHERE tipoPessoa != 'Aluno' AND statusPessoa != 'inativo' ORDER BY tipoPessoa, nomePessoa; ";
           }
 
           $query_func_info = mysqli_query($conn, $sql_funcionario);
-
-          while ($func_data = mysqli_fetch_assoc($query_func_info)) {
+          if (mysqli_num_rows($query_func_info)) {
+            while ($func_data = mysqli_fetch_assoc($query_func_info)) {
           ?>
 
-            <div class="card-cont" onclick="location.href='src/modules/page_req/gerar_req.php?id_func_req=<?php echo $func_data['idPessoa']; ?>'">
-              <div class="card-aluno">
-                <header>
+              <div class="card-cont" onclick="location.href='src/modules/page_req/gerar_req.php?id_func_req=<?php echo $func_data['idPessoa']; ?>'">
+                <div class="card-aluno">
+                  <header>
+                    <span class="material-symbols-rounded">
+                      person
+                    </span>
+                  </header>
+                  <main>
+                    <h1><?php echo $func_data['nomePessoa']; ?></h1>
+                    <p><?php echo mb_strtoupper($func_data['tipoPessoa']) ?></p>
+                  </main>
+                </div>
+                <a title="Editar Funcionário" href="?p=funcionarios&edit_func=<?php echo $func_data['idPessoa']; ?>" class="edit-aluno">
                   <span class="material-symbols-rounded">
-                    person
+                    edit
                   </span>
-                </header>
-                <main>
-                  <h1><?php echo $func_data['nomePessoa']; ?></h1>
-                  <p><?php echo mb_strtoupper($func_data['tipoPessoa']) ?></p>
-                </main>
+                </a>
+                <a title="Alterar Identificação" href="?p=funcionarios&edit_senha_func=<?php echo $func_data['idPessoa']; ?>" class="key-aluno">
+                  <span class="material-symbols-rounded">
+                    key
+                  </span>
+                </a>
               </div>
-              <a href="?p=funcionarios&edit_func=<?php echo $func_data['idPessoa']; ?>" class="edit-aluno">
-                <span class="material-symbols-rounded">
-                  edit
-                </span>
-              </a>
-            </div>
+            <?php }
+          } else { ?>
+            <p>Nenhum funcionário correspondente :(</p>
           <?php } ?>
         </main>
       </div>
@@ -84,7 +92,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
       <div class="modal-header">
         <h1>
           <span class="material-symbols-rounded">
-            magic_button
+            person
           </span>
           Cadrastar Funcionário
         </h1>
@@ -126,7 +134,14 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
               </select>
             </div>
           </fieldset>
-          <fieldset><button>Cadrastar Funcionário</button></fieldset>
+          <fieldset>
+            <button>
+              <span class="material-symbols-rounded">
+                add
+              </span>
+              Cadrastar Funcionário
+            </button>
+          </fieldset>
         </form>
       </div>
     </div>
@@ -147,7 +162,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
       <div class="modal-header">
         <h1>
           <span class="material-symbols-rounded">
-            magic_button
+            person
           </span>
           Editar Aluno
         </h1>
@@ -158,7 +173,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_funcionarios/edit_funcionario.php">
+        <form class="form-modal" method="POST" action="src/modules/page_func/edit_func.php">
           <input type="hidden" name="id" value="<?php echo $edit_funcionario['idPessoa']; ?>">
           <fieldset>
             <label for="">Nome</label>
@@ -174,32 +189,31 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
               <option value="Secretário" <?php option('Secretário', $edit_funcionario['tipoPessoa']); ?>>Secretário</option>
               <option value="Limpeza" <?php option('Limpeza', $edit_funcionario['tipoPessoa']); ?>>Limpeza</option>
               <option value="Funcionário" <?php option('Funcionário', $edit_funcionario['tipoPessoa']); ?>>Funcionário</option>
-              ?>
             </select>
           </fieldset>
           <fieldset class="oneline-modal">
-            <button class="del">
+            <a class="del" onclick="return confirm('Deseja realmente EXCLUIR funcionário?')" href="src/modules/page_func/del_func.php?del=<?php echo $edit_funcionario['idPessoa'] ?>">
               <span class="material-symbols-rounded">
                 delete_forever
               </span>
               Excluir Funcionário
-            </button>
-            <button>
+            </a>
+            <button type="submit">
               <span class="material-symbols-rounded">
                 edit
               </span>
               Alterar Funcionário
-            </button>
+              </a>
           </fieldset>
         </form>
       </div>
     </div>
   </div>
 
-<?php } else if (isset($_GET['edit_senha_funcionario'])) {
+<?php } else if (isset($_GET['edit_senha_func'])) {
 
   require 'src/modules/conection.php';
-  $id_funcionario = $_GET['edit_funcionario'];
+  $id_funcionario = $_GET['edit_senha_func'];
   $query_edit_funcionario = mysqli_query($conn, "SELECT * FROM tb_pessoa WHERE idPessoa = '$id_funcionario';");
   $edit_funcionario = mysqli_fetch_assoc($query_edit_funcionario);
 
@@ -214,7 +228,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
           <span class="material-symbols-rounded">
             magic_button
           </span>
-          Alterar Identificação do Aluno
+          Alterar Identificação do Funcionário
         </h1>
         <button class="close" onclick="location.href='?p=funcionarios'">
           <span class="material-symbols-rounded">
@@ -223,44 +237,32 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_funcionarios/edit_funcionario.php">
+        <form class="form-modal" method="POST" action="src/modules/page_func/edit_ident_func.php">
           <input type="hidden" name="id" value="<?php echo $edit_funcionario['idPessoa']; ?>">
           <fieldset>
             <label for="">Nome</label>
-            <input name="nome" type="text" readonly value="<?php echo $edit_funcionario['nomePessoa']; ?>">
+            <input name="nome" type="text" disabled value="<?php echo $edit_funcionario['nomePessoa']; ?>">
           </fieldset>
           <fieldset>
             <label for="">Turma</label>
-            <select readonly name="turma">
-              <option selected disabled>Escolha uma turma</option>
-
-              <?php
-              require 'src/modules/conection.php';
-
-              $query_turma_funcionario = mysqli_query($conn, "SELECT * FROM tb_turma ORDER BY anoTurma, nomeTurma;");
-
-              if ($query_turma_funcionario) {
-                while ($turmas = mysqli_fetch_assoc($query_turma_funcionario)) {
-              ?>
-
-                  <option <?php if ($edit_funcionario['turmaPessoa'] == $turmas['idTurma']) {
-                            echo ' selected ';
-                          }; ?> value="<?php echo $turmas['idTurma']; ?>"><?php echo $turmas['anoTurma'] . "º " . $turmas['nomeTurma']; ?></option>
-
-              <?php
-                }
-              }
-              ?>
+            <select disabled name="turma">
+              <option selected disabled>Escolha uma cargo:</option>
+              <option value="Professor" <?php option('Professor', $edit_funcionario['tipoPessoa']); ?>>Professor</option>
+              <option value="Diretor" <?php option('Diretor', $edit_funcionario['tipoPessoa']); ?>>Diretor</option>
+              <option value="Coordenador" <?php option('Coordenador', $edit_funcionario['tipoPessoa']); ?>>Coordenador</option>
+              <option value="Secretário" <?php option('Secretário', $edit_funcionario['tipoPessoa']); ?>>Secretário</option>
+              <option value="Limpeza" <?php option('Limpeza', $edit_funcionario['tipoPessoa']); ?>>Limpeza</option>
+              <option value="Funcionário" <?php option('Funcionário', $edit_funcionario['tipoPessoa']); ?>>Funcionário</option>
             </select>
           </fieldset>
           <fieldset class="oneline-modal">
             <div>
               <label name="ident" for="">Indentificação</label>
-              <input type="text">
+              <input type="text" name="ident">
             </div>
             <div class="ident">
               <label for="">Tipo</label>
-              <select name="tipoIdent" id="">
+              <select name="tipo" id="">
                 <option selected disabled>Selecione o tipo de dado</option>
                 <option value="CPF">CPF</option>
                 <option value="Matricula">Matrícula</option>
@@ -268,17 +270,11 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
             </div>
           </fieldset>
           <fieldset class="oneline-modal">
-            <button class="del">
-              <span class="material-symbols-rounded">
-                delete_forever
-              </span>
-              Excluir Aluno
-            </button>
             <button>
               <span class="material-symbols-rounded">
                 edit
               </span>
-              Alterar Aluno
+              Alterar
             </button>
           </fieldset>
         </form>

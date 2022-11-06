@@ -11,7 +11,7 @@ if (!isset($_SESSION)) {
 if (isset($_GET['pr'])) {
   $idReq = $_GET['pr'];
   require 'src/modules/conection.php';
-  $query_req_modal = mysqli_query($conn, "SELECT p.nomePessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE idReq = '$idReq';");
+  $query_req_modal = mysqli_query($conn, "SELECT p.nomePessoa, p.tipoPessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma, t.idTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE idReq = '$idReq';");
 
   $req_modal = mysqli_fetch_assoc($query_req_modal);
   $date = date('Y-m-d');
@@ -43,7 +43,15 @@ if (isset($_GET['pr'])) {
             <section class='people'>
               <h2>Pessoa:</h2>
               <p><?php echo $req_modal['nomePessoa'] ?></p>
-              <h3><?php echo $req_modal['anoTurma'] . 'º ' . strtok($req_modal['nomeTurma'], " "); ?></h3>
+              <h3>
+                <?php
+                if ($req_modal['idTurma'] == 0) {
+                  echo mb_strtoupper($req_modal['tipoPessoa']);
+                } else {
+                  echo $req_modal['anoTurma'] . 'º ' . strtok($req_modal['nomeTurma'], " ");
+                }
+                ?>
+              </h3>
             </section>
             <section class='book'>
               <h2>Livro:</h2>
@@ -129,6 +137,7 @@ if (isset($_GET['pr'])) {
       $sql_pessoa = "SELECT * FROM tb_pessoa WHERE idPessoa = '$id_pessoa';";
     }
 
+
     $query_pessoa = mysqli_query($conn, $sql_pessoa);
 
     $livro = mysqli_fetch_assoc($query_livro);
@@ -166,7 +175,13 @@ if (isset($_GET['pr'])) {
               </header>
               <main>
                 <h1><?php echo $pessoa['nomePessoa']; ?></h1>
-                <p><?php echo $pessoa['anoTurma'] . 'º ' . $pessoa['nomeTurma']; ?></p>
+                <p>
+                  <?php if ($pessoa['turmaPessoa'] == 0) {
+                    echo $pessoa['tipoPessoa'];
+                  } else {
+                    echo $pessoa['anoTurma'] . 'º ' . $pessoa['nomeTurma'];
+                  } ?>
+                </p>
               </main>
             </div>
           </div>
@@ -279,9 +294,9 @@ if (isset($_GET['pr'])) {
 
           if (isset($_GET['qr'])) {
             $qr = mb_strtoupper(trim($_GET['qr']));
-            $sql_req = "SELECT p.nomePessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE statusReq != 'concluida' AND CONCAT(p.nomePessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma) LIKE '%$qr%' ORDER BY r.dataEntregaReq;";
+            $sql_req = "SELECT p.nomePessoa, p.tipoPessoa, l.tituloLivro, l.autorLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma, t.idTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE statusReq != 'concluida' AND CONCAT(p.nomePessoa, p.tipoPessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma) LIKE '%$qr%' ORDER BY r.dataEntregaReq;";
           } else {
-            $sql_req = "SELECT p.nomePessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE statusReq != 'concluida' ORDER BY r.dataEntregaReq;";
+            $sql_req = "SELECT p.nomePessoa, p.tipoPessoa, l.tituloLivro, l.autorLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma, t.idTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE statusReq != 'concluida' ORDER BY r.dataEntregaReq;";
           }
 
           $query_req = mysqli_query($conn, $sql_req);
@@ -292,6 +307,10 @@ if (isset($_GET['pr'])) {
               $dataEntrega = new DateTime($req['dataEntregaReq']);
               $diasRestantes = $dataEntrega->diff($dataAtual)->format('%a');
 
+              setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
+              date_default_timezone_set('America/Sao_Paulo');
+              $dataReq = strftime('%d de %B de %Y', strtotime($req['dataReq']));
+              $dataEnt = strftime('%d de %B de %Y', strtotime($req['dataEntregaReq']));
           ?>
               <div class="req-info <?php if ($diasRestantes <= 0) {
                                       echo 'pendente';
@@ -301,7 +320,13 @@ if (isset($_GET['pr'])) {
                     <section class='people'>
                       <h2>Pessoa:</h2>
                       <p><?php echo $req['nomePessoa'] ?></p>
-                      <h3><?php echo $req['anoTurma'] . 'º ' . strtok($req['nomeTurma'], " "); ?></h3>
+                      <h3>
+                        <?php if ($req['idTurma'] == 0) {
+                          echo $req['tipoPessoa'];
+                        } else {
+                          echo $req['anoTurma'] . 'º ' . $req['nomeTurma'];
+                        } ?>
+                      </h3>
                     </section>
                     <section class='book'>
                       <h2>Livro:</h2>
@@ -311,11 +336,11 @@ if (isset($_GET['pr'])) {
                     <section class='infomations'>
                       <div>
                         <h2>Data de Requisição:</h2>
-                        <p><?php echo date("d/m/Y", strtotime($req['dataReq'])) ?></p>
+                        <p><?php echo $dataReq ?></p>
                       </div>
                       <div class="entrega">
                         <h2>Data de Entrega:</h2>
-                        <p><?php echo date("d/m/Y", strtotime($req['dataEntregaReq'])) ?></p>
+                        <p><?php echo $dataEnt ?></p>
                       </div>
                       <div>
                         <h2>Status:</h2>

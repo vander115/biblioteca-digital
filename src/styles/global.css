@@ -1001,6 +1001,9 @@ input:checked + .show .title {
   font-weight: 600;
   font-size: 18px;
 }
+.modal .modal-main .form-modal fieldset input:disabled {
+  opacity: 0.7;
+}
 .modal .modal-main .form-modal select {
   margin: 0 0 15px 0;
   width: 100%;
@@ -1389,8 +1392,8 @@ input:checked + .show .title {
   margin: 1rem;
   padding: 1rem;
   border-radius: 1rem;
-  height: 80px;
-  width: 150px;
+  height: 90px;
+  width: 170px;
   background-color: var(--fundoFosco);
   box-shadow: 0px 0px 15px var(--sombraVerde);
 }
@@ -1398,13 +1401,12 @@ input:checked + .show .title {
   transform: scale(0.8);
 }
 .genders article .gender-fullcont .gender-cont h1 {
-  overflow-wrap: break-word;
-  word-wrap: break-word;
-  -webkit-hyphens: auto;
-  -ms-hyphens: auto;
-  hyphens: auto;
+  white-space: break-spaces;
+  overflow: hidden;
+  text-overflow: ellipsis;
   width: 99%;
   color: var(--corVerde200);
+  font-size: 1rem;
 }
 .genders article .gender-fullcont .del-gender {
   z-index: 2;
@@ -1767,8 +1769,8 @@ input:checked + .show .title {
   position: absolute;
   top: -15px;
   right: -15px;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   color: white;
   border-radius: 2rem;
   background: var(--corLaranja200);
@@ -1776,7 +1778,33 @@ input:checked + .show .title {
   cursor: pointer;
   text-decoration: none;
 }
+.alunos .alunos-cont main .card-cont .edit-aluno span {
+  font-size: 18px;
+}
+.alunos .alunos-cont main .card-cont .key-aluno {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 16px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 2rem;
+  background: var(--corLaranja200);
+  opacity: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+.alunos .alunos-cont main .card-cont .key-aluno span {
+  font-size: 18px;
+}
 .alunos .alunos-cont main .card-cont:hover .edit-aluno {
+  opacity: 1;
+}
+.alunos .alunos-cont main .card-cont:hover .key-aluno {
   opacity: 1;
 }
 .alunos .alunos-cont main .card-cont:hover .card-aluno {
@@ -2393,5 +2421,95 @@ input:checked + .show .title {
   font-weight: bold;
   width: 100%;
   text-align: center;
+  color: var(--corVerde);
+}
+
+.dados .options {
+  border-radius: 1rem;
+  width: 100%;
+  height: 110px;
+  background-color: var(--fundoFosco);
+  display: flex;
+  align-items: center;
+}
+.dados .options .option-item {
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border-radius: 1rem;
+  width: 90px;
+  height: 90px;
+  margin: 10px;
+  background-color: var(--corVerde);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.dados .options .option-item span {
+  font-size: 35px;
+  margin: 3px;
+}
+.dados .options .option-item label {
+  font-size: 13px;
+  text-align: center;
+  font-family: var(--fontFamily);
+  font-weight: bold;
+}
+.dados .options .option-item:hover {
+  background-color: var(--corLaranja);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px var(--sombraLaranja);
+}
+.dados .options .option-item:active {
+  background-color: var(--corLaranja200);
+  transform: translateY(1px);
+}
+.dados .dados-cont {
+  width: 100%;
+}
+.dados .dados-cont header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dados .dados-cont header h2 {
+  font-size: 1.5rem;
+  color: var(--corVerde200);
+}
+.dados .dados-cont main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dados .dados-cont main .dados-card {
+  border-radius: 1rem;
+  box-shadow: 0 0 20px var(--sombraVerde);
+  width: 30rem;
+  height: 20rem;
+  display: flex;
+  padding: 1rem;
+}
+.dados .dados-cont main .dados-card header {
+  width: 100%;
+}
+.dados .dados-cont main .dados-card header p {
+  font-size: 0.9rem;
+}
+.dados .dados-cont main .dados-card .dados-info {
+  max-width: 50%;
+}
+.dados .dados-cont main .dados-card .dados-info article h2 {
+  font-size: 1rem;
+  color: var(--corVerde200);
+  font-weight: 500;
+  margin: 1rem 0 0rem 0;
+}
+.dados .dados-cont main .dados-card .dados-info article p {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.2rem;
   color: var(--corVerde);
 }/*# sourceMappingURL=global.css.map */

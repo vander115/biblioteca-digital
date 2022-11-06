@@ -11,8 +11,11 @@ $options->setIsRemoteEnabled(true);
 
 $dompdf = new Dompdf($options);
 
-require __DIR__ . '/pdf.php';
-
+if (isset($_GET['l'])) {
+  require __DIR__ . '/livros.php';
+} else {
+  require __DIR__ . '/pdf.php';
+}
 $dompdf->loadHtml(ob_get_clean());
 
 $dompdf->render();

@@ -17,15 +17,15 @@ if (!isset($_SESSION['user'])) {
 }
 
 $id = $_POST['id'];
-$nome = mb_strtoupper($_POST['nome']);
 $tipo = $_POST['tipo'];
+$ident = password_hash($_POST['ident'], PASSWORD_DEFAULT);
 
-$query = mysqli_query($conn, "UPDATE tb_pessoa SET nomePessoa = '$nome', tipoPessoa = '$tipo' WHERE idPessoa = '$id';");
+$query = mysqli_query($conn, "UPDATE tb_pessoa SET tipoIdentPessoa = '$tipo', identPessoa = '$ident' WHERE idPessoa = '$id';");
 
 if ($query) {
-  $_SESSION['toast_aviso'] = "Funcionário alterado com sucesso!";
+  $_SESSION['toast_aviso'] = "Identificação do funcionário alterado com sucesso!";
   header("Location: ../../../index.php?p=funcionarios");
 } else {
-  $_SESSION['toast_error'] = "Erro ao alterar funcionário :(";
+  $_SESSION['toast_error'] = "Erro ao alterar identificação do funcionário :(";
   header("Location: ../../../index.php?p=funcionarios");
 }

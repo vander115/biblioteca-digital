@@ -35,6 +35,5 @@
 <body>
   <header>
     <h1>Relatorio Biblioteca Digital</h1>
-    <h2><?php echo implode(",", $livro) ?></h2>
   </header>
 </body>

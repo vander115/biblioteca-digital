@@ -10,20 +10,20 @@ if (!isset($_GET['edit_livro']) and !isset($_GET['editar_livro'])) {
     <main class="cont">
         <section class="livros">
             <div class="options">
-                <div class="option-item">
-                    <span class="material-symbols-rounded">
-                        auto_stories
-                    </span>
-                    <label for="">
-                        Emprestar Livro
-                    </label>
-                </div>
                 <div class="option-item trigger" onclick="acao()">
                     <span class="material-symbols-rounded">
                         bookmark_add
                     </span>
                     <label for="">
                         Adicionar Livro
+                    </label>
+                </div>
+                <div class="option-item trigger" onclick="location.href='pdf/index.php?l=1'">
+                    <span class="material-symbols-rounded">
+                        receipt_long
+                    </span>
+                    <label for="">
+                        Relatório Livros
                     </label>
                 </div>
                 <div class="option-item <?php if (isset($_GET['mod'])) {

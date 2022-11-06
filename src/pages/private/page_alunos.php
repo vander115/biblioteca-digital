@@ -36,9 +36,9 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
           $id_turma = $turma_aluno['idTurma'];
           if (isset($_GET['qa'])) {
             $qa = mb_strtoupper($_GET['qa']);
-            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 0 AND turmaPessoa = '$id_turma' AND CONCAT(nomePessoa, nomeTurma, anoTurma) LIKE '%$qa%' ORDER BY turmaPessoa, nomePessoa;";
+            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 0 AND turmaPessoa = '$id_turma' AND statusPessoa != 'inativo' AND CONCAT(nomePessoa, nomeTurma, anoTurma) LIKE '%$qa%' ORDER BY turmaPessoa, nomePessoa;";
           } else {
-            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 0 AND turmaPessoa = '$id_turma' ORDER BY turmaPessoa, nomePessoa; ";
+            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 0 AND turmaPessoa = '$id_turma' AND statusPessoa != 'inativo' ORDER BY turmaPessoa, nomePessoa; ";
           }
 
           $query_aluno_info = mysqli_query($conn, $sql_aluno);
@@ -67,9 +67,14 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
                         <p><?php echo $aluno_data['anoTurma'] . 'º ' . strtok($aluno_data['nomeTurma'], " "); ?></p>
                       </main>
                     </div>
-                    <a href="?p=alunos&edit_aluno=<?php echo $aluno_data['idPessoa']; ?>" class="edit-aluno">
+                    <a title="Editar Aluno" href="?p=alunos&edit_aluno=<?php echo $aluno_data['idPessoa']; ?>" class="edit-aluno">
                       <span class="material-symbols-rounded">
                         edit
+                      </span>
+                    </a>
+                    <a title="Alterar Identificação" href="?p=alunos&edit_senha_aluno=<?php echo $aluno_data['idPessoa']; ?>" class="key-aluno">
+                      <span class="material-symbols-rounded">
+                        key
                       </span>
                     </a>
                   </div>
@@ -95,7 +100,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
       <div class="modal-header">
         <h1>
           <span class="material-symbols-rounded">
-            magic_button
+            school
           </span>
           Cadrastar Turma
         </h1>
@@ -168,7 +173,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
       <div class="modal-header">
         <h1>
           <span class="material-symbols-rounded">
-            magic_button
+            school
           </span>
           Editar Aluno
         </h1>
@@ -210,12 +215,12 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
             </select>
           </fieldset>
           <fieldset class="oneline-modal">
-            <button class="del">
+            <a class="del" onclick="return confirm('Deseja realmente EXCLUIR esse aluno?')" href="src/modules/page_alunos/del_aluno.php?del=<?php echo $edit_aluno['idPessoa'] ?>">
               <span class="material-symbols-rounded">
                 delete_forever
               </span>
               Excluir Aluno
-            </button>
+            </a>
             <button>
               <span class="material-symbols-rounded">
                 edit
@@ -231,7 +236,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
 <?php } else if (isset($_GET['edit_senha_aluno'])) {
 
   require 'src/modules/conection.php';
-  $id_aluno = $_GET['edit_aluno'];
+  $id_aluno = $_GET['edit_senha_aluno'];
   $query_edit_aluno = mysqli_query($conn, "SELECT * FROM tb_pessoa WHERE idPessoa = '$id_aluno';");
   $edit_aluno = mysqli_fetch_assoc($query_edit_aluno);
 
@@ -244,7 +249,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
       <div class="modal-header">
         <h1>
           <span class="material-symbols-rounded">
-            magic_button
+            school
           </span>
           Alterar Identificação do Aluno
         </h1>
@@ -255,15 +260,15 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_alunos/edit_aluno.php">
+        <form class="form-modal" method="POST" action="src/modules/page_alunos/edit_ident_aluno.php">
           <input type="hidden" name="id" value="<?php echo $edit_aluno['idPessoa']; ?>">
           <fieldset>
             <label for="">Nome</label>
-            <input name="nome" type="text" readonly value="<?php echo $edit_aluno['nomePessoa']; ?>">
+            <input name="nome" type="text" disabled value="<?php echo $edit_aluno['nomePessoa']; ?>">
           </fieldset>
           <fieldset>
             <label for="">Turma</label>
-            <select readonly name="turma">
+            <select disabled name="turma">
               <option selected disabled>Escolha uma turma</option>
 
               <?php
@@ -288,11 +293,11 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
           <fieldset class="oneline-modal">
             <div>
               <label name="ident" for="">Indentificação</label>
-              <input type="text">
+              <input type="text" name="ident">
             </div>
             <div class="ident">
               <label for="">Tipo</label>
-              <select name="tipoIdent" id="">
+              <select name="tipo" id="">
                 <option selected disabled>Selecione o tipo de dado</option>
                 <option value="CPF">CPF</option>
                 <option value="Matricula">Matrícula</option>
