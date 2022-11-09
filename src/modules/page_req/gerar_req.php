@@ -38,7 +38,7 @@ if (!isset($_SESSION['req']['livro']) and !isset($_SESSION['req']['aluno']) and 
   } else {
     $idLivro = $_SESSION['req']['livro'];
     $idAluno = $_SESSION['req']['aluno'];
-    $query_validar_req = mysqli_query($conn, "SELECT * FROM tb_req WHERE idLivro = '$idLivro' AND idPessoa = '$idAluno';");
+    $query_validar_req = mysqli_query($conn, "SELECT * FROM tb_req WHERE idLivro = '$idLivro' AND idPessoa = '$idAluno' AND statusReq != 'concluida';");
     if (mysqli_num_rows($query_validar_req)) {
       $_SESSION['toast_error'] = "Essa requisição já existe!";
       header('Location: ../../../index.php?p=requisicoes');
@@ -55,7 +55,7 @@ if (!isset($_SESSION['req']['livro']) and !isset($_SESSION['req']['aluno']) and 
   } else {
     $idLivro = $_SESSION['req']['livro'];
     $idFunc = $_SESSION['req']['func'];
-    $query_validar_req = mysqli_query($conn, "SELECT * FROM tb_req WHERE idLivro = '$idLivro' AND idPessoa = '$idFunc';");
+    $query_validar_req = mysqli_query($conn, "SELECT * FROM tb_req WHERE idLivro = '$idLivro' AND idPessoa = '$idFunc' AND statusReq != 'concluida';");
     if (mysqli_num_rows($query_validar_req)) {
       $_SESSION['toast_error'] = "Essa requisição já existe!";
       header('Location: ../../../index.php?p=requisicoes');
