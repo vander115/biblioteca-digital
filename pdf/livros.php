@@ -55,29 +55,38 @@
     main {
       margin-top: 3rem;
       min-width: 100%;
-      padding: 2rem;
+      position: relative;
     }
 
     main table {
-      width: 93%;
+      position: absolute;
+      width: 90%;
+      left: 50%;
+      transform: translateX(-50%);
       border-collapse: collapse;
       border: 1px solid black;
+      font-family: 'Poppins' !important;
     }
 
     main table th {
       border: 1px solid black;
+      margin: 0;
+      font-size: 0.9rem;
+      padding: 0;
+      background-color: rgb(11, 107, 14);
+      color: white;
     }
 
     h1 {
       text-align: center;
       font-family: "Poppins", sans-serif;
       font-size: 2rem;
-      color: var(--corVerde200);
+      color: rgb(11, 107, 14);
       margin-top: 7rem;
     }
 
     h2 {
-      color: var(--corVerde);
+      color: rgb(11, 107, 14);
       text-align: center;
       font-family: "Poppins", sans-serif;
       font-size: 1.5rem;

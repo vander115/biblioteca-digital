@@ -18,14 +18,14 @@ if (!isset($_GET['edit_livro']) and !isset($_GET['editar_livro'])) {
                         Adicionar Livro
                     </label>
                 </div>
-                <div class="option-item trigger" onclick="location.href='pdf/index.php?l=1'">
+                <a class="option-item trigger" target="_blank" href="pdf/index.php?l">
                     <span class="material-symbols-rounded">
                         receipt_long
                     </span>
                     <label for="">
                         Relatório Livros
                     </label>
-                </div>
+                </a>
                 <div class="option-item <?php if (isset($_GET['mod'])) {
                                             echo 'active';
                                         } else {

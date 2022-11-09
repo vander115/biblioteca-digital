@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 31-Out-2022 às 13:19
+-- Tempo de geração: 09-Nov-2022 às 02:49
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.10
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `bd_biblioteca_digital`
 --
+CREATE DATABASE IF NOT EXISTS `bd_biblioteca_digital` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `bd_biblioteca_digital`;
 
 -- --------------------------------------------------------
 
@@ -57,10 +59,35 @@ CREATE TABLE `tb_genero_livro` (
 --
 
 INSERT INTO `tb_genero_livro` (`idGenero`, `nomeGenero`) VALUES
-(1, 'LGBTQIA+'),
 (2, 'ROMANCE'),
-(3, 'CONTO'),
-(4, 'FICÇÃO');
+(5, 'REVISTAS E QUADRINHOS'),
+(6, 'LITERATURA NACIONAL'),
+(7, 'LITERATURA ESTRANGEIRA'),
+(8, 'INFANTO JUVENIL'),
+(10, 'AUTOAJUDA E MOTIVACIONAIS'),
+(11, 'POEMA E POESIA'),
+(12, 'TEATRO'),
+(13, 'CRÔNICA'),
+(14, 'BIOGRAFIAS'),
+(15, 'CÍRCULO DE LEITURA'),
+(16, 'FILOSOFIA '),
+(17, 'BIOLOGIA '),
+(18, 'GEOGRAFIA'),
+(19, 'HISTÓRIA'),
+(20, 'MATEMÁTICA'),
+(21, 'LITERATURA'),
+(22, 'GRAMÁTICA'),
+(23, 'FÍSICA'),
+(24, 'QUÍMICA'),
+(25, 'SOCIOLOGIA'),
+(26, 'INGLÊS'),
+(27, 'ESPANHOL'),
+(28, 'INFORMÁTICA'),
+(29, 'ELETROMECÂNICA'),
+(30, 'ENFERMAGEM'),
+(31, 'FINANÇAS'),
+(32, 'REDES DE COMPUTADORES'),
+(33, 'ADMINISTRAÇÃO');
 
 -- --------------------------------------------------------
 
@@ -77,7 +104,6 @@ CREATE TABLE `tb_livros` (
   `tomboLivro` varchar(150) NOT NULL,
   `qtdLivro` int(11) NOT NULL,
   `statusLivro` enum('disponivel','emprestado','perdido') DEFAULT NULL,
-  `filaEsperaLivro` varchar(300) DEFAULT NULL,
   `dataCadLivro` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -85,9 +111,12 @@ CREATE TABLE `tb_livros` (
 -- Extraindo dados da tabela `tb_livros`
 --
 
-INSERT INTO `tb_livros` (`idLivro`, `tituloLivro`, `generoLivro`, `autorLivro`, `editoraLivro`, `tomboLivro`, `qtdLivro`, `statusLivro`, `filaEsperaLivro`, `dataCadLivro`) VALUES
-(1, 'QUINZE DIAS', 1, 'VITOR MARTIN', 'SEGUINTE', '32754875378398527345', 0, 'emprestado', '10,11,12', '2022-10-08'),
-(3, 'DOM CASMURRO', 2, 'MACHADO DE ASSIS', 'INTRISECA', '327548753', 0, 'emprestado', NULL, '2022-10-16');
+INSERT INTO `tb_livros` (`idLivro`, `tituloLivro`, `generoLivro`, `autorLivro`, `editoraLivro`, `tomboLivro`, `qtdLivro`, `statusLivro`, `dataCadLivro`) VALUES
+(1, 'QUINZE DIAS', 2, 'VITOR MARTINS', 'SEGUINTE', '32754875378398527345', 2, 'disponivel', '2022-10-08'),
+(3, 'DOM CASMURRO', 2, 'MACHADO DE ASSIS', 'INTRISECA', '327548753', 3, 'disponivel', '2022-10-16'),
+(7, 'TRISTE FIM DE POLICARPO QUARESMA', 2, 'LIMA BARRETO', 'EDITORA RIDEEL', '12.600/16', 1, 'disponivel', '2022-11-06'),
+(8, 'A ESCRAVA ISAURA', 2, 'BERNARDO GUIMARÃES', 'LPM', '12.640/16', 1, 'disponivel', '2022-11-06'),
+(9, 'O SEMINARISTA', 2, 'BERNARDO GUIMARÃES', 'SEGUINTE', '12.64/16', 3, 'disponivel', '2022-11-06');
 
 -- --------------------------------------------------------
 
@@ -98,20 +127,20 @@ INSERT INTO `tb_livros` (`idLivro`, `tituloLivro`, `generoLivro`, `autorLivro`, 
 CREATE TABLE `tb_pessoa` (
   `idPessoa` int(11) NOT NULL,
   `nomePessoa` varchar(150) NOT NULL,
-  `tipoPessoa` enum('Aluno','Funcionario') DEFAULT NULL,
+  `tipoPessoa` enum('Aluno','Professor','Diretor','Coordenador','Secretário','Limpeza','Funcionário') DEFAULT NULL,
   `turmaPessoa` int(11) NOT NULL,
   `tipoIdentPessoa` enum('CPF','Matricula') DEFAULT NULL,
-  `identPessoa` varchar(300) NOT NULL
+  `identPessoa` varchar(300) NOT NULL,
+  `statusPessoa` enum('ativo','inativo') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `tb_pessoa`
 --
 
-INSERT INTO `tb_pessoa` (`idPessoa`, `nomePessoa`, `tipoPessoa`, `turmaPessoa`, `tipoIdentPessoa`, `identPessoa`) VALUES
-(10, 'JOSÉ VANDERLEI FURTUNA TOMÉ', 'Aluno', 11, 'Matricula', '$2y$10$193s52RnxbycTLf/Drivn.FtnUNsjZnRz0nMleZYh4mlUpoVA5D3C'),
-(11, 'JOÃO PEDRO DOS SANTOS SILVA', 'Aluno', 3, 'Matricula', '$2y$10$0KNkss1wkD.jX1Jkc96hI.RPrDUnyIKHR.4bhwZoRwLVCdPvh30ii'),
-(12, 'MARIO ANDRÉ ARAUJO ALBUQUERQUE', 'Aluno', 11, 'Matricula', '$2y$10$u7ZgxkG/zK9QHyuVylERAOz0eAnPlvS0W62IsY05AnkuQyATFK/Qe');
+INSERT INTO `tb_pessoa` (`idPessoa`, `nomePessoa`, `tipoPessoa`, `turmaPessoa`, `tipoIdentPessoa`, `identPessoa`, `statusPessoa`) VALUES
+(12, 'MARIO ANDRÉ ARAUJO ALBUQUERQUE', 'Aluno', 11, 'Matricula', '$2y$10$IiPW3ErVXrDGVDQtsLta/ObZqrfDvjsxQjN1XqzFzE2sc/tkGBe3i', 'ativo'),
+(14, 'WILKEMAR', 'Professor', 0, '', '$2y$10$x.bndl.NXiq1ScGgpNcnI.QQMa6MlLFaqvZ/.twwFNCR9WmSb8P2S', 'ativo');
 
 -- --------------------------------------------------------
 
@@ -125,7 +154,7 @@ CREATE TABLE `tb_req` (
   `idLivro` int(11) NOT NULL,
   `dataReq` date DEFAULT NULL,
   `dataEntregaReq` date DEFAULT NULL,
-  `statusReq` enum('em vigor','pendente','concluida') DEFAULT NULL
+  `statusReq` enum('ativa','pendente','concluida') DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -133,8 +162,10 @@ CREATE TABLE `tb_req` (
 --
 
 INSERT INTO `tb_req` (`idReq`, `idPessoa`, `idLivro`, `dataReq`, `dataEntregaReq`, `statusReq`) VALUES
-(14, 11, 1, '2022-10-30', '2022-11-04', 'em vigor'),
-(15, 10, 1, '2022-10-30', '2022-11-04', 'em vigor');
+(25, 12, 1, '2022-11-05', '2022-11-10', 'concluida'),
+(26, 14, 3, '2022-12-06', '2022-11-11', 'concluida'),
+(27, 12, 3, '2022-11-06', '2022-11-11', 'ativa'),
+(28, 12, 8, '2022-11-07', '2022-12-12', 'ativa');
 
 -- --------------------------------------------------------
 
@@ -156,9 +187,9 @@ CREATE TABLE `tb_turma` (
 --
 
 INSERT INTO `tb_turma` (`idTurma`, `nomeTurma`, `anoTurma`, `anoInicial`, `anoFinal`, `statusTurma`) VALUES
+(0, 'FUNCIONÁRIOS', '1', 0, 0, 'concluida'),
 (2, 'REDES DE COMPUTADORES', '1', 2022, 2024, 'egressa'),
 (3, 'DESENVOLVIMENTO DE SISTEMAS', '1', 2022, 2024, 'egressa'),
-(4, 'ADMINISTRAÇÃO', '1', 2022, 2024, 'egressa'),
 (6, 'ELETROMECÂNICA', '1', 2022, 2024, 'egressa'),
 (7, 'ELETROMECÂNICA', '2', 2021, 2023, 'egressa'),
 (8, 'ELETROMECÂNICA', '3', 2020, 2022, 'egressa'),
@@ -167,7 +198,8 @@ INSERT INTO `tb_turma` (`idTurma`, `nomeTurma`, `anoTurma`, `anoInicial`, `anoFi
 (11, 'INFORMÁTICA', '3', 2020, 2022, 'egressa'),
 (12, 'FINANÇAS', '2', 2021, 2023, 'egressa'),
 (13, 'INFORMÁTICA', '2', 2021, 2023, 'egressa'),
-(14, 'FINANÇAS', '3', 2020, 2022, 'egressa');
+(14, 'FINANÇAS', '3', 2020, 2022, 'egressa'),
+(17, 'ADMINISTRAÇÃO', '1', 2022, 2024, 'egressa');
 
 --
 -- Índices para tabelas despejadas
@@ -228,31 +260,31 @@ ALTER TABLE `tb_adm`
 -- AUTO_INCREMENT de tabela `tb_genero_livro`
 --
 ALTER TABLE `tb_genero_livro`
-  MODIFY `idGenero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idGenero` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de tabela `tb_livros`
 --
 ALTER TABLE `tb_livros`
-  MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idLivro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `tb_pessoa`
 --
 ALTER TABLE `tb_pessoa`
-  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idPessoa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de tabela `tb_req`
 --
 ALTER TABLE `tb_req`
-  MODIFY `idReq` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idReq` smallint(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de tabela `tb_turma`
 --
 ALTER TABLE `tb_turma`
-  MODIFY `idTurma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idTurma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Restrições para despejos de tabelas
