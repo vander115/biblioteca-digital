@@ -11,7 +11,7 @@ $tipo = $_POST['tipo'];
 $tipoIdent = $_POST['tipoIdent'];
 $ident = password_hash($_POST['ident'], PASSWORD_DEFAULT);
 
-$query_cad_aluno = mysqli_query($conn, "INSERT INTO tb_pessoa VALUES(NULL, '$nome', '$tipo', 0, '$tipoIdent', '$ident');");
+$query_cad_aluno = mysqli_query($conn, "INSERT INTO tb_pessoa VALUES(NULL, '$nome', '$tipo', 0, '$tipoIdent', '$ident', 'ativo');");
 
 if ($query_cad_aluno) {
   $_SESSION['toast_success'] = "Funcionário cadrastado com sucesso!";

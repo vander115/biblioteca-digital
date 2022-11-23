@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Bd\\": "lib/Bd"
+    }
+  },
+  "require": {
+    "phpmailer/phpmailer": "^6.6"
+  }
+}

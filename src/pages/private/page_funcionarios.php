@@ -24,7 +24,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
           </label>
         </div>
       </div>
-      <form class="search" method="GET" action="">
+      <form class="search" method="GET" action="" name="funcForm" id="funcForm">
         <input type="hidden" name="p" value="funcionarios">
         <input type="text" name="qf" placeholder="Pesquisar Funcionário" value="<?php if (isset($_GET['qf'])) echo $_GET['qf']; ?>">
         <button class="icon" title="Pesquisar">
@@ -44,8 +44,8 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
           require 'src/modules/conection.php';
 
           if (isset($_GET['qf'])) {
-            $qf = mb_strtoupper($_GET['qf']);
-            $sql_funcionario = "SELECT * FROM tb_pessoa WHERE CONCAT(nomePessoa, nomeTurma, anoTurma) LIKE '%$qf%' AND tipoPessoa != 'Aluno' AND statusPessoa != 'inativo' ORDER BY turmaPessoa, nomePessoa;";
+            $qf = mb_strtoupper(trim($_GET['qf']));
+            $sql_funcionario = "SELECT * FROM tb_pessoa WHERE CONCAT (nomePessoa, tipoPessoa) LIKE '%$qf%' AND tipoPessoa != 'Aluno' AND statusPessoa != 'inativo' ORDER BY turmaPessoa, nomePessoa;";
           } else {
             $sql_funcionario = "SELECT * FROM tb_pessoa WHERE tipoPessoa != 'Aluno' AND statusPessoa != 'inativo' ORDER BY tipoPessoa, nomePessoa; ";
           }
@@ -103,15 +103,15 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_func/cad_func.php">
+        <form class="form-modal" method="POST" action="src/modules/page_func/cad_func.php" name="funcForm">
           <fieldset>
             <label for="">Nome</label>
-            <input name="nome" type="text">
+            <input name="nome" type="text" id="nome">
           </fieldset>
           <fieldset>
             <label for="">Tipo:</label>
-            <select name="tipo">
-              <option selected disabled>Escolha uma cargo:</option>
+            <select name="tipo" id="tipo">
+              <option selected disabled value="0">Escolha uma cargo:</option>
               <option value="Professor">Professor</option>
               <option value="Diretor">Diretor</option>
               <option value="Coordenador">Coordenador</option>
@@ -123,24 +123,24 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
           <fieldset class="oneline-modal">
             <div>
               <label name="ident" for="">Indentificação</label>
-              <input type="text" name="ident">
+              <input type="text" id="ident" name="ident">
             </div>
             <div class="ident">
               <label for="">Tipo</label>
-              <select name="tipoIdent" id="">
-                <option selected disabled>Selecione o tipo de dado</option>
+              <select name="tipoIdent" id="tipoIdent">
+                <option selected disabled value="0">Selecione o tipo de dado</option>
                 <option value="CPF">CPF</option>
                 <option value="Matricula">Matrícula</option>
               </select>
             </div>
           </fieldset>
           <fieldset>
-            <button>
+            <a onclick="funcVerify()">
               <span class="material-symbols-rounded">
                 add
               </span>
               Cadrastar Funcionário
-            </button>
+            </a>
           </fieldset>
         </form>
       </div>
@@ -177,12 +177,12 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
           <input type="hidden" name="id" value="<?php echo $edit_funcionario['idPessoa']; ?>">
           <fieldset>
             <label for="">Nome</label>
-            <input name="nome" type="text" value="<?php echo $edit_funcionario['nomePessoa']; ?>">
+            <input name="nome" id="nome" type="text" value="<?php echo $edit_funcionario['nomePessoa']; ?>">
           </fieldset>
           <fieldset>
             <label for="">Tipo:</label>
-            <select name="tipo">
-              <option selected disabled>Escolha uma cargo:</option>
+            <select name="tipo" id="tipo">
+              <option selected disabled value="0">Escolha uma cargo:</option>
               <option value="Professor" <?php option('Professor', $edit_funcionario['tipoPessoa']); ?>>Professor</option>
               <option value="Diretor" <?php option('Diretor', $edit_funcionario['tipoPessoa']); ?>>Diretor</option>
               <option value="Coordenador" <?php option('Coordenador', $edit_funcionario['tipoPessoa']); ?>>Coordenador</option>
@@ -198,12 +198,12 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
               </span>
               Excluir Funcionário
             </a>
-            <button type="submit">
+            <a type="button" onclick="funcVerifyEdit()">
               <span class="material-symbols-rounded">
                 edit
               </span>
               Alterar Funcionário
-              </a>
+            </a>
           </fieldset>
         </form>
       </div>
@@ -237,16 +237,16 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_func/edit_ident_func.php">
+        <form class="form-modal" method="POST" action="src/modules/page_func/edit_ident_func.php" name="funcForm" id="funcForm">
           <input type="hidden" name="id" value="<?php echo $edit_funcionario['idPessoa']; ?>">
           <fieldset>
             <label for="">Nome</label>
-            <input name="nome" type="text" disabled value="<?php echo $edit_funcionario['nomePessoa']; ?>">
+            <input name="nome" type="text" id="nome" disabled value="<?php echo $edit_funcionario['nomePessoa']; ?>">
           </fieldset>
           <fieldset>
             <label for="">Turma</label>
-            <select disabled name="turma">
-              <option selected disabled>Escolha uma cargo:</option>
+            <select disabled name="turma" id="turma">
+              <option selected disabled value="0">Escolha uma cargo:</option>
               <option value="Professor" <?php option('Professor', $edit_funcionario['tipoPessoa']); ?>>Professor</option>
               <option value="Diretor" <?php option('Diretor', $edit_funcionario['tipoPessoa']); ?>>Diretor</option>
               <option value="Coordenador" <?php option('Coordenador', $edit_funcionario['tipoPessoa']); ?>>Coordenador</option>
@@ -258,24 +258,24 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
           <fieldset class="oneline-modal">
             <div>
               <label name="ident" for="">Indentificação</label>
-              <input type="text" name="ident">
+              <input type="text" id="ident" name="ident">
             </div>
             <div class="ident">
               <label for="">Tipo</label>
-              <select name="tipo" id="">
-                <option selected disabled>Selecione o tipo de dado</option>
+              <select name="tipo" id="tipoIdent">
+                <option selected disabled value="0">Selecione o tipo de dado</option>
                 <option value="CPF">CPF</option>
                 <option value="Matricula">Matrícula</option>
               </select>
             </div>
           </fieldset>
           <fieldset class="oneline-modal">
-            <button>
+            <a onclick="funcVerifyEditPassword()">
               <span class="material-symbols-rounded">
                 edit
               </span>
               Alterar
-            </button>
+            </a>
           </fieldset>
         </form>
       </div>
@@ -283,3 +283,76 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
   </div>
 
 <?php } ?>
+
+<script>
+  const funcVerify = () => {
+
+    const funcForm = document.getElementById('funcForm');
+    const nameInput = document.getElementById('nome');
+    const tipoFunc = document.getElementById('tipo');
+    const tipoIdent = document.getElementById('tipoIdent');
+    const identInput = document.getElementById('ident');
+
+    if (nameInput.value === "") {
+      toastr.warning("Digite o nome do funcionário");
+      nameInput.focus();
+      return;
+    }
+    if (tipoFunc.value == 0) {
+      toastr.warning("Selecione o tipo de funcionário!");
+      tipoFunc.focus();
+      return;
+    }
+    if (identInput.value == 0) {
+      toastr.warning("Digite a identificação do funcionário!");
+      identInput.focus();
+      return;
+    }
+    if (tipoIdent.value == 0) {
+      toastr.warning("Selecione o tipo de identificação!");
+      anoInput.focus();
+      return;
+    }
+    funcForm.submit();
+  }
+  const funcVerifyEdit = () => {
+
+    const funcForm = document.getElementById('funcForm');
+    const nameInput = document.getElementById('nome');
+    const tipoFunc = document.getElementById('tipo');
+    const tipoIdent = document.getElementById('tipoIdent');
+    const identInput = document.getElementById('ident');
+
+    if (nameInput.value === "") {
+      toastr.warning("Digite o nome do funcionário");
+      nameInput.focus();
+      return;
+    }
+    if (tipoFunc.value == 0) {
+      toastr.warning("Selecione o tipo de funcionário!");
+      tipoFunc.focus();
+      return;
+    }
+    funcForm.submit();
+  }
+  const funcVerifyEditPassword = () => {
+
+    const funcForm = document.getElementById('funcForm');
+    const nameInput = document.getElementById('nome');
+    const tipoFunc = document.getElementById('tipo');
+    const tipoIdent = document.getElementById('tipoIdent');
+    const identInput = document.getElementById('ident');
+
+    if (identInput.value === "") {
+      toastr.warning("Digite a identificação do funcionário!");
+      identInput.focus();
+      return;
+    }
+    if (tipoIdent.value == 0) {
+      toastr.warning("Selecione o tipo de identificação!");
+      tipoIdent.focus();
+      return;
+    }
+    funcForm.submit();
+  }
+</script>

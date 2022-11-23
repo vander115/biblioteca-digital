@@ -1,3 +1,9 @@
+<?php
+require '../src/modules/conection.php';
+
+$query_livros = mysqli_query($conn, "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero ORDER BY generoLivro, tituloLivro;");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,17 +70,21 @@
       left: 50%;
       transform: translateX(-50%);
       border-collapse: collapse;
-      border: 1px solid black;
+      border: 1px solid rgb(46, 150, 51);
       font-family: 'Poppins' !important;
     }
 
     main table th {
-      border: 1px solid black;
       margin: 0;
       font-size: 0.9rem;
       padding: 0;
-      background-color: rgb(11, 107, 14);
+      background-color: #00cc14;
       color: white;
+      text-align: center;
+    }
+
+    main table td {
+      border-bottom: 1px solid rgb(46, 150, 51);
     }
 
     h1 {
@@ -119,6 +129,22 @@
         <th>Tombo</th>
         <th>Editora</th>
       </tr>
+      <?php
+      while ($livro = mysqli_fetch_assoc($query_livros)) {
+      ?>
+
+        <tr>
+          <td><?php echo $livro['tituloLivro']; ?></td>
+          <td><?php echo $livro['autorLivro']; ?></td>
+          <td><?php echo $livro['nomeGenero']; ?></td>
+          <td><?php echo $livro['tomboLivro']; ?></td>
+          <td><?php echo $livro['editoraLivro']; ?></td>
+        </tr>
+
+      <?php
+
+      }
+      ?>
     </table>
   </main>
 </body>

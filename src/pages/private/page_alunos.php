@@ -35,7 +35,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
         while ($turma_aluno = mysqli_fetch_assoc($query_turma_aluno)) {
           $id_turma = $turma_aluno['idTurma'];
           if (isset($_GET['qa'])) {
-            $qa = mb_strtoupper($_GET['qa']);
+            $qa = mb_strtoupper(trim($_GET['qa']));
             $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 0 AND turmaPessoa = '$id_turma' AND statusPessoa != 'inativo' AND CONCAT(nomePessoa, nomeTurma, anoTurma) LIKE '%$qa%' ORDER BY turmaPessoa, nomePessoa;";
           } else {
             $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 0 AND turmaPessoa = '$id_turma' AND statusPessoa != 'inativo' ORDER BY turmaPessoa, nomePessoa; ";
@@ -102,7 +102,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
           <span class="material-symbols-rounded">
             school
           </span>
-          Cadrastar Turma
+          Cadrastar Aluno
         </h1>
         <button class="close">
           <span class="material-symbols-rounded">
@@ -111,15 +111,15 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_alunos/cad_aluno.php">
+        <form class="form-modal" method="POST" action="src/modules/page_alunos/cad_aluno.php" id="alunoForm">
           <fieldset>
             <label for="">Nome</label>
-            <input name="nome" type="text">
+            <input name="nome" type="text" id="nome">
           </fieldset>
           <fieldset>
             <label for="">Turma</label>
-            <select name="turma">
-              <option selected disabled>Escolha uma turma</option>
+            <select name="turma" id="turma">
+              <option selected disabled value="0">Escolha uma turma</option>
 
               <?php
               require 'src/modules/conection.php';
@@ -141,18 +141,18 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
           <fieldset class="oneline-modal">
             <div>
               <label name="ident" for="">Indentificação</label>
-              <input type="text" name="ident">
+              <input type="text" name="ident" id="ident">
             </div>
             <div class="ident">
               <label for="">Tipo</label>
-              <select name="tipoIdent" id="">
-                <option selected disabled>Selecione o tipo de dado</option>
+              <select name="tipoIdent" id="tipoIdent">
+                <option selected disabled value="0">Selecione o tipo de dado</option>
                 <option value="CPF">CPF</option>
                 <option value="Matricula">Matrícula</option>
               </select>
             </div>
           </fieldset>
-          <fieldset><button>Cadrastar Aluno</button></fieldset>
+          <fieldset><a onclick="alunoVerify()">Cadrastar Aluno</a></fieldset>
         </form>
       </div>
     </div>
@@ -184,16 +184,16 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_alunos/edit_aluno.php">
+        <form class="form-modal" method="POST" action="src/modules/page_alunos/edit_aluno.php" id="alunoForm">
           <input type="hidden" name="id" value="<?php echo $edit_aluno['idPessoa']; ?>">
           <fieldset>
             <label for="">Nome</label>
-            <input name="nome" type="text" value="<?php echo $edit_aluno['nomePessoa']; ?>">
+            <input name="nome" type="text" id="nome" value="<?php echo $edit_aluno['nomePessoa']; ?>">
           </fieldset>
           <fieldset>
             <label for="">Turma</label>
-            <select name="turma">
-              <option selected disabled>Escolha uma turma</option>
+            <select name="turma" id="turma">
+              <option selected disabled value="0">Escolha uma turma</option>
 
               <?php
               require 'src/modules/conection.php';
@@ -221,12 +221,12 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
               </span>
               Excluir Aluno
             </a>
-            <button>
+            <a onclick="alunoEditVerify()">
               <span class="material-symbols-rounded">
                 edit
               </span>
               Alterar Aluno
-            </button>
+            </a>
           </fieldset>
         </form>
       </div>
@@ -260,16 +260,16 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_alunos/edit_ident_aluno.php">
+        <form class="form-modal" method="POST" action="src/modules/page_alunos/edit_ident_aluno.php" id="alunoForm">
           <input type="hidden" name="id" value="<?php echo $edit_aluno['idPessoa']; ?>">
           <fieldset>
             <label for="">Nome</label>
-            <input name="nome" type="text" disabled value="<?php echo $edit_aluno['nomePessoa']; ?>">
+            <input name="nome" type="text" id="nome" disabled value="<?php echo $edit_aluno['nomePessoa']; ?>">
           </fieldset>
           <fieldset>
             <label for="">Turma</label>
-            <select disabled name="turma">
-              <option selected disabled>Escolha uma turma</option>
+            <select disabled name="turma" id="turma">
+              <option selected disabled value="0">Escolha uma turma</option>
 
               <?php
               require 'src/modules/conection.php';
@@ -293,12 +293,12 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
           <fieldset class="oneline-modal">
             <div>
               <label name="ident" for="">Indentificação</label>
-              <input type="text" name="ident">
+              <input type="text" name="ident" id="ident">
             </div>
             <div class="ident">
               <label for="">Tipo</label>
-              <select name="tipo" id="">
-                <option selected disabled>Selecione o tipo de dado</option>
+              <select name="tipo" id="tipoIdent">
+                <option selected disabled value="0">Selecione o tipo de dado</option>
                 <option value="CPF">CPF</option>
                 <option value="Matricula">Matrícula</option>
               </select>
@@ -311,12 +311,12 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
               </span>
               Excluir Aluno
             </button>
-            <button>
+            <a onclick="alunoIdentVerify()">
               <span class="material-symbols-rounded">
                 edit
               </span>
               Alterar Aluno
-            </button>
+            </a>
           </fieldset>
         </form>
       </div>
@@ -324,3 +324,67 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
   </div>
 
 <?php } ?>
+
+<script>
+  const alunoVerify = () => {
+    const alunoForm = document.getElementById('alunoForm');
+    const nameInput = document.getElementById('nome');
+    const turmaSelect = document.getElementById('turma');
+    const identInput = document.getElementById('ident');
+    const tipoIdentSelect = document.getElementById('tipoIdent');
+
+    if (nameInput.value === "") {
+      toastr.warning("Digite o nome do aluno!");
+      nameInput.focus();
+      return;
+    }
+    if (turmaSelect.value == 0) {
+      toastr.warning("Selecione a turma do aluno!");
+      turmaSelect.focus();
+      return;
+    }
+    if (identInput.value === "") {
+      toastr.warning("Digite a identificação do aluno!");
+      identInput.focus();
+      return;
+    }
+    if (tipoIdentSelect.value == 0) {
+      toastr.warning("Selecione o tipo de identificação do aluno!");
+      tipoIdentSelect.focus();
+      return;
+    }
+    alunoForm.submit();
+  }
+  const alunoEditVerify = () => {
+    const alunoForm = document.getElementById('alunoForm');
+    const nameInput = document.getElementById('nome');
+    const turmaSelect = document.getElementById('turma');
+
+    if (nameInput.value === "") {
+      toastr.warning("Digite o nome do aluno!");
+      nameInput.focus();
+      return;
+    }
+    if (turmaSelect.value == 0) {
+      toastr.warning("Selecione a turma do aluno!");
+      turmaSelect.focus();
+      return;
+    }
+  }
+  const alunoIdentVerify = () => {
+    const alunoForm = document.getElementById('alunoForm');
+    const identInput = document.getElementById('ident');
+    const tipoIdentSelect = document.getElementById('tipoIdent');
+    if (identInput.value === "") {
+      toastr.warning("Digite a identificação do aluno!");
+      identInput.focus();
+      return;
+    }
+    if (tipoIdentSelect.value == 0) {
+      toastr.warning("Selecione o tipo de identificação do aluno!");
+      tipoIdentSelect.focus();
+      return;
+    }
+    alunoForm.submit();
+  }
+</script>

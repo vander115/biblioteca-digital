@@ -789,7 +789,7 @@ input:checked + .show .title {
       border: 0;
       th,
       td {
-        padding: 0.3rem;
+        padding: 0.1rem 0.2rem;
         border-top: 1px solid var(--corVerde200);
         border-bottom: 1px solid var(--corVerde200);
 
@@ -2261,6 +2261,12 @@ input:checked + .show .title {
                 }
               }
             }
+          }
+        }
+        &:hover {
+          .req-card {
+            transform: translateY(-2px);
+            outline: 2px solid var(--corLaranja);
           }
         }
       }

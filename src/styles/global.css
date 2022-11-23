@@ -773,7 +773,7 @@ input:checked + .show .title {
 }
 .livros .livro-cont table th,
 .livros .livro-cont table td {
-  padding: 0.3rem;
+  padding: 0.1rem 0.2rem;
   border-top: 1px solid var(--corVerde200);
   border-bottom: 1px solid var(--corVerde200);
 }
@@ -2176,6 +2176,10 @@ input:checked + .show .title {
 }
 .requisicoes .req-cont main .req-info.pendente .req-card .req-dados section div p ::first-letter {
   text-transform: uppercase;
+}
+.requisicoes .req-cont main .req-info:hover .req-card {
+  transform: translateY(-2px);
+  outline: 2px solid var(--corLaranja);
 }
 
 .validate-req {

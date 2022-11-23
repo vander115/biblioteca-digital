@@ -84,15 +84,28 @@ if (!isset($_GET['editGender'])) {
                 </button>
             </div>
             <div class="modal-main">
-                <form class="form-modal" method="POST" action="src/modules/page_genders/cad_gender.php">
+                <form class="form-modal" method="POST" id="genderForm" action="src/modules/page_genders/cad_gender.php">
                     <fieldset>
-                        <label for="">Título</label><input name="title" id="title" type="text">
+                        <label for="">Título</label><input name="title" id="titleGender" type="text">
                     </fieldset>
-                    <fieldset><button>Cadrastar Gênero</button></fieldset>
+                    <fieldset><a type="button" onclick="genderVerify()">Cadrastar Gênero</a></fieldset>
                 </form>
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        const genderForm = document.getElementById('genderForm');
+        const titleGenderInput = document.getElementById('titleGender');
+
+        const genderVerify = () => {
+            if (titleGenderInput.value === "") {
+                toastr.warning("Digite o titulo do gênero!");
+                titleGenderInput.focus();
+                return;
+            }
+            genderForm.submit();
+        }
+    </script>
 
 <?php } else {
     require 'src/modules/conection.php';
@@ -119,23 +132,35 @@ if (!isset($_GET['editGender'])) {
                 </button>
             </div>
             <div class="modal-main">
-                <form class="form-modal" method="POST" action="src/modules/page_genders/edit_gender.php">
+                <form class="form-modal" name="genderForm" id="genderForm" method="POST" action="src/modules/page_genders/edit_gender.php">
                     <fieldset>
                         <input type="hidden" name="id" value="<?php echo $editGender['idGenero']; ?>">
-                        <label for="">Título</label><input name="title" id="title" type="text" value="<?php echo $editGender['nomeGenero']; ?>">
+                        <label for="">Título</label><input name="title" id="titleGender" type="text" value="<?php echo $editGender['nomeGenero']; ?>">
                     </fieldset>
                     <fieldset class="oneline-modal">
                         <a type="button" href="src/modules/page_genders/del_gender.php?id_del=<?php echo $editGender['idGenero']; ?>" onclick="return confirm('Deseja realmente excluir essa seção? TODOS os livros contidos nela serão EXCLUIDOS!!!')" class="del"><span class="material-symbols-rounded">
                                 delete_forever
                             </span>Excluir Gênero</a>
-                        <button><span class="material-symbols-rounded">
+                        <a onclick="genderVerify()"><span class="material-symbols-rounded">
                                 edit
-                            </span>Editar Gênero</button>
+                            </span>Editar Gênero</a>
                     </fieldset>
                 </form>
             </div>
         </div>
     </div>
 
+    <script type="text/javascript">
+        const genderForm = document.getElementById('genderForm');
+        const titleGenderInput = document.getElementById('titleGender');
 
+        const genderVerify = () => {
+            if (titleGenderInput.value === "") {
+                toastr.warning("Digite o titulo do gênero!");
+                titleGenderInput.focus();
+                return;
+            }
+            genderForm.submit();
+        }
+    </script>
 <?php } ?>

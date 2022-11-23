@@ -101,20 +101,20 @@ if (!isset($_GET['edit_turma'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_turmas/cad_turma.php">
+        <form class="form-modal" id="turmaForm" method="POST" action="src/modules/page_turmas/cad_turma.php">
           <fieldset class="oneline-modal">
-            <div><label for="">Nome</label><input name="nome" id="title" type="text"></div>
+            <div><label for="">Nome</label><input name="nome" id="nome" type="text"></div>
             <div class="ano">
               <label for="">Série</label>
-              <select name="ano">
-                <option disabled selected>Ano</option>
+              <select name="ano" id="ano">
+                <option disabled selected value="0">Ano</option>
                 <option value="1">1º</option>
                 <option value="2">2º</option>
                 <option value="3">3º</option>
               </select>
             </div>
           </fieldset>
-          <fieldset><button>Cadastrar Turma</button></fieldset>
+          <fieldset><a onclick="turmaVerify()">Cadastrar Turma</a></fieldset>
         </form>
       </div>
     </div>
@@ -149,13 +149,13 @@ if (!isset($_GET['edit_turma'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_turmas/edit_turma.php">
+        <form class="form-modal" method="POST" id="turmaForm" action="src/modules/page_turmas/edit_turma.php">
           <input type="hidden" name="id" value="<?php echo $turma_array['idTurma']; ?>">
           <fieldset class="oneline-modal">
             <div class="ano">
               <label for="">Série</label>
-              <select name="ano">
-                <option disabled selected>Ano</option>
+              <select name="ano" id="ano">
+                <option disabled selected value="0">Ano</option>
                 <option <?php if ($turma_array['anoTurma'] == '1') {
                           echo ' selected ';
                         } ?> value="1">1º</option>
@@ -167,7 +167,7 @@ if (!isset($_GET['edit_turma'])) {
                         } ?>value="3">3º</option>
               </select>
             </div>
-            <div><label for="">Nome</label><input name="nome" id="title" type="text" value="<?php echo $turma_array['nomeTurma']; ?>"></div>
+            <div><label for="">Nome</label><input name="nome" id="nome" type="text" value="<?php echo $turma_array['nomeTurma']; ?>"></div>
           </fieldset>
           <fieldset class="oneline-modal">
             <a href="src/modules/page_turmas/del_turma.php?del_turma=<?php echo $turma_array['idTurma']; ?>" onclick="return confirm('Deseja realmente apagar turma? TODOS os ALUNOS cadrastados nela serão APAGADOS!')" class="del">
@@ -175,11 +175,11 @@ if (!isset($_GET['edit_turma'])) {
                 delete_forever
               </span>
               Deletar Turma</a>
-            <button>
+            <a onclick="turmaVerify()">
               <span class="material-symbols-rounded">
                 edit
               </span>
-              Alterar Turma</button>
+              Alterar Turma</a>
           </fieldset>
         </form>
       </div>
@@ -188,3 +188,24 @@ if (!isset($_GET['edit_turma'])) {
 
 
 <?php } ?>
+
+<script>
+  const turmaVerify = () => {
+
+    const turmaForm = document.getElementById('turmaForm');
+    const nameInput = document.getElementById('nome');
+    const anoInput = document.getElementById('ano');
+
+    if (nameInput.value === "") {
+      toastr.warning("Digite o nome da turma!");
+      nameInput.focus();
+      return;
+    }
+    if (anoInput.value == 0) {
+      toastr.warning("Selecione o ano da turma!");
+      anoInput.focus();
+      return;
+    }
+    turmaForm.submit();
+  }
+</script>
