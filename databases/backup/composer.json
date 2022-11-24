@@ -2,7 +2,10 @@
   "autoload": {
     "psr-4": {
       "Bd\\": "lib/Bd"
-    }
+    },
+    "classmap": [
+      "Bd/PhpMailerAdapter.php"
+    ]
   },
   "require": {
     "phpmailer/phpmailer": "^6.6"

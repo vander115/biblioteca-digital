@@ -810,22 +810,102 @@ input:checked + .show .title {
   background-color: var(--fundoFoscoVerde);
 }
 
-.dev-banner {
+.devs {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.dev-banner img {
+.devs header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 3rem;
+}
+.devs header img {
   width: 100%;
   border-radius: 1rem;
 }
-.dev-banner .logo {
-  transform: translateY(-60%);
+.devs header .logo {
   width: 20%;
+  position: absolute;
+  bottom: -20%;
 }
-.dev-banner .logo img {
+.devs header .logo img {
   border-radius: 10rem;
+}
+.devs main {
+  width: 95%;
+}
+.devs main h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  background: linear-gradient(var(--gadrientVerde));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400%;
+  animation: gradient 5s ease infinite;
+  margin-top: 3rem;
+}
+.devs main .sobre-nos {
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+}
+.devs main .sobre-nos mark {
+  background-color: var(--fundoVerde);
+}
+.devs main .sobre-nos h2 {
+  width: 35%;
+  text-align: left;
+  font-size: 3rem;
+  color: var(--corVerde200);
+  margin-right: 3rem;
+  background: linear-gradient(var(--gadrientVerde));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.devs main .sobre-nos p {
+  width: 65%;
+  font-size: 1.3rem;
+  text-align: justify;
+}
+@media screen and (max-width: 900px) {
+  .devs main {
+    width: 90%;
+  }
+  .devs main .sobre-nos {
+    flex-direction: column;
+  }
+  .devs main .sobre-nos h2 {
+    width: 100%;
+    text-align: center;
+    margin: 0 0 2rem 0;
+  }
+  .devs main .sobre-nos p {
+    width: 100%;
+  }
+  .devs main .alunos-devs h2 {
+    width: 100%;
+    text-align: center;
+    margin: 0 0 2rem 0;
+  }
+  .devs main .alunos-devs .alunos-devs-cont {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .devs main .alunos-devs .alunos-devs-cont .alunos-card h1 {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  .devs main {
+    width: 98%;
+  }
 }
 
 .modal {
