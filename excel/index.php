@@ -64,4 +64,11 @@ while ($rows = $resultado->fetch_assoc()) {
 $dataAtual = date("d-m-Y");
 
 $writer = new Xlsx($excel);
-$writer->save("../Relátorio BD - Livros gerado em $dataAtual.xlsx");
+$writer->save("../relatorios/livros/Relátorio BD - Livros gerado em $dataAtual.xlsx");
+
+if (!isset($_SESSION)) {
+  session_start();
+}
+
+$_SESSION['toast_success'] = "Relatório gerado com sucesso!";
+header('Location: ../index.php?p=livros');

@@ -103,7 +103,6 @@ if (!isset($_GET['edit_turma'])) {
       <div class="modal-main">
         <form class="form-modal" id="turmaForm" method="POST" action="src/modules/page_turmas/cad_turma.php">
           <fieldset class="oneline-modal">
-            <div><label for="">Nome</label><input name="nome" id="nome" type="text"></div>
             <div class="ano">
               <label for="">Série</label>
               <select name="ano" id="ano">
@@ -113,6 +112,7 @@ if (!isset($_GET['edit_turma'])) {
                 <option value="3">3º</option>
               </select>
             </div>
+            <div><label for="">Nome</label><input name="nome" id="nome" type="text"></div>
           </fieldset>
           <fieldset><a onclick="turmaVerify()">Cadastrar Turma</a></fieldset>
         </form>
