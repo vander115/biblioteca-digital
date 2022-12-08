@@ -42,7 +42,7 @@
                     <!-- Quarto card-->
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/andre.jpg" />
                         </div>
                         <h3>André Ribeiro Mendes</h3>
                         <div class="content"></div>
@@ -88,7 +88,7 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/karol.jpg" />
                         </div>
                         <h3>Caroline Rodrigues Siqueira</h3>
                         <div class="content"></div>
@@ -98,7 +98,7 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/crislano.jpg" />
                         </div>
                         <h3>Crislano Silva Justino</h3>
                         <div class="content"></div>
@@ -158,7 +158,7 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/darlan.jpg" />
                         </div>
                         <h3>Francisco Darlan Lima Marques</h3>
                         <div class="content"></div>
@@ -168,7 +168,7 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/gustavo.jpg" />
                         </div>
                         <h3>Gustavo Brito do Nascimento</h3>
                         <div class="content"></div>
@@ -317,7 +317,7 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/maycon.jpg" />
                         </div>
                         <h3>Maycon Marcelino do Nascimento</h3>
                         <div class="content"></div>
@@ -337,7 +337,7 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/mirele.jpg" />
                         </div>
                         <h3>Mirele Ricardo Andrade</h3>
                         <div class="content"></div>
@@ -357,7 +357,7 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/pedro.jpg" />
                         </div>
                         <h3>Pedro Henrique Mariano Barbosa</h3>
                         <div class="content"></div>
@@ -367,7 +367,7 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/rennan.jpg" />
                         </div>
                         <h3>Rennan Victor Eduardo Oliveira</h3>
                         <div class="content"></div>
@@ -377,7 +377,7 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/thais.jpg" />
                         </div>
                         <h3>Thais Hellen de Sousa Mendes</h3>
                         <div class="content"></div>
@@ -387,7 +387,7 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/victoria.jpg" />
                         </div>
                         <h3>Victória Ellen Paixão dos Santos</h3>
                         <div class="content"></div>
