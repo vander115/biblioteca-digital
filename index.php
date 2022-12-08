@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 require_once 'src/functions/gerar_titulo.php';
 
 require_once 'src/modules/conection.php';
@@ -8,9 +12,6 @@ require_once 'src/pages/private/head.php';
 
 require_once 'src/functions/toast.php';
 
-if (!isset($_SESSION)) {
-    session_start();
-}
 
 if (!isset($_SESSION['user'])) {
 

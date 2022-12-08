@@ -2,19 +2,19 @@
 
 
 <script type="text/javascript">
-
     const modal = document.querySelector('.modal');
 
     const acao = () => {
         modal.style.display = 'flex';
     };
+
     function close() {
         modal.style.display = 'none';
     };
 
-    const button = document.querySelector('.close');
+    const buttonClose = document.querySelector('.close');
 
-    button.addEventListener('click', close, false);
+    buttonClose.addEventListener('click', close, false);
 
     const pass = document.querySelector('#pass');
 

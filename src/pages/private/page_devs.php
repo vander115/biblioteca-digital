@@ -17,18 +17,25 @@
                 <div class="alunos-devs-cont">
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/airtalisson.jpg" />
                         </div>
-                        <h1>Alysson Bernardo Carvalho</h1>
+                        <h3>Airtalison do Nascimento da Silva</h3>
+                        <div class="content"></div>
+                    </div>
+                    <div class="alunos-card">
+                        <div class="img">
+                            <img src="src/assets/devs/alysson.jpg" />
+                        </div>
+                        <h3>Alysson Bernardo Carvalho</h3>
                         <div class="content"></div>
                     </div>
 
                     <!--Terceiro card-->
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/anakecia.jpg" />
                         </div>
-                        <h1>Ana Kecia da Silva</h1>
+                        <h3>Ana Kecia da Silva</h3>
                         <div class="content"></div>
                     </div>
 
@@ -37,33 +44,33 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>André Ribeiro Mendes</h1>
+                        <h3>André Ribeiro Mendes</h3>
                         <div class="content"></div>
                     </div>
 
                     <!--Quinto card-->
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/cintia.jpg" />
                         </div>
-                        <h1>Antônia Cintia Nascimento Queirox</h1>
+                        <h3>Antônia Cintia Nascimento Queirox</h3>
                         <div class="content"></div>
                     </div>
 
                     <!-- Sexto card-->
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/mary.jpg" />
                         </div>
-                        <h1>Antônia Marilane Misquita de Sousa</h1>
+                        <h3>Antônia Marilane Misquita de Sousa</h3>
                         <div class="content"></div>
                     </div>
                     <!-- Sétimo card-->
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/janilson.jpg" />
                         </div>
-                        <h1>Antônio Janilson de Souza Carvalho</h1>
+                        <h3>Antônio Janilson de Souza Carvalho</h3>
                         <div class="content"></div>
                     </div>
 
@@ -71,9 +78,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/ronaldo.jpg" />
                         </div>
-                        <h1>Antônio Ronaldo Oliveira</h1>
+                        <h3>Antônio Ronaldo Oliveira</h3>
                         <div class="content"></div>
                     </div>
 
@@ -83,7 +90,7 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>Caroline Rodrigues Siqueira</h1>
+                        <h3>Caroline Rodrigues Siqueira</h3>
                         <div class="content"></div>
                     </div>
 
@@ -93,7 +100,7 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>Crislano Silva Justino</h1>
+                        <h3>Crislano Silva Justino</h3>
                         <div class="content"></div>
                     </div>
 
@@ -101,9 +108,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/daniel.jpg" />
                         </div>
-                        <h1>Daniel Ripardo Silva</h1>
+                        <h3>Daniel Ripardo Silva</h3>
                         <div class="content"></div>
                     </div>
 
@@ -111,9 +118,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/danilo.jpg" />
                         </div>
-                        <h1>Danilo Victor Pacheco de Lima</h1>
+                        <h3>Danilo Victor Pacheco de Lima</h3>
                         <div class="content"></div>
                     </div>
 
@@ -121,9 +128,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/debora.jpg" />
                         </div>
-                        <h1>Débora Patricy Ferreira Sousa</h1>
+                        <h3>Débora Patricy Ferreira Sousa</h3>
                         <div class="content"></div>
                     </div>
 
@@ -131,9 +138,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/erika.jpg" />
                         </div>
-                        <h1>Erica Mirele Marques Sampaio</h1>
+                        <h3>Erica Mirele Marques Sampaio</h3>
                         <div class="content"></div>
                     </div>
 
@@ -141,9 +148,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/andyl.jpg" />
                         </div>
-                        <h1>Francisco Andyl David Caetano</h1>
+                        <h3>Francisco Andyl David Caetano</h3>
                         <div class="content"></div>
                     </div>
 
@@ -153,7 +160,7 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>Francisco Darlan Lima Marques</h1>
+                        <h3>Francisco Darlan Lima Marques</h3>
                         <div class="content"></div>
                     </div>
 
@@ -163,7 +170,7 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>Gustavo Brito do Nascimento</h1>
+                        <h3>Gustavo Brito do Nascimento</h3>
                         <div class="content"></div>
                     </div>
 
@@ -171,9 +178,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/marcio.jpg" />
                         </div>
-                        <h1>João Márcio Ferreira Lopes</h1>
+                        <h3>João Márcio Ferreira Lopes</h3>
                         <div class="content"></div>
                     </div>
 
@@ -181,9 +188,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/vander.jpg" />
                         </div>
-                        <h1>José Vanderlei Furtuna Tomé</h1>
+                        <h3>José Vanderlei Furtuna Tomé</h3>
                         <div class="content"></div>
                     </div>
 
@@ -191,9 +198,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/josy.jpg" />
                         </div>
-                        <h1>Josilene de Oliveira Paulo</h1>
+                        <h3>Josilene de Oliveira Paulo</h3>
                         <div class="content"></div>
                     </div>
 
@@ -201,9 +208,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/lara.jpg" />
                         </div>
-                        <h1>Lara Stefanny Tomaz Menezes</h1>
+                        <h3>Lara Stefanny Tomaz Menezes</h3>
                         <div class="content"></div>
                     </div>
 
@@ -211,9 +218,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/diely.jpg" />
                         </div>
-                        <h1>Lidiele Carolino Marques</h1>
+                        <h3>Lidiele Carolino Marques</h3>
                         <div class="content"></div>
                     </div>
 
@@ -221,9 +228,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/lorrana.jpg" />
                         </div>
-                        <h1>Lorrana Quele Alvez Silva</h1>
+                        <h3>Lorrana Quele Alvez Silva</h3>
                         <div class="content"></div>
                     </div>
 
@@ -231,9 +238,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/lucas.jpg" />
                         </div>
-                        <h1>Lucas do Nascimento de Oliveira</h1>
+                        <h3>Lucas do Nascimento de Oliveira</h3>
                         <div class="content"></div>
                     </div>
 
@@ -241,9 +248,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/marcelino.jpg" />
                         </div>
-                        <h1>Marcelino Marques da Silva</h1>
+                        <h3>Marcelino Marques da Silva</h3>
                         <div class="content"></div>
                     </div>
 
@@ -251,9 +258,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/bianca.jpg" />
                         </div>
-                        <h1>Maria Bianca Sousa Prestes</h1>
+                        <h3>Maria Bianca Sousa Prestes</h3>
                         <div class="content"></div>
                     </div>
 
@@ -261,9 +268,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/clara.jpg" />
                         </div>
-                        <h1>Maria Clara Luiz Fontelene</h1>
+                        <h3>Maria Clara Luiz Fontelene</h3>
                         <div class="content"></div>
                     </div>
 
@@ -271,9 +278,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/clarisse.jpg" />
                         </div>
-                        <h1>Maria Clarisse Nascimento Franco</h1>
+                        <h3>Maria Clarisse Nascimento Franco</h3>
                         <div class="content"></div>
                     </div>
 
@@ -281,9 +288,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/luciana.jpg" />
                         </div>
-                        <h1>Maria Luciana Morais da Silva</h1>
+                        <h3>Maria Luciana Morais da Silva</h3>
                         <div class="content"></div>
                     </div>
 
@@ -291,9 +298,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/renata.jpg" />
                         </div>
-                        <h1>Maria Renata da Ponte Alves</h1>
+                        <h3>Maria Renata da Ponte Alves</h3>
                         <div class="content"></div>
                     </div>
 
@@ -301,9 +308,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/mario.jpg" />
                         </div>
-                        <h1>Mario André Araújo Albuquerque</h1>
+                        <h3>Mario André Araújo Albuquerque</h3>
                         <div class="content"></div>
                     </div>
                     <!--Trigésimo segundo-->
@@ -312,7 +319,7 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>Maycon Marcelino do Nascimento</h1>
+                        <h3>Maycon Marcelino do Nascimento</h3>
                         <div class="content"></div>
                     </div>
 
@@ -320,9 +327,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/melissa.jpg" />
                         </div>
-                        <h1>Melissa Marques André</h1>
+                        <h3>Melissa Marques André</h3>
                         <div class="content"></div>
                     </div>
 
@@ -332,7 +339,7 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>Mirele Ricardo Andrade</h1>
+                        <h3>Mirele Ricardo Andrade</h3>
                         <div class="content"></div>
                     </div>
 
@@ -340,9 +347,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/natasha.jpg" />
                         </div>
-                        <h1>Natanha Gomes Fidelis</h1>
+                        <h3>Natanha Gomes Fidelis</h3>
                         <div class="content"></div>
                     </div>
 
@@ -352,7 +359,7 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>Pedro Henrique Mariano Barbosa</h1>
+                        <h3>Pedro Henrique Mariano Barbosa</h3>
                         <div class="content"></div>
                     </div>
 
@@ -362,7 +369,7 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>Rennan Victor Eduardo Oliveira</h1>
+                        <h3>Rennan Victor Eduardo Oliveira</h3>
                         <div class="content"></div>
                     </div>
 
@@ -372,7 +379,7 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>Thais Hellen de Sousa Mendes</h1>
+                        <h3>Thais Hellen de Sousa Mendes</h3>
                         <div class="content"></div>
                     </div>
 
@@ -382,7 +389,7 @@
                         <div class="img">
                             <img src="logo" />
                         </div>
-                        <h1>Victória Ellen Paixão dos Santos</h1>
+                        <h3>Victória Ellen Paixão dos Santos</h3>
                         <div class="content"></div>
                     </div>
 
@@ -390,9 +397,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/mary.jpg" />
                         </div>
-                        <h1>Antônia Marilane Misquita de Sousa</h1>
+                        <h3>Antônia Marilane Misquita de Sousa</h3>
                         <div class="content"></div>
                     </div>
 
@@ -400,9 +407,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/welio.jpg" />
                         </div>
-                        <h1>Wellington de Sousa Farias</h1>
+                        <h3>Wellington de Sousa Farias</h3>
                         <div class="content"></div>
                     </div>
 
@@ -410,9 +417,9 @@
 
                     <div class="alunos-card">
                         <div class="img">
-                            <img src="logo" />
+                            <img src="src/assets/devs/willian.jpg" />
                         </div>
-                        <h1>Willian de Souza Mendes</h1>
+                        <h3>Willian de Souza Mendes</h3>
                         <div class="content"></div>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
           </label>
         </div>
       </div>
-      <form class="search" method="GET" action="" name="funcForm" id="funcForm">
+      <form class="search" method="GET">
         <input type="hidden" name="p" value="funcionarios">
         <input type="text" name="qf" placeholder="Pesquisar Funcionário" value="<?php if (isset($_GET['qf'])) echo $_GET['qf']; ?>">
         <button class="icon" title="Pesquisar">
@@ -103,7 +103,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_func/cad_func.php" name="funcForm">
+        <form class="form-modal" method="POST" action="src/modules/page_func/cad_func.php" name="funcForm" id="funcForm">
           <fieldset>
             <label for="">Nome</label>
             <input name="nome" type="text" id="nome">

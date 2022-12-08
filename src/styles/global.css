@@ -564,7 +564,7 @@ input:checked + .show .title {
   margin: 3px;
 }
 .livros .options .option-item label {
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
   font-family: var(--fontFamily);
   font-weight: bold;
@@ -791,7 +791,7 @@ input:checked + .show .title {
   text-decoration: none;
 }
 .livros .livro-cont table tr:hover td {
-  padding: 0.7rem 0.3rem;
+  padding: 0.5rem 0.2rem;
 }
 .livros .livro-cont table tr:active {
   transform: scale(0.95);
@@ -845,7 +845,9 @@ input:checked + .show .title {
   font-size: 2rem;
   background: linear-gradient(var(--gadrientVerde));
   -webkit-background-clip: text;
+  text-shadow: 5px 5px 12px var(--sombraVerde);
   -webkit-text-fill-color: transparent;
+  text-shadow: 5px 5px 12px var(--sombraVerde);
   background-size: 400%;
   animation: gradient 5s ease infinite;
   margin-top: 3rem;
@@ -864,6 +866,7 @@ input:checked + .show .title {
   font-size: 3rem;
   color: var(--corVerde200);
   margin-right: 3rem;
+  text-shadow: 5px 5px 12px var(--sombraVerde);
   background: linear-gradient(var(--gadrientVerde));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -872,6 +875,49 @@ input:checked + .show .title {
   width: 65%;
   font-size: 1.3rem;
   text-align: justify;
+}
+.devs main .alunos-devs h2 {
+  width: 100%;
+  text-align: center;
+  margin: 0 0 2rem 0;
+  font-size: 3rem;
+  text-shadow: 5px 5px 12px var(--sombraVerde);
+  background: linear-gradient(var(--gadrientVerde));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 400%;
+  animation: gradient 5s ease infinite;
+}
+.devs main .alunos-devs .alunos-devs-cont {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.devs main .alunos-devs .alunos-devs-cont .alunos-card {
+  background-color: var(--fundoVerde);
+  width: 15rem;
+  height: 12rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.devs main .alunos-devs .alunos-devs-cont .alunos-card img {
+  width: 6rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius: 5rem;
+}
+.devs main .alunos-devs .alunos-devs-cont .alunos-card h3 {
+  color: var(--corVerde);
+  font-size: 1.2rem;
+  margin: 0.5rem;
 }
 @media screen and (max-width: 900px) {
   .devs main {
@@ -894,7 +940,7 @@ input:checked + .show .title {
     margin: 0 0 2rem 0;
   }
   .devs main .alunos-devs .alunos-devs-cont {
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
   }
@@ -1376,7 +1422,7 @@ input:checked + .show .title {
   margin: 3px;
 }
 .genders .options .option-item label {
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
   font-family: var(--fontFamily);
   font-weight: bold;
@@ -1541,7 +1587,7 @@ input:checked + .show .title {
   margin: 3px;
 }
 .turmas .options .option-item label {
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
   font-family: var(--fontFamily);
   font-weight: bold;
@@ -1963,7 +2009,7 @@ input:checked + .show .title {
   margin: 3px;
 }
 .requisicoes .options .option-item label {
-  font-size: 15px;
+  font-size: 13px;
   text-align: center;
   font-family: var(--fontFamily);
   font-weight: bold;

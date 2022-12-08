@@ -4,31 +4,43 @@ function gerarTitulo()
   (isset($_GET['p'])) ? $titulo_pagina = $_GET['p'] : $titulo_pagina = 'home';
   switch ($titulo_pagina) {
     case 'home':
-      $titulo = "Início";
+      $titulo = "BD - Início";
       break;
 
     case 'livros':
-      $titulo = "Livros";
+      $titulo = "BD - Livros";
       break;
 
     case 'genders':
-      $titulo = 'Gêneros';
+      $titulo = 'BD - Gêneros';
       break;
 
     case 'devs':
-      $titulo = 'Desenvolvedores';
+      $titulo = 'BD - Desenvolvedores';
       break;
 
     case 'turmas':
-      $titulo = 'Turmas';
+      $titulo = 'BD - Turmas';
       break;
 
     case 'alunos':
-      $titulo = 'Alunos';
+      $titulo = 'BD - Alunos';
+      break;
+
+    case 'funcionarios';
+      $titulo = 'BD - Funcionários';
+      break;
+
+    case 'requisicoes':
+      $titulo = 'BD - Requisições';
+      break;
+
+    case 'dados':
+      $titulo = 'BD - Dados';
       break;
 
     default:
-      $titulo = "Início";
+      $titulo = "Biblioteca Digital";
       break;
   }
   return $titulo;

@@ -17,7 +17,11 @@ if (isset($_GET['pr'])) {
   $date = date('Y-m-d');
   $dataAtual = new DateTime($date);
   $dataEntrega = new DateTime($req_modal['dataEntregaReq']);
-  $diasRestantes = $dataEntrega->diff($dataAtual)->format('%a');
+  if ($dataEntrega >= $dataAtual) {
+    $diasRestantes = $dataEntrega->diff($dataAtual)->format('%a');
+  } else {
+    $diasRestantes = 0;
+  }
 ?>
 
   <main class="cont"></main>
@@ -274,6 +278,14 @@ if (isset($_GET['pr'])) {
             Ver Pendentes
           </label>
         </div>
+        <a class="option-item trigger" href="excel/req.php">
+          <span class="material-symbols-rounded">
+            receipt_long
+          </span>
+          <label for="">
+            Relatório Pendentes
+          </label>
+        </a>
       </div>
       <form class="search" method="GET" action="">
         <input type="hidden" name="p" value="requisicoes">
@@ -305,7 +317,11 @@ if (isset($_GET['pr'])) {
               $date = date('Y-m-d');
               $dataAtual = new DateTime($date);
               $dataEntrega = new DateTime($req['dataEntregaReq']);
-              $diasRestantes = $dataEntrega->diff($dataAtual)->format('%a');
+              if ($dataEntrega >= $dataAtual) {
+                $diasRestantes = $dataEntrega->diff($dataAtual)->format('%a');
+              } else {
+                $diasRestantes = 0;
+              }
 
               setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
               date_default_timezone_set('America/Sao_Paulo');
@@ -331,7 +347,7 @@ if (isset($_GET['pr'])) {
                     <section class='book'>
                       <h2>Livro:</h2>
                       <p><?php echo $req['tituloLivro'] ?></p>
-                      <h3>3º Informática</h3>
+                      <h3><?php echo $req['autorLivro'] ?></h3>
                     </section>
                     <section class='infomations'>
                       <div>

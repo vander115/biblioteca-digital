@@ -22,7 +22,7 @@ $tipoIdent = $_POST['tipo-ident'];
 $ident  = $_POST['ident'];
 $prazo = $_POST['prazo'];
 
-$dataAtual = date('Y-m-d');
+$dataAtual = date("Y-m-d");
 
 $dataEntrega = date("Y-m-d", strtotime("+{$prazo} days", strtotime($dataAtual)));
 

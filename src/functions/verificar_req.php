@@ -11,7 +11,11 @@ function verificarReq()
 
       $dataEnt = new DateTime($req_ver['dataEntregaReq']);
       $dataNow = new DateTime(date("Y-m-d"));
-      $diasRest = $dataEnt->diff($dataNow)->format('%a');
+      if ($dataEnt >= $dataNow) {
+        $diasRest = $dataEnt->diff($dataNow)->format('%a');
+      } else {
+        $diasRest = 0;
+      }
 
       if ($diasRest <= 0 and $req_ver['statusReq'] == 'ativa') {
         mysqli_query($conn, "UPDATE tb_req SET statusReq ='pendente' WHERE idReq = '$idReq';");

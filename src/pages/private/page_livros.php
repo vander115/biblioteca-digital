@@ -18,7 +18,7 @@ if (!isset($_GET['edit_livro']) and !isset($_GET['editar_livro'])) {
                         Adicionar Livro
                     </label>
                 </div>
-                <a class="option-item trigger" target="_blank" href="excel/index.php">
+                <a class="option-item trigger" href="excel/index.php">
                     <span class="material-symbols-rounded">
                         receipt_long
                     </span>

@@ -66,11 +66,6 @@
             </span>Dados
         </li>
 
-        <li class="list">
-            <span class="material-symbols-rounded">
-                tips_and_updates
-            </span>Sobre Nós
-        </li>
 
         <li class="list <?php active('devs') ?>" onclick="location.href='?p=devs'">
             <span class="material-symbols-rounded">
