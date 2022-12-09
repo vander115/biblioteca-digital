@@ -810,6 +810,131 @@ input:checked + .show .title {
   background-color: var(--fundoFoscoVerde);
 }
 
+.ranking {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.ranking .back {
+  position: absolute;
+  border: 0;
+  outline: 0;
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--corLaranja);
+  text-decoration: none;
+  color: white;
+  border-radius: 1rem;
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ranking h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  background: linear-gradient(var(--gadrientVerde));
+  -webkit-background-clip: text;
+  text-shadow: 5px 5px 12px var(--sombraVerde);
+  -webkit-text-fill-color: transparent;
+  text-shadow: 5px 5px 12px var(--sombraVerde);
+  background-size: 400%;
+  animation: gradient 5s ease infinite;
+  margin-top: 3rem;
+}
+.ranking .rules {
+  width: 80%;
+  height: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-image: linear-gradient(var(--gadrientLaranja));
+  border-radius: 1rem;
+  position: relative;
+  transform: all 0.5s ease;
+}
+.ranking .rules .header {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  height: 3rem;
+}
+.ranking .rules .header span {
+  margin: 1rem;
+  color: white;
+}
+.ranking .rules .info {
+  display: none;
+  transition: 0.5s ease;
+}
+.ranking .rules .info p {
+  margin: 0;
+  padding: 1rem;
+  color: white;
+}
+.ranking .rules:hover {
+  height: 100%;
+}
+.ranking .rules:hover .info {
+  display: flex;
+}
+.ranking .ranking-cont {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ranking .ranking-cont table {
+  width: 80%;
+  max-width: 75rem;
+  border-collapse: collapse;
+  margin: 1rem;
+  border: 0;
+}
+.ranking .ranking-cont table th,
+.ranking .ranking-cont table td {
+  padding: 0.1rem 0.2rem;
+  border-top: 1px solid var(--corVerde200);
+  border-bottom: 1px solid var(--corVerde200);
+}
+.ranking .ranking-cont table th .edit-livro,
+.ranking .ranking-cont table td .edit-livro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 35px;
+  color: white;
+  border-radius: 2rem;
+  background: var(--corVerde200);
+  cursor: pointer;
+  text-decoration: none;
+}
+.ranking .ranking-cont table tr:hover td {
+  padding: 0.5rem 0.2rem;
+}
+.ranking .ranking-cont table tr:active {
+  transform: scale(0.95);
+  opacity: 0.7;
+}
+.ranking .ranking-cont table thead th {
+  text-align: left;
+}
+.ranking .ranking-cont table tbody tr.indisp {
+  background-color: lightgrey !important;
+}
+.ranking .ranking-cont table tbody tr:nth-child(even) {
+  background-color: var(--fundoFosco);
+}
+.ranking .ranking-cont table tbody tr:nth-child(odd) {
+  background-color: var(--fundoFoscoVerde);
+}
+
 .devs {
   display: flex;
   flex-direction: column;
