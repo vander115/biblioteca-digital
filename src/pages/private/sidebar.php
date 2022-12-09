@@ -62,8 +62,8 @@
 
         <li class="list <?php active('dados') ?>" onclick="location.href='?p=dados'">
             <span class="material-symbols-rounded">
-                description
-            </span>Dados
+                info
+            </span>Sistema
         </li>
 
 

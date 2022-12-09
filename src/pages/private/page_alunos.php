@@ -1,5 +1,5 @@
 <?php
-if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
+if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset($_GET['ranking'])) {
 ?>
 
 
@@ -13,6 +13,15 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
           </span>
           <label for="">
             Cadrastar Aluno
+          </label>
+        </div>
+        <div class="option-item trigger" onclick="location.href='?p=alunos&ranking'">
+          <span class="material-symbols-rounded">
+            diamond
+          </span>
+          <label for="">
+            Ranking
+            Leitores
           </label>
         </div>
       </div>
@@ -322,6 +331,63 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno'])) {
       </div>
     </div>
   </div>
+
+<?php } else if (isset($_GET['ranking'])) {
+
+  require 'src/modules/conection.php';
+
+  $raking = mysqli_query($conn, "SELECT p.nomePessoa, t.nomeTurma, SUM(r.qtdReq) 'num' FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_turma AS t ON r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE p.statusPessoa = 'ativo' AND p.tipoPessoa = 'aluno' GROUP BY p.idPessoa ORDER BY num DESC, p.nomePessoa ASC;");
+
+?>
+
+  <main class="cont">
+    <section class="ranking">
+      <a class="back" href="?p=alunos">
+        <span class="material-symbols-rounded">
+          close
+        </span>
+      </a>
+      <h1>Raking de Alunos Leitores</h1>
+      <div class="rules">
+        <div class="header">
+          <span class="material-symbols-rounded">
+            privacy_tip
+          </span>
+          <p>Regras de Desempate</p>
+        </div>
+        <div class="info">
+          <p>O objetivo do raking é listar os alunos que MAIS LERAM LIVROS da biblioteca. Caso alguns alunos tenha efetuado a mesma quantidade de leituras, seja essa quantidade qual for, o sistema irá ordena-los na lista por ORDEM ALFABÉTICA. NENHUM dado como turma, gênero ou idade pode ser utilizado como parametros desse raking.</p>
+        </div>
+      </div>
+      <div class="ranking-cont">
+        <table>
+          <tr>
+            <th>Nº</th>
+            <th>Nome</th>
+            <th>Turma</th>
+            <th>Leituras</th>
+          </tr>
+          <?php
+          if ($raking) {
+            $number = 1;
+            while ($rank = mysqli_fetch_assoc($raking)) {
+          ?>
+              <tr>
+                <td><?php echo $number ?></td>
+                <td><?php echo $rank['nomePessoa'] ?></td>
+                <td><?php echo $rank['nomeTurma'] ?></td>
+                <td><?php echo $rank['num'] ?></td>
+              </tr>
+          <?php
+              $number = $number + 1;
+            }
+          }
+          ?>
+        </table>
+      </div>
+    </section>
+
+  </main>
 
 <?php } ?>
 
