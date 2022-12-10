@@ -306,9 +306,9 @@ if (isset($_GET['pr'])) {
 
           if (isset($_GET['qr'])) {
             $qr = mb_strtoupper(trim($_GET['qr']));
-            $sql_req = "SELECT p.nomePessoa, p.tipoPessoa, l.tituloLivro, l.autorLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma, t.idTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE statusReq != 'concluida' AND CONCAT(p.nomePessoa, p.tipoPessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma) LIKE '%$qr%' ORDER BY r.dataEntregaReq;";
+            $sql_req = "SELECT p.nomePessoa, p.tipoPessoa, l.tituloLivro, l.autorLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma, t.idTurma, t.statusTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE statusReq != 'concluida' AND CONCAT(p.nomePessoa, p.tipoPessoa, l.tituloLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma) LIKE '%$qr%' ORDER BY r.dataEntregaReq;";
           } else {
-            $sql_req = "SELECT p.nomePessoa, p.tipoPessoa, l.tituloLivro, l.autorLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma, t.idTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE statusReq != 'concluida' ORDER BY r.dataEntregaReq;";
+            $sql_req = "SELECT p.nomePessoa, p.tipoPessoa, l.tituloLivro, l.autorLivro, r.dataReq, r.dataEntregaReq, r.statusReq, r.idReq, t.nomeTurma, t.anoTurma, t.idTurma, t.statusTurma FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_livros AS l JOIN tb_turma as t ON r.idLivro = l.idLivro AND r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE statusReq != 'concluida' ORDER BY r.dataEntregaReq;";
           }
 
           $query_req = mysqli_query($conn, $sql_req);
@@ -340,7 +340,12 @@ if (isset($_GET['pr'])) {
                         <?php if ($req['idTurma'] == 0) {
                           echo $req['tipoPessoa'];
                         } else {
-                          echo $req['anoTurma'] . 'º ' . $req['nomeTurma'];
+                          if ($req['statusTurma'] != 'concluida') {
+                            echo $req['anoTurma'] . 'º ' . $req['nomeTurma'];
+                          } else {
+                            $data_old = intval(date("Y")) - 1;
+                            echo $req['anoTurma'] . 'º ' . $req['nomeTurma'] . ' - ' . $data_old;
+                          }
                         } ?>
                       </h3>
                     </section>

@@ -56,8 +56,17 @@ if (!isset($_SESSION['req']['livro']) and !isset($_SESSION['req']['aluno']) and 
     $idLivro = $_SESSION['req']['livro'];
     $idFunc = $_SESSION['req']['func'];
     $query_validar_req = mysqli_query($conn, "SELECT * FROM tb_req WHERE idLivro = '$idLivro' AND idPessoa = '$idFunc' AND statusReq != 'concluida';");
-    if (mysqli_num_rows($query_validar_req)) {
+    $query_validar_quantidade = mysqli_query($conn, "SELECT * FROM tb_livros WHERE idLivro = '$idLivro' AND qtdLivro = 0;");
+    if (mysqli_num_rows($query_validar_req) and !mysqli_num_rows($query_validar_quantidade)) {
       $_SESSION['toast_error'] = "Essa requisição já existe!";
+      header('Location: ../../../index.php?p=requisicoes');
+      unset($_SESSION['req']);
+    } else if (!mysqli_num_rows($query_validar_req) and mysqli_num_rows($query_validar_quantidade)) {
+      $_SESSION['toast_error'] = "O livro escolhido não está disponível";
+      header('Location: ../../../index.php?p=requisicoes');
+      unset($_SESSION['req']);
+    } else if (mysqli_num_rows($query_validar_req) and mysqli_num_rows($query_validar_quantidade)) {
+      $_SESSION['toast_error'] = "Essa requisição não pode ser efetuada";
       header('Location: ../../../index.php?p=requisicoes');
       unset($_SESSION['req']);
     } else {
