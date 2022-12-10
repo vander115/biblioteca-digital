@@ -59,7 +59,7 @@ if (!isset($_GET['edit_turma'])) {
               <?php
               while ($turma = mysqli_fetch_assoc($query)) {
               ?>
-                <div class="card-cont">
+                <div class="card-cont" onclick="location.href='<?php echo '?p=alunos&y=' . $turma['anoTurma'] . '&n=' . $turma['nomeTurma']; ?>'">
                   <div class="card-turma">
                     <h1><?php echo $turma['anoTurma'] . 'º'; ?></h1>
                     <section>

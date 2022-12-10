@@ -50,7 +50,7 @@ if ($verificar) {
   }
 
   if ($query_mudar_qtd) {
-    $query_cad_req = mysqli_query($conn, "INSERT INTO tb_req VALUES(0, '$idPessoa', '$idLivro', '$dataAtual', '$dataEntrega', 'ativa');");
+    $query_cad_req = mysqli_query($conn, "INSERT INTO tb_req VALUES(0, '$idPessoa', '$idLivro', '$dataAtual', '$dataEntrega', 'ativa', 1);");
 
     if ($query_cad_req) {
       $_SESSION['toast_success'] = "Requisição criada com sucesso!";

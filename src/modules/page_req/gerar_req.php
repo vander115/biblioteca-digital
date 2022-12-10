@@ -68,4 +68,7 @@ if (!isset($_SESSION['req']['livro']) and !isset($_SESSION['req']['aluno']) and 
 } else if (isset($_SESSION['req']['livro']) and !isset($_SESSION['req']['aluno']) and !isset($_SESSION['req']['func'])) {
   $_SESSION['toast_aviso'] = "ESCOLHA UM ALUNO:";
   header('Location: ../../../index.php?p=alunos');
+} else if (isset($_SESSION['req']['livro']) and isset($_SESSION['req']['aluno']) and isset($_SESSION['req']['func'])) {
+  $_SESSION['toast_aviso'] = "Não foi possível alterar pessoa!";
+  header('Location: ../../../index.php?p=requisicoes');
 }
