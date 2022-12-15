@@ -46,12 +46,12 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
           if (isset($_GET['y']) and isset($_GET['n'])) {
             $y = trim($_GET['y']);
             $n = mb_strtoupper(trim($_GET['n']));
-            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 'funcionario' AND turmaPessoa = '$id_turma' AND statusPessoa != 'inativo' AND statusTurma != 'concluida' AND nomeTurma = '$n' AND anoTurma = '$y' ORDER BY turmaPessoa, nomePessoa;";
+            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 'funcionarios' AND turmaPessoa = '$id_turma' AND statusPessoa != 'inativo' AND statusTurma != 'concluida' AND nomeTurma = '$n' AND anoTurma = '$y' ORDER BY turmaPessoa, nomePessoa;";
           } else if (isset($_GET['qa'])) {
             $qa = mb_strtoupper(trim($_GET['qa']));
-            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 'funcionario' AND turmaPessoa = '$id_turma' AND statusPessoa != 'inativo' AND statusTurma != 'concluida' AND CONCAT(nomePessoa, nomeTurma, anoTurma) LIKE '%$qa%' ORDER BY turmaPessoa, nomePessoa;";
+            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 'funcionarios' AND turmaPessoa = '$id_turma' AND statusPessoa != 'inativo' AND statusTurma != 'concluida' AND CONCAT(nomePessoa, nomeTurma, anoTurma) LIKE '%$qa%' ORDER BY turmaPessoa, nomePessoa;";
           } else {
-            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 'funcionario' AND turmaPessoa = '$id_turma' AND statusPessoa != 'inativo' AND statusTurma != 'concluida' ORDER BY turmaPessoa, nomePessoa; ";
+            $sql_aluno = "SELECT * FROM tb_pessoa AS p JOIN tb_turma AS t ON p.turmaPessoa = t.idTurma WHERE idTurma != 'funcionarios' AND turmaPessoa = '$id_turma' AND statusPessoa != 'inativo' AND statusTurma != 'concluida' ORDER BY turmaPessoa, nomePessoa; ";
           }
 
           $query_aluno_info = mysqli_query($conn, $sql_aluno);
@@ -135,7 +135,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
               <?php
               require 'src/modules/conection.php';
 
-              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma WHERE idTurma != '0' ORDER BY anoTurma, nomeTurma;");
+              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma WHERE idTurma != 'funcionarios' ORDER BY anoTurma, nomeTurma;");
 
               if ($query_turma_aluno) {
                 while ($turmas = mysqli_fetch_assoc($query_turma_aluno)) {
@@ -209,7 +209,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
               <?php
               require 'src/modules/conection.php';
 
-              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma WHERE idTurma != 0 ORDER BY anoTurma, nomeTurma;");
+              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma WHERE idTurma != 'funcionarios' ORDER BY anoTurma, nomeTurma;");
 
               if ($query_turma_aluno) {
                 while ($turmas = mysqli_fetch_assoc($query_turma_aluno)) {
@@ -285,7 +285,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
               <?php
               require 'src/modules/conection.php';
 
-              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma WHERE idTurma != 0 ORDER BY anoTurma, nomeTurma;");
+              $query_turma_aluno = mysqli_query($conn, "SELECT * FROM tb_turma WHERE idTurma != 'funcionarios' ORDER BY anoTurma, nomeTurma;");
 
               if ($query_turma_aluno) {
                 while ($turmas = mysqli_fetch_assoc($query_turma_aluno)) {

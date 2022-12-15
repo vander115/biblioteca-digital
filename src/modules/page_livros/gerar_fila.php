@@ -1,11 +1,11 @@
 <?php
+if (!isset($_SESSION)) {
+  session_start();
+}
 
 require '../../pages/public/page_loading.php';
 require '../conection.php';
 
-if (!isset($_SESSION)) {
-  session_start();
-}
 
 if (isset($_GET['id_livro_fila'])) {
   $id_l = $_GET['id_livro_fila'];

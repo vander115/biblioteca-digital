@@ -1,10 +1,10 @@
 <?php
-require '../../pages/public/page_loading.php';
-require '../conection.php';
-
 if (!isset($_SESSION)) {
   session_start();
 }
+require '../../pages/public/page_loading.php';
+require '../conection.php';
+
 
 $id = $_GET['del_turma'];
 $query_del_alunos = mysqli_query($conn, "DELETE FROM tb_pessoa WHERE turmaPessoa = '$id';");

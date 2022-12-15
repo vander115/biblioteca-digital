@@ -1,10 +1,11 @@
 <?php
-require '../../pages/public/page_loading.php';
-require '../conection.php';
-
 if (!isset($_SESSION)) {
   session_start();
 }
+
+require '../../pages/public/page_loading.php';
+require '../conection.php';
+
 $id = uniqid('func_', true) . uniqid();
 $nome = trim(mb_strtoupper($_POST['nome']));
 $tipo = $_POST['tipo'];

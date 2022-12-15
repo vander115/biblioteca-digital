@@ -1,10 +1,11 @@
 <?php
-require '../../pages/public/page_loading.php';
-require '../conection.php';
-
 if (!isset($_SESSION)) {
   session_start();
 }
+
+require '../../pages/public/page_loading.php';
+require '../conection.php';
+
 
 $id = uniqid('aluno_', true) . uniqid();
 $nome = mb_strtoupper($_POST['nome']);

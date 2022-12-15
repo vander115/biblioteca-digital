@@ -1,4 +1,9 @@
 <?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 function toast_success()
 {
     if (isset($_SESSION['toast_success'])) {

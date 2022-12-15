@@ -1,9 +1,9 @@
 <?php
-require '../../pages/public/page_loading.php';
-
 if (!isset($_SESSION)) {
   session_start();
 }
+require '../../pages/public/page_loading.php';
+
 
 if (!isset($_SESSION['user'])) {
 

@@ -1,14 +1,14 @@
 <?php
+//Iniciar uma sessão caso não exista uma.
+if (!isset($_SESSION)) {
+    session_start();
+}
 
 // Conexão com o BD.
 require '../pages/public/page_loading.php';
 require_once './conection.php';
 
 
-//Iniciar uma sessão caso não exista uma.
-if (!isset($_SESSION)) {
-    session_start();
-}
 
 
 // Validação do Usuário.
