@@ -1,5 +1,6 @@
 <?php
 
+require '../../pages/public/page_loading.php';
 require_once '../conection.php';
 
 if (!isset($_SESSION)) {

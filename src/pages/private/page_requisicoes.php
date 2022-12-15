@@ -202,10 +202,29 @@ if (isset($_GET['pr'])) {
                   </select>
                 </div>
                 <div>
-                  <label for="">Identificação do Aluno: <?php echo $pessoa['tipoIdentPessoa'] ?></label>
+                  <label for="">Identificação do <?php if ($pessoa['tipoPessoa'] == 'Aluno') {
+                                                    echo 'Aluno';
+                                                  } else {
+                                                    echo 'Funcionário';
+                                                  } ?>: <?php echo $pessoa['tipoIdentPessoa'] ?></label>
                   <input type="text" name="ident">
                 </div>
 
+                <?php if ($pessoa['tipoPessoa'] == 'Professor') {
+                ?>
+                  <div class="dias">
+                    <label for="">Quantidade:</label>
+                    <div class="dias-input">
+                      <span class="next-qtd"></span>
+                      <span class="prev-qtd"></span>
+                      <input id="qtd" type="number" name="qtd" value="1">
+                    </div>
+                  </div>
+                <?php
+                } else {
+                ?>
+                  <input type="hidden" name="qtd" value="1">
+                <?php } ?>
                 <div class="dias">
                   <label for="">Prazo: Dias</label>
                   <div class="dias-input">
@@ -236,22 +255,43 @@ if (isset($_GET['pr'])) {
     </main>
 
     <script type="text/javascript">
-      const inputQtd = document.getElementById('number');
+      const inputQtd = document.getElementById('qtd');
+      const nextQtd = document.querySelector('.next-qtd');
+      const prevQtd = document.querySelector('.prev-qtd');
+
+      const inputPrazo = document.getElementById('number');
       const next = document.querySelector('.next');
       const prev = document.querySelector('.prev');
 
+      const qtdLivro = <?php echo $livro['qtdLivro']; ?>;
+
       const nextNum = () => {
-        inputQtd.value = Number(inputQtd.value) + 5;
+        inputPrazo.value = Number(inputPrazo.value) + 5;
       };
 
       const prevNum = () => {
-        if (inputQtd.value != 5) {
-          inputQtd.value = Number(inputQtd.value) - 5;
+        if (inputPrazo.value != 5) {
+          inputPrazo.value = Number(inputPrazo.value) - 5;
+        }
+      };
+
+      const nextNumQtd = () => {
+        if (inputQtd.value < qtdLivro) {
+          inputQtd.value = Number(inputQtd.value) + 1;
+        }
+      };
+
+      const prevNumQtd = () => {
+        if (inputQtd.value != 1) {
+          inputQtd.value = Number(inputQtd.value) - 1;
         }
       };
 
       next.addEventListener('click', nextNum, false);
       prev.addEventListener('click', prevNum, false);
+
+      nextQtd.addEventListener('click', nextNumQtd, false);
+      prevQtd.addEventListener('click', prevNumQtd, false);
     </script>
 
   <?php

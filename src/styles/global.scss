@@ -1487,7 +1487,8 @@ input:checked + .show .title {
               position: relative;
               width: 100%;
               margin: 0;
-              .next {
+              .next,
+              .next-qtd {
                 position: absolute;
                 top: 50%;
                 right: 20px;
@@ -1500,7 +1501,8 @@ input:checked + .show .title {
                 transform: translateY(-20%) rotate(45deg);
                 cursor: pointer;
               }
-              .prev {
+              .prev,
+              .prev-qtd {
                 position: absolute;
                 top: 50%;
                 left: 20px;
@@ -2745,7 +2747,8 @@ input:checked + .show .title {
               position: relative;
               width: 100%;
               margin: 0;
-              .next {
+              .next,
+              .next-qtd {
                 position: absolute;
                 top: 50%;
                 right: 20px;
@@ -2758,7 +2761,8 @@ input:checked + .show .title {
                 transform: translateY(-20%) rotate(45deg);
                 cursor: pointer;
               }
-              .prev {
+              .prev,
+              .prev-qtd {
                 position: absolute;
                 top: 50%;
                 left: 20px;

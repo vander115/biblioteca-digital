@@ -1,5 +1,5 @@
 <?php
-
+require '../../pages/public/page_loading.php';
 require '../conection.php';
 
 if (!isset($_SESSION)) {
@@ -12,7 +12,9 @@ $tipoIdent = $_POST['tipoIdent'];
 $ident = trim($_POST['ident']);
 $ident_hash = password_hash($ident, PASSWORD_DEFAULT);
 
-$query_cad_aluno = mysqli_query($conn, "INSERT INTO tb_pessoa VALUES('$id', '$nome', '$tipo', 0, '$tipoIdent', '$ident_hash', 'ativo');");
+$query_cad_aluno = mysqli_query($conn, "INSERT INTO tb_pessoa VALUES('$id', '$nome', '$tipo', 'funcionarios', '$tipoIdent', '$ident_hash', 'ativo');");
+
+echo var_dump($query_cad_aluno);
 
 if ($query_cad_aluno) {
   $_SESSION['toast_success'] = "Funcionário cadrastado com sucesso!";

@@ -1,4 +1,5 @@
 <?php
+require '../../pages/public/page_loading.php';
 require '../conection.php';
 
 if (!isset($_SESSION)) {
@@ -21,6 +22,7 @@ $idPessoa = $_POST['id-pessoa'];
 $idLivro = $_POST['id-livro'];
 $tipoIdent = $_POST['tipo-ident'];
 $ident  = $_POST['ident'];
+$qtd_livros = $_POST['qtd'];
 $prazo = $_POST['prazo'];
 
 $dataAtual = date("Y-m-d");
@@ -43,7 +45,7 @@ if ($tipoIdent == 1) {
 if ($verificar) {
   $query_qtd = mysqli_query($conn, "SELECT qtdLivro FROM tb_livros WHERE idLivro ='$idLivro';");
   $livro = mysqli_fetch_assoc($query_qtd);
-  $nova_qtd = $livro['qtdLivro'] - 1;
+  $nova_qtd = $livro['qtdLivro'] - $qtd_livros;
   if ($nova_qtd > 0) {
     $query_mudar_qtd = mysqli_query($conn, "UPDATE tb_livros SET qtdLivro ='$nova_qtd' WHERE idLivro = '$idLivro';");
   } else {
@@ -51,7 +53,7 @@ if ($verificar) {
   }
 
   if ($query_mudar_qtd) {
-    $query_cad_req = mysqli_query($conn, "INSERT INTO tb_req VALUES('$idReq', '$idPessoa', '$idLivro', '$dataAtual', '$dataEntrega', 'ativa', 1);");
+    $query_cad_req = mysqli_query($conn, "INSERT INTO tb_req VALUES('$idReq', '$idPessoa', '$idLivro', '$dataAtual', '$dataEntrega', 'ativa', '$qtd_livros');");
 
     if ($query_cad_req) {
       $_SESSION['toast_success'] = "Requisição criada com sucesso!";

@@ -2,6 +2,7 @@
 if (!isset($_SESSION)) {
   session_start();
 }
+require '../../pages/public/page_loading.php';
 require '../conection.php';
 
 $idReq = $_POST['id'];

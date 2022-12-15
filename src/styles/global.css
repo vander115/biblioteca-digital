@@ -121,9 +121,19 @@ body {
   height: 200%;
   left: 20px;
   border-radius: 10rem;
-  animation: bar 15s infinite ease;
+  -webkit-animation: bar 15s infinite ease;
+          animation: bar 15s infinite ease;
   background-image: linear-gradient(var(--gadrientVerde));
   position: fixed;
+}
+
+@-webkit-keyframes bar {
+  0% {
+    top: -200%;
+  }
+  100% {
+    top: 200%;
+  }
 }
 
 @keyframes bar {
@@ -132,6 +142,17 @@ body {
   }
   100% {
     top: 200%;
+  }
+}
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 @keyframes gradient {
@@ -163,7 +184,8 @@ body {
   height: 45px;
   background-image: linear-gradient(var(--gadrientVerde));
   background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
+  -webkit-animation: gradient 10s ease infinite;
+          animation: gradient 10s ease infinite;
   border-radius: 0 10rem 10rem 0;
 }
 
@@ -172,7 +194,8 @@ body {
   height: 45px;
   background-image: linear-gradient(var(--gadrientVerde));
   background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
+  -webkit-animation: gradient 10s ease infinite;
+          animation: gradient 10s ease infinite;
   border-radius: 0 10rem 10rem 0;
 }
 
@@ -182,7 +205,8 @@ body {
   border-radius: 0 10rem 10rem 0;
   background-image: linear-gradient(var(--gadrientLaranja));
   background-size: 800% 800%;
-  animation: gradient 10s ease infinite;
+  -webkit-animation: gradient 10s ease infinite;
+          animation: gradient 10s ease infinite;
 }
 
 #login-form {
@@ -191,7 +215,8 @@ body {
   align-items: center;
   z-index: 1;
   background-color: var(--fundoFosco);
-  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
   width: 18.75rem;
   height: 25rem;
   border-radius: 2rem;
@@ -221,6 +246,26 @@ body {
   transition: all 0.3s ease;
 }
 
+.oneline > input::-moz-placeholder {
+  color: var(--corVerde200);
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  margin-left: 20px;
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.oneline > input:-ms-input-placeholder {
+  color: var(--corVerde200);
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  margin-left: 20px;
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
 .oneline > input::placeholder {
   color: var(--corVerde200);
   font-weight: 600;
@@ -228,6 +273,22 @@ body {
   margin-left: 20px;
   font-size: 15px;
   transition: all 0.3s ease;
+}
+
+.oneline > input:focus::-moz-placeholder {
+  color: var(--corLaranja200);
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  margin-left: 20px;
+  font-size: 15px;
+}
+
+.oneline > input:focus:-ms-input-placeholder {
+  color: var(--corLaranja200);
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  margin-left: 20px;
+  font-size: 15px;
 }
 
 .oneline > input:focus::placeholder {
@@ -274,7 +335,6 @@ body {
   bottom: 0;
   background-color: var(--fundoFosco);
   box-shadow: 0px 0px 15px var(--sombraVerde);
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -286,7 +346,6 @@ body {
   left: 4px;
   bottom: 3px;
   background-color: var(--corVerde);
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -297,8 +356,6 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   background-color: white;
-  -webkit-transform: translateX(28px);
-  -ms-transform: translateX(28px);
   transform: translateX(28px);
 }
 
@@ -402,7 +459,8 @@ input:checked + .show .title {
   border-radius: 50%;
   background: linear-gradient(var(--gadrientLaranja));
   background-size: 400%;
-  animation: gradient 1s ease infinite;
+  -webkit-animation: gradient 1s ease infinite;
+          animation: gradient 1s ease infinite;
   top: 9px;
   left: 37px;
   z-index: 1;
@@ -509,7 +567,8 @@ input:checked + .show .title {
   padding: 2rem;
   background-color: var(--fundoFoscoVerde);
   border-radius: 1rem;
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 .home header h1 span {
   color: var(--corLaranja);
@@ -620,6 +679,24 @@ input:checked + .show .title {
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
 }
+.livros .search input::-moz-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--corVerde);
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
+.livros .search input:-ms-input-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--corVerde);
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
 .livros .search input::placeholder {
   margin: 10px;
   font-weight: bold;
@@ -635,6 +712,12 @@ input:checked + .show .title {
   color: var(--corTextoLaranja200);
   border: none;
   font-family: var(--fontFamily);
+}
+.livros .search input:focus::-moz-placeholder {
+  color: var(--corLaranja200);
+}
+.livros .search input:focus:-ms-input-placeholder {
+  color: var(--corLaranja200);
 }
 .livros .search input:focus::placeholder {
   color: var(--corLaranja200);
@@ -843,7 +926,8 @@ input:checked + .show .title {
   -webkit-text-fill-color: transparent;
   text-shadow: 5px 5px 12px var(--sombraVerde);
   background-size: 400%;
-  animation: gradient 5s ease infinite;
+  -webkit-animation: gradient 5s ease infinite;
+          animation: gradient 5s ease infinite;
   margin-top: 3rem;
 }
 .ranking .rules {
@@ -974,7 +1058,8 @@ input:checked + .show .title {
   -webkit-text-fill-color: transparent;
   text-shadow: 5px 5px 12px var(--sombraVerde);
   background-size: 400%;
-  animation: gradient 5s ease infinite;
+  -webkit-animation: gradient 5s ease infinite;
+          animation: gradient 5s ease infinite;
   margin-top: 3rem;
 }
 .devs main .sobre-nos {
@@ -1011,7 +1096,8 @@ input:checked + .show .title {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 400%;
-  animation: gradient 5s ease infinite;
+  -webkit-animation: gradient 5s ease infinite;
+          animation: gradient 5s ease infinite;
 }
 .devs main .alunos-devs .alunos-devs-cont {
   width: 100%;
@@ -1036,7 +1122,8 @@ input:checked + .show .title {
 .devs main .alunos-devs .alunos-devs-cont .alunos-card img {
   width: 6rem;
   height: 6rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 5rem;
 }
 .devs main .alunos-devs .alunos-devs-cont .alunos-card h3 {
@@ -1085,7 +1172,8 @@ input:checked + .show .title {
   width: 100vw;
   height: 100vh;
   background-color: var(--sombraLaranja);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   position: absolute;
   margin: auto;
   z-index: 1000;
@@ -1096,7 +1184,8 @@ input:checked + .show .title {
   display: flex;
 }
 .modal .modal-cont {
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   margin: auto auto;
   background-color: var(--fundoFosco);
   min-width: 450px;
@@ -1438,7 +1527,8 @@ input:checked + .show .title {
   width: 100%;
   margin: 0;
 }
-.modal .modal-main .req-info .req-dias form main .dias-input .next {
+.modal .modal-main .req-info .req-dias form main .dias-input .next,
+.modal .modal-main .req-info .req-dias form main .dias-input .next-qtd {
   position: absolute;
   top: 50%;
   right: 20px;
@@ -1451,7 +1541,8 @@ input:checked + .show .title {
   transform: translateY(-20%) rotate(45deg);
   cursor: pointer;
 }
-.modal .modal-main .req-info .req-dias form main .dias-input .prev {
+.modal .modal-main .req-info .req-dias form main .dias-input .prev,
+.modal .modal-main .req-info .req-dias form main .dias-input .prev-qtd {
   position: absolute;
   top: 50%;
   left: 20px;
@@ -1603,6 +1694,24 @@ input:checked + .show .title {
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
 }
+.genders .search input::-moz-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--corVerde);
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
+.genders .search input:-ms-input-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--corVerde);
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
 .genders .search input::placeholder {
   margin: 10px;
   font-weight: bold;
@@ -1618,6 +1727,12 @@ input:checked + .show .title {
   color: var(--corTextoLaranja200);
   border: none;
   font-family: var(--fontFamily);
+}
+.genders .search input:focus::-moz-placeholder {
+  color: var(--corLaranja200);
+}
+.genders .search input:focus:-ms-input-placeholder {
+  color: var(--corLaranja200);
 }
 .genders .search input:focus::placeholder {
   color: var(--corLaranja200);
@@ -1768,6 +1883,24 @@ input:checked + .show .title {
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
 }
+.turmas .search input::-moz-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--corVerde);
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
+.turmas .search input:-ms-input-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--corVerde);
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
 .turmas .search input::placeholder {
   margin: 10px;
   font-weight: bold;
@@ -1783,6 +1916,12 @@ input:checked + .show .title {
   color: var(--corTextoLaranja200);
   border: none;
   font-family: var(--fontFamily);
+}
+.turmas .search input:focus::-moz-placeholder {
+  color: var(--corLaranja200);
+}
+.turmas .search input:focus:-ms-input-placeholder {
+  color: var(--corLaranja200);
 }
 .turmas .search input:focus::placeholder {
   color: var(--corLaranja200);
@@ -1960,6 +2099,24 @@ input:checked + .show .title {
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
 }
+.alunos .search input::-moz-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--corVerde);
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
+.alunos .search input:-ms-input-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--corVerde);
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
 .alunos .search input::placeholder {
   margin: 10px;
   font-weight: bold;
@@ -1975,6 +2132,12 @@ input:checked + .show .title {
   color: var(--corTextoLaranja200);
   border: none;
   font-family: var(--fontFamily);
+}
+.alunos .search input:focus::-moz-placeholder {
+  color: var(--corLaranja200);
+}
+.alunos .search input:focus:-ms-input-placeholder {
+  color: var(--corLaranja200);
 }
 .alunos .search input:focus::placeholder {
   color: var(--corLaranja200);
@@ -2190,6 +2353,24 @@ input:checked + .show .title {
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
 }
+.requisicoes .search input::-moz-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--corVerde);
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
+.requisicoes .search input:-ms-input-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--corVerde);
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
 .requisicoes .search input::placeholder {
   margin: 10px;
   font-weight: bold;
@@ -2205,6 +2386,12 @@ input:checked + .show .title {
   color: var(--corTextoLaranja200);
   border: none;
   font-family: var(--fontFamily);
+}
+.requisicoes .search input:focus::-moz-placeholder {
+  color: var(--corLaranja200);
+}
+.requisicoes .search input:focus:-ms-input-placeholder {
+  color: var(--corLaranja200);
 }
 .requisicoes .search input:focus::placeholder {
   color: var(--corLaranja200);
@@ -2519,7 +2706,8 @@ input:checked + .show .title {
   -webkit-text-fill-color: transparent;
   font-size: 50px;
   background-size: 400%;
-  animation: gradient 5s ease infinite;
+  -webkit-animation: gradient 5s ease infinite;
+          animation: gradient 5s ease infinite;
 }
 .validate-req main .req-dados {
   margin-top: 2rem;
@@ -2644,7 +2832,8 @@ input:checked + .show .title {
   width: 100%;
   margin: 0;
 }
-.validate-req main .req-dados form fieldset div .dias-input .next {
+.validate-req main .req-dados form fieldset div .dias-input .next,
+.validate-req main .req-dados form fieldset div .dias-input .next-qtd {
   position: absolute;
   top: 50%;
   right: 20px;
@@ -2657,7 +2846,8 @@ input:checked + .show .title {
   transform: translateY(-20%) rotate(45deg);
   cursor: pointer;
 }
-.validate-req main .req-dados form fieldset div .dias-input .prev {
+.validate-req main .req-dados form fieldset div .dias-input .prev,
+.validate-req main .req-dados form fieldset div .dias-input .prev-qtd {
   position: absolute;
   top: 50%;
   left: 20px;

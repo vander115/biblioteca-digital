@@ -1,6 +1,7 @@
 <?php
 
 // Conexão com o BD.
+require '../pages/public/page_loading.php';
 require_once './conection.php';
 
 
