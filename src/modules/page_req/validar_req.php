@@ -16,6 +16,7 @@ if (!isset($_SESSION['user'])) {
       ');
 }
 
+$idReq = uniqid('req_', true) . uniqid();
 $idPessoa = $_POST['id-pessoa'];
 $idLivro = $_POST['id-livro'];
 $tipoIdent = $_POST['tipo-ident'];
@@ -50,7 +51,7 @@ if ($verificar) {
   }
 
   if ($query_mudar_qtd) {
-    $query_cad_req = mysqli_query($conn, "INSERT INTO tb_req VALUES(0, '$idPessoa', '$idLivro', '$dataAtual', '$dataEntrega', 'ativa', 1);");
+    $query_cad_req = mysqli_query($conn, "INSERT INTO tb_req VALUES('$idReq', '$idPessoa', '$idLivro', '$dataAtual', '$dataEntrega', 'ativa', 1);");
 
     if ($query_cad_req) {
       $_SESSION['toast_success'] = "Requisição criada com sucesso!";

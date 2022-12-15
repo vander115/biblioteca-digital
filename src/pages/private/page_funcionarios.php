@@ -20,7 +20,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
             group_add
           </span>
           <label for="">
-            Cadrastar Funcionário
+            Cadastrar Funcionário
           </label>
         </div>
       </div>
@@ -94,7 +94,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
           <span class="material-symbols-rounded">
             person
           </span>
-          Cadrastar Funcionário
+          Cadastrar Funcionário
         </h1>
         <button class="close">
           <span class="material-symbols-rounded">
@@ -112,12 +112,12 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
             <label for="">Tipo:</label>
             <select name="tipo" id="tipo">
               <option selected disabled value="0">Escolha uma cargo:</option>
-              <option value="Professor">Professor</option>
-              <option value="Diretor">Diretor</option>
-              <option value="Coordenador">Coordenador</option>
-              <option value="Secretário">Secretário</option>
+              <option value="Professor">Professor(a)</option>
+              <option value="Diretor">Diretor(a)</option>
+              <option value="Coordenador">Coordenador(a)</option>
+              <option value="Secretário">Secretário(a)</option>
               <option value="Limpeza">Limpeza</option>
-              <option value="Funcionário">Funcionário</option>
+              <option value="Funcionário">Funcionário(a)</option>
             </select>
           </fieldset>
           <fieldset class="oneline-modal">
@@ -139,7 +139,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
               <span class="material-symbols-rounded">
                 add
               </span>
-              Cadrastar Funcionário
+              Cadastrar Funcionário
             </a>
           </fieldset>
         </form>

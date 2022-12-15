@@ -42,9 +42,9 @@ if (!isset($_GET['edit_turma'])) {
         if (isset($_GET['qt'])) {
           $qt = mb_strtoupper(trim($_GET['qt']));
 
-          $sql = "SELECT * FROM tb_turma WHERE idTurma != 0 AND CONCAT(nomeTurma, anoTurma) LIKE '%$qt%' AND anoTurma = '$key' AND statusTurma = 'egressa' ORDER BY nomeTurma;";
+          $sql = "SELECT * FROM tb_turma WHERE idTurma != 'funcionarios' AND CONCAT(nomeTurma, anoTurma) LIKE '%$qt%' AND anoTurma = '$key' AND statusTurma = 'egressa' ORDER BY nomeTurma;";
         } else {
-          $sql = "SELECT * FROM tb_turma WHERE idTurma != 0 AND anoTurma = '$key' AND statusTurma = 'egressa' ORDER BY nomeTurma;";
+          $sql = "SELECT * FROM tb_turma WHERE idTurma != 'funcionarios' AND anoTurma = '$key' AND statusTurma = 'egressa' ORDER BY nomeTurma;";
         }
 
         $query = mysqli_query($conn, $sql);

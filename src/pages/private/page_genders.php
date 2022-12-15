@@ -75,7 +75,7 @@ if (!isset($_GET['editGender'])) {
                     <span class="material-symbols-rounded">
                         magic_button
                     </span>
-                    Cadrastar Gênero
+                    Cadastrar Gênero
                 </h1>
                 <button class="close">
                     <span class="material-symbols-rounded">
@@ -88,7 +88,7 @@ if (!isset($_GET['editGender'])) {
                     <fieldset>
                         <label for="">Título</label><input name="title" id="titleGender" type="text">
                     </fieldset>
-                    <fieldset><a type="button" onclick="genderVerify()">Cadrastar Gênero</a></fieldset>
+                    <fieldset><a type="button" onclick="genderVerify()">Cadastrar Gênero</a></fieldset>
                 </form>
             </div>
         </div>

@@ -16,10 +16,10 @@ if (!isset($_SESSION['user'])) {
       </script>
       ');
 }
-
+$id = uniqid('genero_', true) . uniqid();
 $title = mb_strtoupper($_POST['title']);
 
-$sql = "INSERT INTO tb_genero_livro VALUES (0, '$title');";
+$sql = "INSERT INTO tb_genero_livro VALUES ('$id', '$title');";
 
 $query = mysqli_query($conn, $sql);
 
@@ -27,6 +27,6 @@ if ($query) {
   $_SESSION['toast_success'] = "Gênero cadrastado com sucesso!";
   header('Location: ../../../index.php?p=genders');
 } else {
-  $_SESSION['toast_error'] = "Erro ao cadrastar Gênero! :(";
+  $_SESSION['toast_error'] = "Erro ao cadastrar Gênero! :(";
   header('Location: ../../../index.php?p=livros');
 }

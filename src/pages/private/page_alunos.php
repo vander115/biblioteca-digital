@@ -12,7 +12,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
             group_add
           </span>
           <label for="">
-            Cadrastar Aluno
+            Cadastrar Aluno
           </label>
         </div>
         <div class="option-item trigger" onclick="location.href='?p=alunos&ranking'">
@@ -113,7 +113,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
           <span class="material-symbols-rounded">
             school
           </span>
-          Cadrastar Aluno
+          Cadastrar Aluno
         </h1>
         <button class="close">
           <span class="material-symbols-rounded">
@@ -163,7 +163,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
               </select>
             </div>
           </fieldset>
-          <fieldset><a onclick="alunoVerify()">Cadrastar Aluno</a></fieldset>
+          <fieldset><a onclick="alunoVerify()">Cadastrar Aluno</a></fieldset>
         </form>
       </div>
     </div>

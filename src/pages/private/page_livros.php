@@ -68,7 +68,7 @@ if (!isset($_GET['edit_livro']) and !isset($_GET['editar_livro'])) {
                     <span class="material-symbols-rounded">
                         bookmark_add
                     </span>
-                    Cadrastar Livro
+                    Cadastrar Livro
                 </h1>
                 <button class="close">
                     <span class="material-symbols-rounded">
@@ -124,7 +124,7 @@ if (!isset($_GET['edit_livro']) and !isset($_GET['editar_livro'])) {
                     <fieldset>
                         <label for="">Temáticas</label><input maxlenght="255" name="tags" id="tags" type="text">
                     </fieldset>
-                    <fieldset><button type="button" onclick="livrosVerify()">Cadrastar Livro</button></fieldset>
+                    <fieldset><button type="button" onclick="livrosVerify()">Cadastrar Livro</button></fieldset>
                 </form>
             </div>
         </div>
