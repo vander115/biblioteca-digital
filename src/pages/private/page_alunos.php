@@ -341,9 +341,29 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
 
 <?php } else if (isset($_GET['ranking'])) {
 
-  require 'src/modules/conection.php';
+  function selected($valor)
+  {
+    if (isset($_GET['m'])) {
+      if ($_GET['m'] == $valor) {
+        echo 'selected';
+      }
+    }
+  }
 
-  $raking = mysqli_query($conn, "SELECT p.nomePessoa, t.nomeTurma, SUM(r.qtdReq) 'num' FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_turma AS t ON r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE p.statusPessoa = 'ativo' AND p.tipoPessoa = 'aluno' GROUP BY p.idPessoa ORDER BY num DESC, p.nomePessoa ASC;");
+  require 'src/modules/conection.php';
+  if ((!isset($_GET['m']) and !isset($_GET['y'])) or ($_GET['m'] == 'all' and $_GET['y'] == 'all')) {
+    $raking = mysqli_query($conn, "SELECT p.nomePessoa, t.nomeTurma, SUM(r.qtdReq) 'num' FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_turma AS t ON r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE p.statusPessoa = 'ativo' AND p.tipoPessoa = 'aluno' GROUP BY p.idPessoa ORDER BY num DESC, p.nomePessoa ASC;");
+  } else if ($_GET['m'] == 'all' and $_GET['y'] != 'all') {
+    $year = $_GET['y'];
+    $raking = mysqli_query($conn, "SELECT p.nomePessoa, t.nomeTurma, SUM(r.qtdReq) 'num', r.dataEntregaReq FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_turma AS t ON r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE p.statusPessoa = 'ativo' AND p.tipoPessoa = 'aluno' AND YEAR(r.dataEntregaReq) = '$year' GROUP BY p.idPessoa ORDER BY num DESC, p.nomePessoa ASC;");
+  } else if ($_GET['m'] != 'all' and $_GET['y'] == 'all') {
+    $month = $_GET['m'];
+    $raking = mysqli_query($conn, "SELECT p.nomePessoa, t.nomeTurma, SUM(r.qtdReq) 'num', r.dataEntregaReq FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_turma AS t ON r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE p.statusPessoa = 'ativo' AND p.tipoPessoa = 'aluno' AND MONTH(r.dataEntregaReq) = '$month' GROUP BY p.idPessoa ORDER BY num DESC, p.nomePessoa ASC;");
+  } else if ($_GET['m'] != 'all' and $_GET['y'] != 'all') {
+    $year = $_GET['y'];
+    $month = $_GET['m'];
+    $raking = mysqli_query($conn, "SELECT p.nomePessoa, t.nomeTurma, SUM(r.qtdReq) 'num', r.dataEntregaReq FROM tb_req AS r JOIN tb_pessoa AS p JOIN tb_turma AS t ON r.idPessoa = p.idPessoa AND p.turmaPessoa = t.idTurma WHERE p.statusPessoa = 'ativo' AND p.tipoPessoa = 'aluno' AND YEAR(r.dataEntregaReq) = '$year' AND MONTH(r.dataEntregaReq) = '$month' GROUP BY p.idPessoa ORDER BY num DESC, p.nomePessoa ASC;");
+  }
 
 ?>
 
@@ -365,6 +385,61 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
         <div class="info">
           <p>O objetivo do raking é listar os alunos que MAIS LERAM LIVROS da biblioteca. Caso alguns alunos tenha efetuado a mesma quantidade de leituras, seja essa quantidade qual for, o sistema irá ordena-los na lista por ORDEM ALFABÉTICA. NENHUM dado como turma, gênero ou idade pode ser utilizado como parametros desse raking.</p>
         </div>
+      </div>
+      <div class="search">
+        <span class="title">Pesquisar por Período:</span>
+        <form method="GET">
+          <input type="hidden" name="p" value="alunos">
+          <input type="hidden" name="ranking">
+          <fieldset>
+            <label for="">Mês</label>
+            <select name="m">
+              <option value="all" <?php selected('all') ?>>Todos</option>
+              <option value="1" <?php selected('1') ?>>Janeiro</option>
+              <option value="2" <?php selected('2') ?>>Fevereiro</option>
+              <option value="3" <?php selected('3') ?>>Março</option>
+              <option value="4" <?php selected('4') ?>>Abril</option>
+              <option value="5" <?php selected('5') ?>>Maio</option>
+              <option value="6" <?php selected('6') ?>>Junho</option>
+              <option value="7" <?php selected('7') ?>>Julho</option>
+              <option value="8" <?php selected('8') ?>>Agosto</option>
+              <option value="9" <?php selected('9') ?>>Setembro</option>
+              <option value="10" <?php selected('10') ?>>Outubro</option>
+              <option value="11" <?php selected('11') ?>>Novembro</option>
+              <option value="12" <?php selected('12') ?>>Dezembro</option>
+            </select>
+          </fieldset>
+          <fieldset>
+            <label for="">Ano</label>
+            <select name="y">
+              <option value="all">Todos</option>
+              <?php
+              require 'src/modules/conection.php';
+
+              $anos_query = mysqli_query($conn, "SELECT YEAR(dataEntregaReq) 'ano' FROM tb_req WHERE statusReq = 'concluida' GROUP BY YEAR(dataEntregaReq);");
+
+              if ($anos_query) {
+                while ($anos = mysqli_fetch_assoc($anos_query)) {
+              ?>
+                  <option value="<?php echo $anos['ano']; ?>" <?php if (isset($_GET['y'])) {
+                                                                if ($_GET['y'] == $anos['ano']) {
+                                                                  echo ' selected';
+                                                                }
+                                                              } ?>><?php echo $anos['ano'] ?></option>
+              <?php
+                }
+              }
+              ?>
+            </select>
+          </fieldset>
+          <fieldset class=" button">
+            <button>
+              <span class="material-symbols-rounded">
+                search
+              </span>
+            </button>
+          </fieldset>
+        </form>
       </div>
       <div class="ranking-cont">
         <table>
