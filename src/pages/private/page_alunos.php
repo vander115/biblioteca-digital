@@ -1,5 +1,5 @@
 <?php
-if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset($_GET['ranking'])) {
+if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset($_GET['ranking']) and !isset($_GET['estante'])) {
 ?>
 
 
@@ -88,6 +88,11 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
                     <a title="Alterar Identificação" href="?p=alunos&edit_senha_aluno=<?php echo $aluno_data['idPessoa']; ?>" class="key-aluno">
                       <span class="material-symbols-rounded">
                         key
+                      </span>
+                    </a>
+                    <a title="Abrir Estante" href="?p=alunos&estante=<?php echo $aluno_data['idPessoa']; ?>" class="estante-aluno">
+                      <span class="material-symbols-rounded">
+                        toc
                       </span>
                     </a>
                   </div>
@@ -389,6 +394,16 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
       </div>
     </section>
 
+  </main>
+
+<?php } else if (isset($_GET['estante'])) { ?>
+
+  <main class="cont">
+    <section class="estante">
+      <header>
+        <h1>Estante de José Vanderlei</h1>
+      </header>
+    </section>
   </main>
 
 <?php } ?>

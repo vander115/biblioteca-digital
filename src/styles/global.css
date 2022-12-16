@@ -2215,10 +2215,33 @@ input:checked + .show .title {
 .alunos .alunos-cont main .card-cont .key-aluno span {
   font-size: 18px;
 }
+.alunos .alunos-cont main .card-cont .estante-aluno {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 47px;
+  right: -15px;
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 2rem;
+  background: var(--corLaranja200);
+  opacity: 0;
+  cursor: pointer;
+  text-decoration: none;
+}
+.alunos .alunos-cont main .card-cont .estante-aluno span {
+  font-size: 18px;
+}
 .alunos .alunos-cont main .card-cont:hover .edit-aluno {
   opacity: 1;
 }
 .alunos .alunos-cont main .card-cont:hover .key-aluno {
+  opacity: 1;
+}
+.alunos .alunos-cont main .card-cont:hover .estante-aluno {
   opacity: 1;
 }
 .alunos .alunos-cont main .card-cont:hover .card-aluno {
@@ -2957,4 +2980,19 @@ input:checked + .show .title {
   font-weight: bold;
   font-size: 1.2rem;
   color: var(--corVerde);
+}
+
+.estante header h1 {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  background: linear-gradient(var(--gadrientVerde));
+  -webkit-background-clip: text;
+  text-shadow: 5px 5px 12px var(--sombraVerde);
+  -webkit-text-fill-color: transparent;
+  text-shadow: 5px 5px 12px var(--sombraVerde);
+  background-size: 400%;
+  -webkit-animation: gradient 5s ease infinite;
+          animation: gradient 5s ease infinite;
+  margin-top: 3rem;
 }/*# sourceMappingURL=global.css.map */
