@@ -25,7 +25,8 @@ if (!isset($_SESSION['user'])) {
         $user = mysqli_fetch_assoc($query_pass);
         $verificar = password_verify($pass, $user['passAdm']);
         if ($verificar) {
-            $_SESSION['user'] = $user['idAdm'];
+            $_SESSION['user']['id'] = $user['idAdm'];
+            $_SESSION['user']['name'] = $user['loginAdm'];
             $_SESSION['toast_success'] = "Bem Vindo!!!";
             echo '
                  <script type="text/javascript">

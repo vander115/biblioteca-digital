@@ -25,7 +25,7 @@
   }
   /* Cor de fundo do autocomplete */
   input:-webkit-autofill {
-    box-shadow: 0 0 20px white;
+    box-shadow: 0 0 20px var(--corPadrao);
   }
 
   /* Cor do texto do autocomplete */
@@ -46,7 +46,7 @@
     --corPrimaria10: 240, 255, 240; //rgb
     --corPrimaria100: 114, 254, 119; //rgb
     --corPrimaria200: 11, 107, 14; //rgb
-    --corPrimaria900: 1, 56, 4;
+    --corPrimaria900: 1, 54, 4;
 
     --corSecundaria: 232, 114, 59; //rgb
     --corSecundaria10: 255, 245, 240; //rgb
@@ -65,16 +65,38 @@
     --corPadrao: 255, 255, 255;
 
     --corPrimaria: 108, 12, 242; //rgb
-    --corPrimaria10: 255, 245, 240; //rgb
-    --corPrimaria100: 254, 157, 102; //rgb
-    --corPrimaria200: 241, 73, 22; //rgb
-    --corPrimaria900: 74, 24, 0;
+    --corPrimaria10: 252, 240, 255; //rgb
+    --corPrimaria100: 171, 112, 255; //rgb
+    --corPrimaria200: 149, 0, 190; //rgb
+    --corPrimaria900: 44, 0, 56;
 
     --corSecundaria: 192, 2, 252; //rgb
     --corSecundaria10: 252, 240, 255; //rgb
     --corSecundaria100: 223, 108, 255; //rgb
     --corSecundaria200: 149, 0, 190; //rgb
     --corSecundaria900: 37, 1, 46;
+
+    --corTerciaria: 169, 169, 169;
+    --corTerciaria10: 211, 211, 211;
+    --corTerciaria100: 192, 192, 192;
+    --corTerciaria200: 128, 128, 128;
+    --corTerciaria900: 20, 20, 20;
+  }
+
+  &.dark {
+    --corPadrao: 20, 20, 20;
+
+    --corPrimaria100: 58, 194, 63; //rgb
+    --corPrimaria10: 17, 28, 18; //rgb
+    --corPrimaria: 58, 194, 63; //rgb
+    --corPrimaria200: 58, 194, 63; //rgb
+    --corPrimaria900: 58, 194, 63;
+
+    --corSecundaria: 184, 75, 24; //rgb
+    --corSecundaria10: 255, 245, 240; //rgb
+    --corSecundaria100: 184, 75, 24; //rgb
+    --corSecundaria200: 184, 75, 24; //rgb
+    --corSecundaria900: 184, 75, 24;
 
     --corTerciaria: 169, 169, 169;
     --corTerciaria10: 211, 211, 211;
@@ -380,7 +402,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  background-color: white;
+  background-color: var(--corPadrao);
   -webkit-transform: translateX(28px);
   -ms-transform: translateX(28px);
   transform: translateX(28px);
@@ -420,7 +442,7 @@ input:checked + .show .title {
   border-radius: 10rem;
   border: none;
   background-color: var(--fundoPrimaria);
-  color: white;
+  color: var(--corPadrao);
   font-weight: bold;
   font-size: 15px;
   margin-top: 30px;
@@ -524,7 +546,7 @@ input:checked + .show .title {
   z-index: -2;
 }
 #sidebar .list.active {
-  color: white;
+  color: var(--corPadrao);
   transition: all 0.3s ease;
   transition-delay: 10s;
 }
@@ -640,7 +662,7 @@ input:checked + .show .title {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: var(--corPadrao);
       span {
         font-size: 35px;
         margin: 3px;
@@ -687,7 +709,7 @@ input:checked + .show .title {
         box-shadow: 0 0 10px var(--sombraSecundaria);
         cursor: pointer;
         background-color: var(--fundoSecundaria);
-        color: white;
+        color: var(--corPadrao);
         outline: 1px solid var(--fundoSecundaria);
       }
     }
@@ -830,7 +852,7 @@ input:checked + .show .title {
             display: flex;
             flex-direction: column;
             text-align: center;
-            color: white;
+            color: var(--corPadrao);
             justify-content: center;
             align-items: center;
             min-width: 80px;
@@ -878,7 +900,7 @@ input:checked + .show .title {
           justify-content: center;
           width: 45px;
           height: 35px;
-          color: white;
+          color: var(--corPadrao);
           border-radius: 2rem;
           background: var(--fundoPrimaria200);
           cursor: pointer;
@@ -931,7 +953,7 @@ input:checked + .show .title {
     left: 1rem;
     background-color: var(--fundoSecundaria);
     text-decoration: none;
-    color: white;
+    color: var(--corPadrao);
     border-radius: 1rem;
     height: 3rem;
     width: 3rem;
@@ -965,12 +987,12 @@ input:checked + .show .title {
     .header {
       display: flex;
       align-items: center;
-      color: white;
+      color: var(--corPadrao);
       font-weight: bold;
       height: 3rem;
       span {
         margin: 1rem;
-        color: white;
+        color: var(--corPadrao);
       }
     }
 
@@ -980,7 +1002,7 @@ input:checked + .show .title {
       p {
         margin: 0;
         padding: 1rem;
-        color: white;
+        color: var(--corPadrao);
       }
     }
 
@@ -1092,7 +1114,7 @@ input:checked + .show .title {
           justify-content: center;
           width: 45px;
           height: 35px;
-          color: white;
+          color: var(--corPadrao);
           border-radius: 2rem;
           background: var(--corVerde200);
           cursor: pointer;
@@ -1177,7 +1199,7 @@ input:checked + .show .title {
       display: flex;
       align-items: center;
       mark {
-        background-color: var(--fundoPrimaria);
+        background-color: var(--fundoClaroSecundaria);
       }
       h2 {
         width: 35%;
@@ -1219,6 +1241,7 @@ input:checked + .show .title {
         gap: 1rem;
         .alunos-card {
           background-color: var(--fundoClaroPrimaria);
+          outline: 1px solid var(--fundoPrimaria);
           width: 15rem;
           height: 12rem;
           border-radius: 1rem;
@@ -1319,7 +1342,7 @@ input:checked + .show .title {
       align-items: center;
       padding: 10px;
       h1 {
-        color: white;
+        color: var(--corPadrao);
         font-size: 20px;
         display: flex;
         align-items: center;
@@ -1329,7 +1352,7 @@ input:checked + .show .title {
       }
       button {
         background-color: var(--fundoSecundaria);
-        color: white;
+        color: var(--corPadrao);
         border-radius: 1rem;
         display: flex;
         justify-content: center;
@@ -1490,7 +1513,7 @@ input:checked + .show .title {
         display: flex;
         justify-content: center;
         align-items: center;
-        color: white;
+        color: var(--corPadrao);
         font-weight: bold;
         font-size: 15px;
         span {
@@ -1561,7 +1584,7 @@ input:checked + .show .title {
               display: flex;
               justify-content: center;
               align-items: center;
-              color: white;
+              color: var(--corPadrao);
               font-weight: bold;
               font-size: 10px;
               span {
@@ -1714,7 +1737,7 @@ input:checked + .show .title {
               display: flex;
               justify-content: center;
               align-items: center;
-              color: white;
+              color: var(--corPadrao);
               font-weight: bold;
               font-size: 15px;
               span {
@@ -1760,7 +1783,7 @@ input:checked + .show .title {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: var(--corPadrao);
       span {
         font-size: 35px;
         margin: 3px;
@@ -1806,7 +1829,7 @@ input:checked + .show .title {
         box-shadow: 0 0 10px var(--sombraSecundaria);
         cursor: pointer;
         background-color: var(--fundoSecundaria);
-        color: white;
+        color: var(--corPadrao);
         outline: 1px solid var(--fundoSecundaria);
       }
     }
@@ -1897,7 +1920,7 @@ input:checked + .show .title {
         right: 0;
         width: 35px;
         height: 35px;
-        color: white;
+        color: var(--corPadrao);
         border-radius: 2rem;
         background: var(--fundoSecundaria200);
         opacity: 0;
@@ -1940,7 +1963,7 @@ input:checked + .show .title {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: var(--corPadrao);
       span {
         font-size: 35px;
         margin: 3px;
@@ -1986,7 +2009,7 @@ input:checked + .show .title {
         box-shadow: 0 0 10px var(--sombraSecundaria);
         cursor: pointer;
         background-color: var(--fundoSecundaria);
-        color: white;
+        color: var(--corPadrao);
         outline: 1px solid var(--fundoSecundaria);
       }
     }
@@ -2064,7 +2087,7 @@ input:checked + .show .title {
           right: 0;
           width: 35px;
           height: 35px;
-          color: white;
+          color: var(--corPadrao);
           border-radius: 2rem;
           background: var(--fundoSecundaria200);
           opacity: 0;
@@ -2092,7 +2115,7 @@ input:checked + .show .title {
             min-height: 100%;
             min-width: 80px;
             font-size: 40px;
-            color: white;
+            color: var(--corPadrao);
           }
           section {
             display: flex;
@@ -2146,7 +2169,7 @@ input:checked + .show .title {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: var(--corPadrao);
       span {
         font-size: 35px;
         margin: 3px;
@@ -2192,7 +2215,7 @@ input:checked + .show .title {
         box-shadow: 0 0 10px var(--sombraSecundaria);
         cursor: pointer;
         background-color: var(--fundoSecundaria);
-        color: white;
+        color: var(--corPadrao);
         outline: 1px solid var(--fundoSecundaria);
       }
     }
@@ -2273,7 +2296,7 @@ input:checked + .show .title {
           right: -15px;
           width: 30px;
           height: 30px;
-          color: white;
+          color: var(--corPadrao);
           border-radius: 2rem;
           background: var(--fundoSecundaria200);
           opacity: 0;
@@ -2293,7 +2316,7 @@ input:checked + .show .title {
           right: -15px;
           width: 30px;
           height: 30px;
-          color: white;
+          color: var(--corPadrao);
           border-radius: 2rem;
           background: var(--fundoSecundaria200);
           opacity: 0;
@@ -2313,7 +2336,7 @@ input:checked + .show .title {
           right: -15px;
           width: 30px;
           height: 30px;
-          color: white;
+          color: var(--corPadrao);
           border-radius: 2rem;
           background: var(--fundoSecundaria200);
           opacity: 0;
@@ -2410,7 +2433,7 @@ input:checked + .show .title {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: var(--corPadrao);
       span {
         font-size: 35px;
         margin: 3px;
@@ -2457,7 +2480,7 @@ input:checked + .show .title {
         box-shadow: 0 0 10px var(--sombraSecundaria);
         cursor: pointer;
         background-color: var(--fundoSecundaria);
-        color: white;
+        color: var(--corPadrao);
         outline: 1px solid var(--fundoSecundaria);
       }
     }
@@ -2569,7 +2592,7 @@ input:checked + .show .title {
                   display: flex;
                   justify-content: center;
                   align-items: center;
-                  color: white;
+                  color: var(--corPadrao);
                   font-weight: bold;
                   font-size: 12px;
                   span {
@@ -2675,7 +2698,7 @@ input:checked + .show .title {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    color: white;
+                    color: var(--corPadrao);
                     font-weight: bold;
                     font-size: 10px;
                     span {
@@ -2771,7 +2794,7 @@ input:checked + .show .title {
         padding: 0.5rem;
         min-width: 18rem;
         height: 120px;
-        background-color: white;
+        background-color: var(--corPadrao);
         border-radius: 1rem;
         outline: 2px solid var(--corVerde);
         display: flex;
@@ -2858,7 +2881,7 @@ input:checked + .show .title {
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: var(--corPadrao);
             font-weight: bold;
             font-size: 15px;
             span {
@@ -3005,7 +3028,7 @@ input:checked + .show .title {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: var(--corPadrao);
       span {
         font-size: 35px;
         margin: 3px;

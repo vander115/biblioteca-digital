@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="pt-br" class="default <?php require('src/functions/devs.php');
-                                    devs(); ?>">
+<html lang="pt-br" class="dark <?php require('src/functions/devs.php');
+                                devs(); ?>">
 
 <head>
     <meta charset="UTF-8">
