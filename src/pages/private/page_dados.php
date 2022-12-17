@@ -116,13 +116,28 @@ if (!isset($_GET['user']) and !isset($_GET['pass'])) {
             <label for="">Nome de Usuário Atual:</label><input value="<?php echo $username; ?>" disabled type="text">
           </fieldset>
           <fieldset>
-            <label for="">Novo nome de Usuário:</label><input name="username" type="text">
+            <label for="">Novo nome de Usuário:</label><input name="username" id="user" type="text">
           </fieldset>
           <fieldset><a type="button" onclick="userVerify()">Alterar Usuário</a></fieldset>
         </form>
       </div>
     </div>
   </div>
+
+  <script type="text/javascript">
+    const userForm = document.getElementById('userForm');
+    const userInput = document.getElementById('user');
+
+    const userVerify = () => {
+      if (userInput.value === "") {
+        toastr.warning('Digite o novo nome de usuário!');
+        userInput.focus();
+        return;
+      }
+      userForm.submit();
+    }
+  </script>
+
 <?php } else if (isset($_GET['pass'])) { ?>
   <main class="cont">
   </main>
