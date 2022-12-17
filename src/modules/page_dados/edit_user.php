@@ -9,7 +9,7 @@ require '../conection.php';
 $id = $_SESSION['user']['id'];
 $username = $_POST['username'];
 
-$query = mysqli_query($conn, "UPDATE FROM tb_adm SET loginAdm = '$username' WHERE idAdm = '$id';");
+$query = mysqli_query($conn, "UPDATE tb_adm SET loginAdm = '$username' WHERE idAdm = '$id';");
 
 if ($query) {
   $_SESSION['toast_success'] = "Usuário Alterado com sucesso!";

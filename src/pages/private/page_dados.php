@@ -13,7 +13,7 @@ if (!isset($_GET['user']) and !isset($_GET['pass'])) {
   <main class="cont">
     <section class="dados">
       <div class="options">
-        <div class="option-item trigger" onclick="location.href='pdf'">
+        <div class="option-item" onclick="location.href='pdf'">
           <span class="material-symbols-rounded">
             receipt_long
           </span>
@@ -21,7 +21,7 @@ if (!isset($_GET['user']) and !isset($_GET['pass'])) {
             Relatório Geral
           </label>
         </div>
-        <div class="option-item trigger" onclick="location.href='?p=dados&user'">
+        <div class="option-item" onclick="location.href='?p=dados&user'">
           <span class="material-symbols-rounded">
             sensor_occupied
           </span>
@@ -29,7 +29,7 @@ if (!isset($_GET['user']) and !isset($_GET['pass'])) {
             Alterar Usuário
           </label>
         </div>
-        <div class="option-item trigger" onclick="location.href='?p=dados&pass'">
+        <div class="option-item" onclick="location.href='?p=dados&pass'">
           <span class="material-symbols-rounded">
             lock_reset
           </span>
@@ -37,7 +37,9 @@ if (!isset($_GET['user']) and !isset($_GET['pass'])) {
             Alterar Senha
           </label>
         </div>
+        
       </div>
+      
       <div class="dados-cont">
         <header>
           <h2>Dados do Sistema</h2>
@@ -111,7 +113,7 @@ if (!isset($_GET['user']) and !isset($_GET['pass'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" id="userForm" action="src/modules/page_genders/cad_gender.php">
+        <form class="form-modal" method="POST" id="userForm" action="src/modules/page_dados/edit_user.php">
           <fieldset>
             <label for="">Nome de Usuário Atual:</label><input value="<?php echo $username; ?>" disabled type="text">
           </fieldset>
@@ -157,16 +159,40 @@ if (!isset($_GET['user']) and !isset($_GET['pass'])) {
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" id="userForm" action="src/modules/page_genders/cad_gender.php">
+        <form class="form-modal" method="POST" id="passForm" action="src/modules/page_dados/edit_pass.php">
           <fieldset>
-            <label for="">Nova Senha:</label><input name="pass" type="text">
+            <label for="">Nova Senha:</label><input name="pass" id="passInput" type="text">
           </fieldset>
           <fieldset>
-            <label for="">Digite a senha novamente:</label><input name="repass" type="text">
+            <label for="">Digite a senha novamente:</label><input id="repassInput" name="repass" type="text">
           </fieldset>
-          <fieldset><a type="button" onclick="userVerify()">Alterar Senha</a></fieldset>
+          <fieldset><a type="button" onclick="passVerify()">Alterar Senha</a></fieldset>
         </form>
       </div>
     </div>
   </div>
+
+  <script>
+    const passVerify = () => {
+      const passForm = document.getElementById('passForm');
+      const passInput = document.getElementById('passInput');
+      const repassInput = document.getElementById('repassInput');
+      if (passInput.value === "") {
+        passInput.focus();
+        toastr.warning('Digite a nova senha!');
+        return;
+      }
+      if (repassInput.value === "") {
+        repassInput.focus();
+        toastr.warning('Digite a nova senha!');
+        return;
+      }
+      if (passInput.value != repassInput.value) {
+        toastr.warning('As senhas não correspondem!');
+        repassInput.value = "";
+        return;
+      }
+      passForm.submit();
+    }
+  </script>
 <?php } ?>
