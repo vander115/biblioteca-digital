@@ -27,6 +27,7 @@ if (!isset($_SESSION['user'])) {
         if ($verificar) {
             $_SESSION['user']['id'] = $user['idAdm'];
             $_SESSION['user']['name'] = $user['loginAdm'];
+            $_SESSION['theme'] = 'default';
             $_SESSION['toast_success'] = "Bem Vindo!!!";
             echo '
                  <script type="text/javascript">

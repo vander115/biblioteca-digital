@@ -37,7 +37,14 @@ if (!isset($_GET['user']) and !isset($_GET['pass'])) {
             Alterar Senha
           </label>
         </div>
-        
+        <div class="option-item theme" onclick="location.href='?p=dados&pass'">
+          <span class="material-symbols-rounded">
+            <>
+          </span>
+          <label for="">
+            Alterar Tema
+          </label>
+        </div>
       </div>
       
       <div class="dados-cont">
