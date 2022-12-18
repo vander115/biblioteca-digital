@@ -7,7 +7,7 @@ function option($option, $value)
   }
 }
 
-if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
+if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func']) and !isset($_GET['estante'])) {
 ?>
 
 
@@ -75,6 +75,11 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
                 <a title="Alterar Identificação" href="?p=funcionarios&edit_senha_func=<?php echo $func_data['idPessoa']; ?>" class="key-aluno">
                   <span class="material-symbols-rounded">
                     key
+                  </span>
+                </a>
+                <a title="Abrir Estante" href="?p=alunos&estante=<?php echo $func_data['idPessoa']; ?>" class="estante-aluno">
+                  <span class="material-symbols-rounded">
+                    toc
                   </span>
                 </a>
               </div>
@@ -282,7 +287,55 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func'])) {
     </div>
   </div>
 
-<?php } ?>
+<?php } else if (isset($_GET['estante'])) {
+  require 'src/modules/conection.php';
+
+  $id_estante = $_GET['estante'];
+
+  $pessoa = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM tb_pessoa WHERE idPessoa ='$id_estante';"));
+
+  $query_estante = mysqli_query($conn, "SELECT * FROM tb_req as r JOIN tb_livros as l ON r.idLivro = l.idLivro WHERE r.idPessoa = '$id_estante' ORDER BY dataEntregaReq DESC;");
+?>
+  <main class="cont">
+    <section class="estante">
+      <button class="close" onclick="location.href='?p=funcionarios'">
+        <span class="material-symbols-rounded">
+          close
+        </span>
+      </button>
+      <header>
+        <h1>Estante de <?php echo $pessoa['nomePessoa']; ?></h1>
+        <h2><?php echo $pessoa['tipoPessoa'] ?></h2>
+      </header>
+      <main>
+        <?php
+        if ($query_estante) {
+          while ($estante = mysqli_fetch_assoc($query_estante)) {
+        ?>
+            <div class="book-info <?php if ($estante['statusReq'] == 'pendente') {
+                                    echo 'pendente';
+                                  } ?>">
+              <div class="book">
+                <h2><?php echo $estante['tituloLivro']; ?></h2>
+                <p><?php echo $estante['autorLivro']; ?></p>
+              </div>
+              <div class="status">
+                <p><?php echo $estante['statusReq']; ?></p>
+              </div>
+              <div class="date">
+                <p>Pedido em: <?php echo date("d/m/Y", strtotime($estante['dataReq'])); ?></p>
+                <p>Entrega em: <?php echo date("d/m/Y", strtotime($estante['dataEntregaReq'])); ?></p>
+              </div>
+            </div>
+          <?php   }
+        } else { ?>
+          <p>Nenhum livro lido até o momento :( </p>
+        <?php } ?>
+      </main>
+    </section>
+  </main>
+<?php
+} ?>
 
 <script>
   const funcVerify = () => {

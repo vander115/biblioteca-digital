@@ -1,6 +1,32 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+function change_theme()
+{
+    if (isset($_SESSION['theme'])) {
+        if (isset($_GET['p'])) {
+            if ($_GET['p'] == 'devs') {
+                echo 'purple';
+            } else if ($_SESSION['theme'] == 'default') {
+                echo 'default';
+            } else if ($_SESSION['theme'] == 'dark') {
+                echo 'dark';
+            }
+        } else if ($_SESSION['theme'] == 'default') {
+            echo 'default';
+        } else if ($_SESSION['theme'] == 'dark') {
+            echo 'dark';
+        }
+    } else {
+        echo 'default';
+    }
+}
+?>
+
 <!DOCTYPE html>
-<html lang="pt-br" class="dark <?php require('src/functions/devs.php');
-                                devs(); ?>">
+<html lang="pt-br" class="<?php change_theme(); ?>">
 
 <head>
     <meta charset="UTF-8">
@@ -25,4 +51,4 @@
     <title><?php echo gerarTitulo() ?></title>
 </head>
 
-<body class="dark">
+<body>
