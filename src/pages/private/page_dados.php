@@ -37,16 +37,24 @@ if (!isset($_GET['user']) and !isset($_GET['pass'])) {
             Alterar Senha
           </label>
         </div>
-        <div class="option-item theme" onclick="location.href='?p=dados&pass'">
+        <div class="option-item theme" onclick="location.href='src/modules/page_dados/change_theme.php'">
           <span class="material-symbols-rounded">
-            <>
+            <?php if ($_SESSION['theme'] == 'dark') {
+              echo 'light_mode';
+            } else if ($_SESSION['theme'] == 'default') {
+              echo 'dark_mode';
+            } ?>
           </span>
           <label for="">
-            Alterar Tema
+            Alterar Tema para <?php if ($_SESSION['theme'] == 'dark') {
+                                echo 'Claro';
+                              } else if ($_SESSION['theme'] == 'default') {
+                                echo 'Escuro';
+                              } ?>
           </label>
         </div>
       </div>
-      
+
       <div class="dados-cont">
         <header>
           <h2>Dados do Sistema</h2>

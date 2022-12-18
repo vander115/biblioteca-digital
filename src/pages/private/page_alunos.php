@@ -471,13 +471,54 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
 
   </main>
 
-<?php } else if (isset($_GET['estante'])) { ?>
+<?php } else if (isset($_GET['estante'])) {
+
+  require 'src/modules/conection.php';
+
+  $id_estante = $_GET['estante'];
+
+  $pessoa = mysqli_fetch_assoc(mysqli_query($conn, "SELECT p.nomePessoa, t.nomeTurma, t.anoTurma FROM tb_pessoa as p JOIN tb_turma as t ON p.turmaPessoa = t.idTurma WHERE idPessoa ='$id_estante';"));
+
+  $query_estante = mysqli_query($conn, "SELECT * FROM tb_req as r JOIN tb_livros as l ON r.idLivro = l.idLivro WHERE r.idPessoa = '$id_estante' ORDER BY dataEntregaReq DESC;");
+
+?>
 
   <main class="cont">
     <section class="estante">
+      <button class="close" onclick="location.href='?p=alunos'">
+        <span class="material-symbols-rounded">
+          close
+        </span>
+      </button>
       <header>
-        <h1>Estante de José Vanderlei</h1>
+        <h1>Estante de <?php echo $pessoa['nomePessoa']; ?></h1>
+        <h2><?php echo $pessoa['anoTurma'] . 'º ' . $pessoa['nomeTurma']; ?></h2>
       </header>
+      <main>
+        <?php
+        if (mysqli_num_rows($query_estante)) {
+          while ($estante = mysqli_fetch_assoc($query_estante)) {
+        ?>
+            <div class="book-info <?php if ($estante['statusReq'] == 'pendente') {
+                                    echo 'pendente';
+                                  } ?>">
+              <div class="book">
+                <h2><?php echo $estante['tituloLivro']; ?></h2>
+                <p><?php echo $estante['autorLivro']; ?></p>
+              </div>
+              <div class="status">
+                <p><?php echo $estante['statusReq']; ?></p>
+              </div>
+              <div class="date">
+                <p>Pedido em: <?php echo date("d/m/Y", strtotime($estante['dataReq'])); ?></p>
+                <p>Entrega em: <?php echo date("d/m/Y", strtotime($estante['dataEntregaReq'])); ?></p>
+              </div>
+            </div>
+          <?php   }
+        } else { ?>
+          <p>Nenhum livro lido até o momento :( </p>
+        <?php } ?>
+      </main>
     </section>
   </main>
 

@@ -4,10 +4,10 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-if ($_SESSION['theme'] == 'default') {
+if ($_SESSION['theme'] === 'default') {
     $_SESSION['theme'] = 'dark';
-} else if ($_SESSION['theme'] == 'dark') {
-    $_SESSION['theme'] == 'default';
+} else if ($_SESSION['theme'] === 'dark') {
+    $_SESSION['theme'] = 'default';
 }
 
 $_SESSION['toast_success'] = "Tema alterado com sucesso!";

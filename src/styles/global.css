@@ -361,7 +361,7 @@ input:checked + .slider {
 }
 
 input:checked + .slider:before {
-  background-color: var(--corPadrao);
+  background-color: var(--fundoClaro);
   -webkit-transform: translateX(28px);
   -ms-transform: translateX(28px);
   transform: translateX(28px);
@@ -401,7 +401,7 @@ input:checked + .show .title {
   border-radius: 10rem;
   border: none;
   background-color: var(--fundoPrimaria);
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   font-weight: bold;
   font-size: 15px;
   margin-top: 30px;
@@ -504,7 +504,7 @@ input:checked + .show .title {
 }
 
 #sidebar .list.active {
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   transition: all 0.3s ease;
   transition-delay: 10s;
 }
@@ -622,7 +622,7 @@ input:checked + .show .title {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
 }
 .livros .options .option-item span {
   font-size: 35px;
@@ -669,7 +669,7 @@ input:checked + .show .title {
   box-shadow: 0 0 10px var(--sombraSecundaria);
   cursor: pointer;
   background-color: var(--fundoSecundaria);
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   outline: 1px solid var(--fundoSecundaria);
 }
 .livros .search input {
@@ -808,7 +808,7 @@ input:checked + .show .title {
   display: flex;
   flex-direction: column;
   text-align: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   justify-content: center;
   align-items: center;
   min-width: 80px;
@@ -853,7 +853,7 @@ input:checked + .show .title {
   justify-content: center;
   width: 45px;
   height: 35px;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   border-radius: 2rem;
   background: var(--fundoPrimaria200);
   cursor: pointer;
@@ -894,7 +894,7 @@ input:checked + .show .title {
   left: 1rem;
   background-color: var(--fundoSecundaria);
   text-decoration: none;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   border-radius: 1rem;
   height: 3rem;
   width: 3rem;
@@ -929,13 +929,13 @@ input:checked + .show .title {
 .ranking .rules .header {
   display: flex;
   align-items: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   font-weight: bold;
   height: 3rem;
 }
 .ranking .rules .header span {
   margin: 1rem;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
 }
 .ranking .rules .info {
   display: none;
@@ -944,7 +944,7 @@ input:checked + .show .title {
 .ranking .rules .info p {
   margin: 0;
   padding: 1rem;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
 }
 .ranking .rules:hover {
   height: 100%;
@@ -1055,9 +1055,9 @@ input:checked + .show .title {
   justify-content: center;
   width: 45px;
   height: 35px;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   border-radius: 2rem;
-  background: var(--corVerde200);
+  background: var(--fundoPrimaria200);
   cursor: pointer;
   text-decoration: none;
 }
@@ -1264,7 +1264,7 @@ input:checked + .show .title {
   padding: 10px;
 }
 .modal .modal-cont .modal-header h1 {
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   font-size: 20px;
   display: flex;
   align-items: center;
@@ -1274,7 +1274,7 @@ input:checked + .show .title {
 }
 .modal .modal-cont .modal-header button {
   background-color: var(--fundoSecundaria);
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   border-radius: 1rem;
   display: flex;
   justify-content: center;
@@ -1432,7 +1432,7 @@ input:checked + .show .title {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   font-weight: bold;
   font-size: 15px;
 }
@@ -1503,7 +1503,7 @@ input:checked + .show .title {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   font-weight: bold;
   font-size: 10px;
 }
@@ -1653,7 +1653,7 @@ input:checked + .show .title {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   font-weight: bold;
   font-size: 15px;
 }
@@ -1690,7 +1690,7 @@ input:checked + .show .title {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
 }
 .genders .options .option-item span {
   font-size: 35px;
@@ -1737,7 +1737,7 @@ input:checked + .show .title {
   box-shadow: 0 0 10px var(--sombraSecundaria);
   cursor: pointer;
   background-color: var(--fundoSecundaria);
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   outline: 1px solid var(--fundoSecundaria);
 }
 .genders .search input {
@@ -1823,7 +1823,7 @@ input:checked + .show .title {
   right: 0;
   width: 35px;
   height: 35px;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   border-radius: 2rem;
   background: var(--fundoSecundaria200);
   opacity: 0;
@@ -1859,7 +1859,7 @@ input:checked + .show .title {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
 }
 .turmas .options .option-item span {
   font-size: 35px;
@@ -1906,7 +1906,7 @@ input:checked + .show .title {
   box-shadow: 0 0 10px var(--sombraSecundaria);
   cursor: pointer;
   background-color: var(--fundoSecundaria);
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   outline: 1px solid var(--fundoSecundaria);
 }
 .turmas .search input {
@@ -1980,7 +1980,7 @@ input:checked + .show .title {
   right: 0;
   width: 35px;
   height: 35px;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   border-radius: 2rem;
   background: var(--fundoSecundaria200);
   opacity: 0;
@@ -2009,7 +2009,7 @@ input:checked + .show .title {
   min-height: 100%;
   min-width: 80px;
   font-size: 40px;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
 }
 .turmas .turmas-cont main .card-cont .card-turma section {
   display: flex;
@@ -2054,7 +2054,7 @@ input:checked + .show .title {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
 }
 .alunos .options .option-item span {
   font-size: 35px;
@@ -2101,7 +2101,7 @@ input:checked + .show .title {
   box-shadow: 0 0 10px var(--sombraSecundaria);
   cursor: pointer;
   background-color: var(--fundoSecundaria);
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   outline: 1px solid var(--fundoSecundaria);
 }
 .alunos .search input {
@@ -2181,7 +2181,7 @@ input:checked + .show .title {
   right: -15px;
   width: 30px;
   height: 30px;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   border-radius: 2rem;
   background: var(--fundoSecundaria200);
   opacity: 0;
@@ -2201,7 +2201,7 @@ input:checked + .show .title {
   right: -15px;
   width: 30px;
   height: 30px;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   border-radius: 2rem;
   background: var(--fundoSecundaria200);
   opacity: 0;
@@ -2221,7 +2221,7 @@ input:checked + .show .title {
   right: -15px;
   width: 30px;
   height: 30px;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   border-radius: 2rem;
   background: var(--fundoSecundaria200);
   opacity: 0;
@@ -2310,7 +2310,7 @@ input:checked + .show .title {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
 }
 .requisicoes .options .option-item span {
   font-size: 35px;
@@ -2357,7 +2357,7 @@ input:checked + .show .title {
   box-shadow: 0 0 10px var(--sombraSecundaria);
   cursor: pointer;
   background-color: var(--fundoSecundaria);
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   outline: 1px solid var(--fundoSecundaria);
 }
 .requisicoes .search input {
@@ -2435,7 +2435,7 @@ input:checked + .show .title {
 }
 .requisicoes .req-cont main .req-info .req-card .req-dados section {
   padding: 0.3rem;
-  border: 1px solid var(--fundoPrimaria);
+  outline: 1px solid var(--fundoPrimaria);
   border-radius: 0.5rem;
   width: 100%;
 }
@@ -2466,7 +2466,7 @@ input:checked + .show .title {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   font-weight: bold;
   font-size: 12px;
 }
@@ -2524,6 +2524,7 @@ input:checked + .show .title {
   align-items: center;
   box-sizing: content-box;
   padding: 0.5rem;
+  outline: 1px solid var(--fundoSecundaria);
 }
 .requisicoes .req-cont main .req-info.pendente .req-card .req-dados {
   width: 100%;
@@ -2535,8 +2536,8 @@ input:checked + .show .title {
 }
 .requisicoes .req-cont main .req-info.pendente .req-card .req-dados section {
   padding: 0.3rem;
-  border: 1px solid var(--corLaranja);
-  border-radius: 1rem;
+  outline: 1px solid var(--fundoSecundaria);
+  border-radius: 0.5rem;
   width: 100%;
 }
 .requisicoes .req-cont main .req-info.pendente .req-card .req-dados section.people {
@@ -2566,7 +2567,7 @@ input:checked + .show .title {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   font-weight: bold;
   font-size: 10px;
 }
@@ -2653,9 +2654,10 @@ input:checked + .show .title {
   padding: 0.5rem;
   min-width: 18rem;
   height: 120px;
-  background-color: var(--corPadrao);
+  background-color: var(--fundoClaro);
   border-radius: 1rem;
-  outline: 2px solid var(--corVerde);
+  outline: 1px solid var(--fundoPrimaria);
+  box-shadow: 0 0 20px var(--sombraPrimaria);
   display: flex;
 }
 .validate-req main .req-info .livro-req header,
@@ -2725,6 +2727,7 @@ input:checked + .show .title {
   box-shadow: 0 0 20px var(--sombraPrimaria);
   border-radius: 1rem;
   padding: 1rem;
+  outline: 1px solid var(--fundoPrimaria);
 }
 .validate-req main .req-dados form fieldset {
   display: flex;
@@ -2746,7 +2749,7 @@ input:checked + .show .title {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
   font-weight: bold;
   font-size: 15px;
 }
@@ -2791,6 +2794,7 @@ input:checked + .show .title {
   background-color: var(--fundoFoscoPadrao);
   border: none;
   position: relative;
+  outline: 1px solid var(--fundoPrimaria);
   color: var(--textoPrimaria200);
   font-family: var(--fontFamily);
   font-weight: 500;
@@ -2823,7 +2827,7 @@ input:checked + .show .title {
   font-size: 14px;
   padding-left: 10px;
   border: none;
-  outline: none;
+  outline: 1px solid var(--fundoPrimaria);
 }
 .validate-req main .req-dados form fieldset div .dias-input {
   position: relative;
@@ -2887,7 +2891,7 @@ input:checked + .show .title {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: var(--corPadrao);
+  color: var(--textoPadrao);
 }
 .dados .options .option-item span {
   font-size: 35px;
@@ -2958,6 +2962,27 @@ input:checked + .show .title {
   color: var(--textoPrimaria);
 }
 
+.estante {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+.estante .close {
+  cursor: pointer;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--fundoSecundaria);
+  border: none;
+  outline: none;
+  color: var(--textoPadrao);
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 1rem;
+}
 .estante header h1 {
   width: 100%;
   text-align: center;
@@ -2969,5 +2994,98 @@ input:checked + .show .title {
   text-shadow: 5px 5px 12px var(--sombraPrimaria);
   background-size: 400%;
   animation: gradient 5s ease infinite;
-  margin-top: 3rem;
+  padding: 2rem 0 0 0;
+  margin: 0;
+}
+.estante header h2 {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  font-size: 1rem;
+  color: var(--fundoPrimaria200);
+}
+.estante main {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.estante main .book-info {
+  width: 80%;
+  height: 5rem;
+  border-radius: 1rem;
+  outline: 1px solid var(--fundoPrimaria);
+  padding: 0.4rem 1rem;
+  background-color: var(--fundoClaroPrimaria);
+  display: flex;
+}
+.estante main .book-info .book {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 5;
+}
+.estante main .book-info .book h2 {
+  color: var(--textoPrimaria200);
+  font-size: 1.2rem;
+  margin: 0;
+}
+.estante main .book-info .book p {
+  color: var(--textoPrimaria);
+  font-size: 1rem;
+  margin: 0;
+}
+.estante main .book-info .status {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  border-left: 2px solid var(--fundoPrimaria);
+}
+.estante main .book-info .status p {
+  margin: 0;
+  text-transform: uppercase;
+  color: var(--textoPrimaria200);
+  font-weight: 700;
+}
+.estante main .book-info .date {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 2px solid var(--fundoPrimaria);
+  padding-left: 1rem;
+  flex: 2;
+}
+.estante main .book-info .date p {
+  font-weight: 600;
+  color: var(--textoPrimaria);
+  margin: 0;
+  font-size: 1rem;
+}
+.estante main .book-info.pendente {
+  outline: 1px solid var(--fundoSecundaria);
+  background-color: var(--fundoClaroSecundaria);
+}
+.estante main .book-info.pendente .book h2 {
+  color: var(--textoSecundaria200);
+}
+.estante main .book-info.pendente .book p {
+  color: var(--textoSecundaria);
+}
+.estante main .book-info.pendente .status {
+  border-left: 2px solid var(--fundoSecundaria);
+}
+.estante main .book-info.pendente .status p {
+  color: var(--textoSecundaria);
+}
+.estante main .book-info.pendente .date {
+  border-left: 2px solid var(--fundoSecundaria);
+}
+.estante main .book-info.pendente .date p {
+  color: var(--textoSecundaria);
 }/*# sourceMappingURL=global.css.map */
