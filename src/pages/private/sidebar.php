@@ -73,10 +73,12 @@
             </span>Developers
         </li>
 
-        <li class="list" onclick="location.href='src/modules/logout.php'">
-            <span class="material-symbols-rounded">
-                logout
-            </span>Sair
+        <li class="list">
+            <a href="src/modules/logout.php" onclick="return confirm('Você deseja realmente sair?')">
+                <span class="material-symbols-rounded">
+                    logout
+                </span>Sair
+            </a>
         </li>
     </ul>
 </nav>

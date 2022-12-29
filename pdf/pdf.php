@@ -32,7 +32,7 @@
   body {
     width: 100vw;
     height: 100vh;
-    background-color: rgb(240, 255, 240);
+    background-color: white;
     font-family: 'Poppins' !important;
     padding: 2rem;
     position: relative;
@@ -59,12 +59,14 @@
 
   main .tabela h2 {
     font-size: 1.2rem;
-    color: rgb(46, 150, 51);
+    color: black;
+    font-weight: normal;
   }
 
   main .tabela p {
     font-size: 1.5rem;
-    color: rgb(11, 107, 14);
+    font-weight: bold; 
+    color: black;
   }
 
   footer {

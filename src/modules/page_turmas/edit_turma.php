@@ -20,7 +20,7 @@ if (!isset($_SESSION['user'])) {
 $anoAtual = date('Y');
 
 $idTurma = $_POST['id'];
-$nomeTurma = mb_strtoupper($_POST['nome']);
+$nomeTurma = mb_strtoupper(trim($_POST['nome']));
 $anoTurma = $_POST['ano'];
 
 if ($anoTurma == 1) {

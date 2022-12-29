@@ -186,9 +186,19 @@ body {
   height: 200%;
   left: 20px;
   border-radius: 10rem;
-  animation: bar 15s infinite ease;
+  -webkit-animation: bar 15s infinite ease;
+          animation: bar 15s infinite ease;
   background-image: linear-gradient(var(--gradientPrimaria));
   position: fixed;
+}
+
+@-webkit-keyframes bar {
+  0% {
+    top: -200%;
+  }
+  100% {
+    top: 200%;
+  }
 }
 
 @keyframes bar {
@@ -197,6 +207,17 @@ body {
   }
   100% {
     top: 200%;
+  }
+}
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }
 @keyframes gradient {
@@ -228,7 +249,8 @@ body {
   height: 45px;
   background-image: linear-gradient(var(--gradientPrimaria));
   background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
+  -webkit-animation: gradient 10s ease infinite;
+          animation: gradient 10s ease infinite;
   border-radius: 0 10rem 10rem 0;
 }
 
@@ -237,7 +259,8 @@ body {
   height: 45px;
   background-image: linear-gradient(var(--gradientPrimaria));
   background-size: 400% 400%;
-  animation: gradient 10s ease infinite;
+  -webkit-animation: gradient 10s ease infinite;
+          animation: gradient 10s ease infinite;
   border-radius: 0 10rem 10rem 0;
 }
 
@@ -247,7 +270,8 @@ body {
   border-radius: 0 10rem 10rem 0;
   background-image: linear-gradient(var(--gradientSecundaria));
   background-size: 800% 800%;
-  animation: gradient 10s ease infinite;
+  -webkit-animation: gradient 10s ease infinite;
+          animation: gradient 10s ease infinite;
 }
 
 #login-form {
@@ -256,7 +280,8 @@ body {
   align-items: center;
   z-index: 1;
   background-color: var(--fundoFoscoPadrao);
-  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+          backdrop-filter: blur(15px);
   width: 18.75rem;
   height: 25rem;
   border-radius: 2rem;
@@ -288,6 +313,26 @@ body {
   transition: all 0.3s ease;
 }
 
+.oneline > input::-moz-placeholder {
+  color: var(--textoPrimaria900);
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  margin-left: 20px;
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.oneline > input:-ms-input-placeholder {
+  color: var(--textoPrimaria900);
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  margin-left: 20px;
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
 .oneline > input::placeholder {
   color: var(--textoPrimaria900);
   font-weight: 600;
@@ -295,6 +340,22 @@ body {
   margin-left: 20px;
   font-size: 15px;
   transition: all 0.3s ease;
+}
+
+.oneline > input:focus::-moz-placeholder {
+  color: var(--textoSecundaria900);
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  margin-left: 20px;
+  font-size: 15px;
+}
+
+.oneline > input:focus:-ms-input-placeholder {
+  color: var(--textoSecundaria900);
+  font-weight: 600;
+  font-family: var(--fontFamily);
+  margin-left: 20px;
+  font-size: 15px;
 }
 
 .oneline > input:focus::placeholder {
@@ -342,7 +403,6 @@ body {
   background-color: var(--fundoFoscoPadrao);
   box-shadow: 0px 0px 15px var(--sombraPrimaria);
   outline: 1px solid var(--fundoPrimaria);
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -354,7 +414,6 @@ body {
   left: 4px;
   bottom: 3px;
   background-color: var(--fundoPrimaria);
-  -webkit-transition: 0.4s;
   transition: 0.4s;
 }
 
@@ -366,8 +425,6 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   background-color: var(--fundoClaro);
-  -webkit-transform: translateX(28px);
-  -ms-transform: translateX(28px);
   transform: translateX(28px);
 }
 
@@ -464,6 +521,14 @@ input:checked + .show .title {
   display: flex;
   align-items: center;
 }
+#sidebar .list a {
+  text-decoration: none;
+  margin: 0;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #sidebar .list.req .not {
   position: absolute;
   width: 10px;
@@ -471,7 +536,8 @@ input:checked + .show .title {
   border-radius: 50%;
   background: linear-gradient(var(--gradientSecundaria));
   background-size: 400%;
-  animation: gradient 1s ease infinite;
+  -webkit-animation: gradient 1s ease infinite;
+          animation: gradient 1s ease infinite;
   top: 9px;
   left: 37px;
   z-index: 1;
@@ -578,7 +644,8 @@ input:checked + .show .title {
   padding: 2rem;
   background-color: var(--fundoFoscoPrimaria);
   border-radius: 1rem;
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 .home header h1 span {
   color: var(--textoSecundaria);
@@ -721,6 +788,24 @@ input:checked + .show .title {
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
 }
+.livros .search input::-moz-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--textoPrimaria);
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
+.livros .search input:-ms-input-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--textoPrimaria);
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
 .livros .search input::placeholder {
   margin: 10px;
   font-weight: bold;
@@ -736,6 +821,12 @@ input:checked + .show .title {
   color: var(--textoSecundaria900);
   border: none;
   font-family: var(--fontFamily);
+}
+.livros .search input:focus::-moz-placeholder {
+  color: var(--textoSecundaria200);
+}
+.livros .search input:focus:-ms-input-placeholder {
+  color: var(--textoSecundaria200);
 }
 .livros .search input:focus::placeholder {
   color: var(--textoSecundaria200);
@@ -769,7 +860,7 @@ input:checked + .show .title {
 .livros .livro-cont main .card-cont {
   position: relative;
   display: flex;
-  width: 30%;
+  width: 40%;
   min-width: 300px;
   margin: 1rem;
 }
@@ -947,7 +1038,8 @@ input:checked + .show .title {
   -webkit-text-fill-color: transparent;
   text-shadow: 5px 5px 12px var(--sombraPrimaria);
   background-size: 400%;
-  animation: gradient 5s ease infinite;
+  -webkit-animation: gradient 5s ease infinite;
+          animation: gradient 5s ease infinite;
   margin-top: 3rem;
 }
 .ranking .rules {
@@ -1158,7 +1250,8 @@ input:checked + .show .title {
   -webkit-text-fill-color: transparent;
   text-shadow: 5px 5px 12px var(--sombraPrimaria);
   background-size: 400%;
-  animation: gradient 5s ease infinite;
+  -webkit-animation: gradient 5s ease infinite;
+          animation: gradient 5s ease infinite;
   margin-top: 3rem;
 }
 .devs main .sobre-nos {
@@ -1195,7 +1288,8 @@ input:checked + .show .title {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-size: 400%;
-  animation: gradient 5s ease infinite;
+  -webkit-animation: gradient 5s ease infinite;
+          animation: gradient 5s ease infinite;
 }
 .devs main .alunos-devs .alunos-devs-cont {
   width: 100%;
@@ -1221,7 +1315,8 @@ input:checked + .show .title {
 .devs main .alunos-devs .alunos-devs-cont .alunos-card img {
   width: 6rem;
   height: 6rem;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 5rem;
 }
 .devs main .alunos-devs .alunos-devs-cont .alunos-card h3 {
@@ -1270,7 +1365,8 @@ input:checked + .show .title {
   width: 100vw;
   height: 100vh;
   background-color: var(--sombraSecundaria);
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   position: absolute;
   margin: auto;
   z-index: 1000;
@@ -1281,7 +1377,8 @@ input:checked + .show .title {
   display: flex;
 }
 .modal .modal-cont {
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   margin: auto auto;
   background-color: var(--fundoFoscoPadrao);
   min-width: 450px;
@@ -1794,6 +1891,24 @@ input:checked + .show .title {
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
 }
+.genders .search input::-moz-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--textoPrimaria);
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
+.genders .search input:-ms-input-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--textoPrimaria);
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
 .genders .search input::placeholder {
   margin: 10px;
   font-weight: bold;
@@ -1809,6 +1924,12 @@ input:checked + .show .title {
   color: var(--textoSecundaria900);
   border: none;
   font-family: var(--fontFamily);
+}
+.genders .search input:focus::-moz-placeholder {
+  color: var(--textoSecundaria200);
+}
+.genders .search input:focus:-ms-input-placeholder {
+  color: var(--textoSecundaria200);
 }
 .genders .search input:focus::placeholder {
   color: var(--textoSecundaria200);
@@ -1962,6 +2083,24 @@ input:checked + .show .title {
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
 }
+.turmas .search input::-moz-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--textoPrimaria);
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
+.turmas .search input:-ms-input-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--textoPrimaria);
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
 .turmas .search input::placeholder {
   margin: 10px;
   font-weight: bold;
@@ -1977,6 +2116,12 @@ input:checked + .show .title {
   color: var(--textoSecundaria900);
   border: none;
   font-family: var(--fontFamily);
+}
+.turmas .search input:focus::-moz-placeholder {
+  color: var(--textoSecundaria200);
+}
+.turmas .search input:focus:-ms-input-placeholder {
+  color: var(--textoSecundaria200);
 }
 .turmas .search input:focus::placeholder {
   color: var(--textoSecundaria200);
@@ -2157,6 +2302,24 @@ input:checked + .show .title {
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
 }
+.alunos .search input::-moz-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--textoPrimaria);
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
+.alunos .search input:-ms-input-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--textoPrimaria);
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
 .alunos .search input::placeholder {
   margin: 10px;
   font-weight: bold;
@@ -2172,6 +2335,12 @@ input:checked + .show .title {
   color: var(--textoSecundaria900);
   border: none;
   font-family: var(--fontFamily);
+}
+.alunos .search input:focus::-moz-placeholder {
+  color: var(--textoSecundaria200);
+}
+.alunos .search input:focus:-ms-input-placeholder {
+  color: var(--textoSecundaria200);
 }
 .alunos .search input:focus::placeholder {
   color: var(--textoSecundaria200);
@@ -2201,6 +2370,9 @@ input:checked + .show .title {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+.alunos .alunos-cont main p {
+  color: var(--textoPadrao2);
 }
 .alunos .alunos-cont main .card-cont {
   display: flex;
@@ -2413,6 +2585,24 @@ input:checked + .show .title {
   transition: all 0.3s ease;
   font-family: var(--fontFamily);
 }
+.requisicoes .search input::-moz-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--textoPrimaria);
+  font-size: 15px;
+  -moz-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
+.requisicoes .search input:-ms-input-placeholder {
+  margin: 10px;
+  font-weight: bold;
+  color: var(--textoPrimaria);
+  font-size: 15px;
+  -ms-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  font-family: var(--fontFamily);
+}
 .requisicoes .search input::placeholder {
   margin: 10px;
   font-weight: bold;
@@ -2428,6 +2618,12 @@ input:checked + .show .title {
   color: var(--textoSecundaria900);
   border: none;
   font-family: var(--fontFamily);
+}
+.requisicoes .search input:focus::-moz-placeholder {
+  color: var(--textoSecundaria200);
+}
+.requisicoes .search input:focus:-ms-input-placeholder {
+  color: var(--textoSecundaria200);
 }
 .requisicoes .search input:focus::placeholder {
   color: var(--textoSecundaria200);
@@ -2447,6 +2643,9 @@ input:checked + .show .title {
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
+}
+.requisicoes .req-cont main p {
+  color: var(--textoPadrao2);
 }
 .requisicoes .req-cont main .req-info {
   margin-bottom: 1rem;
@@ -2745,7 +2944,8 @@ input:checked + .show .title {
   -webkit-text-fill-color: transparent;
   font-size: 50px;
   background-size: 400%;
-  animation: gradient 5s ease infinite;
+  -webkit-animation: gradient 5s ease infinite;
+          animation: gradient 5s ease infinite;
 }
 .validate-req main .req-dados {
   margin-top: 2rem;
@@ -3049,7 +3249,8 @@ input:checked + .show .title {
   -webkit-text-fill-color: transparent;
   text-shadow: 5px 5px 12px var(--sombraPrimaria);
   background-size: 400%;
-  animation: gradient 5s ease infinite;
+  -webkit-animation: gradient 5s ease infinite;
+          animation: gradient 5s ease infinite;
   padding: 2rem 0 0 0;
   margin: 0;
 }

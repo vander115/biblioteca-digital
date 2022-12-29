@@ -8,10 +8,10 @@ require '../conection.php';
 
 
 $id = uniqid('aluno_', true) . uniqid();
-$nome = mb_strtoupper($_POST['nome']);
+$nome = mb_strtoupper(trim($_POST['nome']));
 $turma = $_POST['turma'];
 $tipoIdent = $_POST['tipoIdent'];
-$ident = password_hash($_POST['ident'], PASSWORD_DEFAULT);
+$ident = password_hash(trim($_POST['ident']), PASSWORD_DEFAULT);
 
 $query_cad_aluno = mysqli_query($conn, "INSERT INTO tb_pessoa VALUES('$id', '$nome', 'Aluno', '$turma', '$tipoIdent', '$ident', 'ativo');");
 

@@ -10,7 +10,7 @@ require '../conection.php';
 $id = uniqid('turma_', true) . uniqid();
 $anoAtual = date('Y');
 
-$nome = mb_strtoupper($_POST['nome']);
+$nome = mb_strtoupper(trim($_POST['nome']));
 $anoTurma = $_POST['ano'];
 
 if ($anoTurma == 1) {

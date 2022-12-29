@@ -7,7 +7,6 @@ function mudar_ano_turma()
   $query_mudar_turma = mysqli_query($conn, "SELECT * FROM tb_turma ORDER BY anoTurma;");
 
   $data = date('Y');
-  // $data = 2023;
 
   while ($turma = mysqli_fetch_assoc($query_mudar_turma)) {
     $id = $turma['idTurma'];

@@ -485,6 +485,14 @@ input:checked + .show .title {
   z-index: 40;
   display: flex;
   align-items: center;
+  a {
+    text-decoration: none;
+    margin: 0;
+    color: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
   &.req {
     .not {
@@ -795,7 +803,7 @@ input:checked + .show .title {
       .card-cont {
         position: relative;
         display: flex;
-        width: 30%;
+        width: 40%;
         min-width: 300px;
         margin: 1rem;
         .edit-livro {
@@ -2299,6 +2307,9 @@ input:checked + .show .title {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      p {
+        color: var(--textoPadrao2);
+      }
       .card-cont {
         display: flex;
         width: 20%;
@@ -2555,6 +2566,11 @@ input:checked + .show .title {
       justify-content: space-around;
       align-items: center;
       flex-wrap: wrap;
+
+      p {
+        color: var(--textoPadrao2);
+      }
+
       .req-info {
         margin-bottom: 1rem;
         .req-card {
