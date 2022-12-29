@@ -21,9 +21,9 @@ if ($query_gender_livro) {
     $id_gender = $gender_info['idGenero'];
     if (isset($_GET['qb'])) {
       $qb = mb_strtoupper($_GET['qb']);
-      $sql_livro_info = "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero WHERE generoLivro = '$id_gender' AND CONCAT(tituloLivro, autorLivro, editoraLivro, nomeGenero) LIKE '%$qb%' ORDER BY nomeGenero, tituloLivro;";
+      $sql_livro_info = "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero WHERE generoLivro = '$id_gender' AND statusLivro != 'arquivado' AND CONCAT(tituloLivro, autorLivro, editoraLivro, nomeGenero) LIKE '%$qb%' ORDER BY nomeGenero, tituloLivro;";
     } else {
-      $sql_livro_info = "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero WHERE generoLivro = '$id_gender' ORDER BY nomeGenero, tituloLivro;";
+      $sql_livro_info = "SELECT * FROM tb_livros as l JOIN tb_genero_livro as g ON l.generoLivro = g.idGenero WHERE generoLivro = '$id_gender' AND statusLivro != 'arquivado' ORDER BY nomeGenero, tituloLivro;";
     }
 
     $query_livro_info = mysqli_query($conn, $sql_livro_info);

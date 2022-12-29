@@ -80,7 +80,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
                         <p><?php echo $aluno_data['anoTurma'] . 'º ' . strtok($aluno_data['nomeTurma'], " "); ?></p>
                       </main>
                     </div>
-                    <a title="Editar Aluno" href="?p=alunos&edit_aluno=<?php echo $aluno_data['idPessoa']; ?>" class="edit-aluno">
+                    <a title="Alterar Aluno" href="?p=alunos&edit_aluno=<?php echo $aluno_data['idPessoa']; ?>" class="edit-aluno">
                       <span class="material-symbols-rounded">
                         edit
                       </span>
@@ -191,7 +191,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
           <span class="material-symbols-rounded">
             school
           </span>
-          Editar Aluno
+          Alterar Aluno
         </h1>
         <button class="close" onclick="location.href='?p=alunos'">
           <span class="material-symbols-rounded">
@@ -526,11 +526,12 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
 
 <script>
   const alunoVerify = () => {
+    const tipoIdentSelect = document.getElementById('tipoIdent');
+    const identInput = document.getElementById('ident');
     const alunoForm = document.getElementById('alunoForm');
     const nameInput = document.getElementById('nome');
     const turmaSelect = document.getElementById('turma');
-    const identInput = document.getElementById('ident');
-    const tipoIdentSelect = document.getElementById('tipoIdent');
+
 
     if (nameInput.value === "") {
       toastr.warning("Digite o nome do aluno!");
@@ -569,6 +570,7 @@ if (!isset($_GET['edit_aluno']) and !isset($_GET['edit_senha_aluno']) and !isset
       turmaSelect.focus();
       return;
     }
+    alunoForm.submit();
   }
   const alunoIdentVerify = () => {
     const alunoForm = document.getElementById('alunoForm');

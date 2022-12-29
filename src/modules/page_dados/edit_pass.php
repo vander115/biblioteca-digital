@@ -16,6 +16,6 @@ if ($query) {
     $_SESSION['toast_success'] = "Senha alterada com sucesso!";
     header('Location: ../../../index.php?p=dados');
 } else {
-    $_SESSION['toast_error'] = "Não foi possivel alterar a senha!:(";
+    $_SESSION['toast_error'] = "Não foi possivel editar a senha!:(";
     header('Location: ../../../index.php?p=dados');
 }

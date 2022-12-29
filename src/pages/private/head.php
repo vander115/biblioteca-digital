@@ -37,6 +37,7 @@ function change_theme()
     <link rel="stylesheet" href="src/styles/toastr.css">
     <link rel="stylesheet" href="src/styles/global.css">
     <script src="src/jquery/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
+    <script src="src/jquery/jquery.mask.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="src/styles/toastr/toastr.min.js"></script>
     <style>
         .material-symbols-rounded {

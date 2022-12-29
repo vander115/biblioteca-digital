@@ -47,6 +47,6 @@ if ($query_edit) {
   $_SESSION['toast_success'] = "Livro alterado com sucesso!";
   header("Location: ../../../index.php?p=livros$mod");
 } else {
-  $_SESSION['toast_error'] = "Erro ao alterar livro ";
+  $_SESSION['toast_error'] = "Erro ao editar livro ";
   header("Location: ../../../index.php?p=livros$mod");
 }

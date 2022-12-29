@@ -15,6 +15,6 @@ if ($query) {
   $_SESSION['toast_success'] = "Usuário Alterado com sucesso!";
   header('Location: ../../../index.php?p=dados');
 } else {
-  $_SESSION['toast_error'] = "Não foi possivel alterar o usuário :(";
+  $_SESSION['toast_error'] = "Não foi possivel editar o usuário :(";
   header('Location: ../../../index.php?p=dados');
 }

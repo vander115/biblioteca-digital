@@ -10,7 +10,7 @@ require  '../conection.php';
 
 if (isset($_GET['id_livro_req'])) {
   if ($_GET['id_livro_req'] === 'n') {
-    $_SESSION['toast_aviso'] = "Livro indisponivel no momento!";
+    $_SESSION['toast_error'] = "Livro indisponivel no momento!";
     header('Location: ../../../index.php?p=livros');
     return;
   } else {
@@ -80,6 +80,6 @@ if (!isset($_SESSION['req']['livro']) and !isset($_SESSION['req']['aluno']) and 
   $_SESSION['toast_aviso'] = "ESCOLHA UM ALUNO:";
   header('Location: ../../../index.php?p=alunos');
 } else if (isset($_SESSION['req']['livro']) and isset($_SESSION['req']['aluno']) and isset($_SESSION['req']['func'])) {
-  $_SESSION['toast_aviso'] = "Não foi possível alterar pessoa!";
+  $_SESSION['toast_error'] = "Não foi possível editar pessoa!";
   header('Location: ../../../index.php?p=requisicoes');
 }

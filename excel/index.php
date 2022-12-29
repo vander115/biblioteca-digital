@@ -1,6 +1,6 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'root', '', 'bd_biblioteca_digital');
+$mysqli = new mysqli('localhost', 'root', '', 'bd_biblioteca_digital_novo');
 
 require '../src/modules/conection.php';
 require 'vendor/autoload.php';

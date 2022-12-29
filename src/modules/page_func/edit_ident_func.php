@@ -25,9 +25,9 @@ $ident = password_hash($_POST['ident'], PASSWORD_DEFAULT);
 $query = mysqli_query($conn, "UPDATE tb_pessoa SET tipoIdentPessoa = '$tipo', identPessoa = '$ident' WHERE idPessoa = '$id';");
 
 if ($query) {
-  $_SESSION['toast_aviso'] = "Identificação do funcionário alterado com sucesso!";
+  $_SESSION['toast_success'] = "Identificação do funcionário alterado com sucesso!";
   header("Location: ../../../index.php?p=funcionarios");
 } else {
-  $_SESSION['toast_error'] = "Erro ao alterar identificação do funcionário :(";
+  $_SESSION['toast_error'] = "Erro ao editar identificação do funcionário :(";
   header("Location: ../../../index.php?p=funcionarios");
 }

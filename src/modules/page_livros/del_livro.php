@@ -10,13 +10,13 @@ require '../conection.php';
 if (isset($_GET['id_del'])) {
   $id = $_GET['id_del'];
 
-  $query = mysqli_query($conn, "DELETE FROM tb_livros WHERE idLivro = '$id';");
+  $query = mysqli_query($conn, "UPDATE tb_livros SET statusLivro = 'arquivado' WHERE idLivro = '$id';");
 
   if ($query) {
-    $_SESSION['toast_success'] = "Livro deletado com sucesso!";
+    $_SESSION['toast_success'] = "Livro arquivado com sucesso!";
     header('Location: ../../../index.php?p=livros');
   } else {
-    $_SESSION['toast_error'] = "Erro ao deletar livro!";
+    $_SESSION['toast_error'] = "Erro ao arquivar livro!";
     header('Location: ../../../index.php?p=livros');
   }
 } else {

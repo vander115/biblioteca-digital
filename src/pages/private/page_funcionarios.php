@@ -67,7 +67,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func']) and !isset($
                     <p><?php echo mb_strtoupper($func_data['tipoPessoa']) ?></p>
                   </main>
                 </div>
-                <a title="Editar Funcionário" href="?p=funcionarios&edit_func=<?php echo $func_data['idPessoa']; ?>" class="edit-aluno">
+                <a title="Alterar Funcionário" href="?p=funcionarios&edit_func=<?php echo $func_data['idPessoa']; ?>" class="edit-aluno">
                   <span class="material-symbols-rounded">
                     edit
                   </span>
@@ -77,7 +77,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func']) and !isset($
                     key
                   </span>
                 </a>
-                <a title="Abrir Estante" href="?p=alunos&estante=<?php echo $func_data['idPessoa']; ?>" class="estante-aluno">
+                <a title="Abrir Estante" href="?p=funcionarios&estante=<?php echo $func_data['idPessoa']; ?>" class="estante-aluno">
                   <span class="material-symbols-rounded">
                     toc
                   </span>
@@ -169,7 +169,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func']) and !isset($
           <span class="material-symbols-rounded">
             person
           </span>
-          Editar Aluno
+          Alterar Funcionário
         </h1>
         <button class="close" onclick="location.href='?p=funcionarios'">
           <span class="material-symbols-rounded">
@@ -178,7 +178,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func']) and !isset($
         </button>
       </div>
       <div class="modal-main">
-        <form class="form-modal" method="POST" action="src/modules/page_func/edit_func.php">
+        <form class="form-modal" method="POST" id="funcForm" action="src/modules/page_func/edit_func.php">
           <input type="hidden" name="id" value="<?php echo $edit_funcionario['idPessoa']; ?>">
           <fieldset>
             <label for="">Nome</label>
@@ -309,7 +309,7 @@ if (!isset($_GET['edit_func']) and !isset($_GET['edit_senha_func']) and !isset($
       </header>
       <main>
         <?php
-        if ($query_estante) {
+        if (mysqli_num_rows($query_estante)) {
           while ($estante = mysqli_fetch_assoc($query_estante)) {
         ?>
             <div class="book-info <?php if ($estante['statusReq'] == 'pendente') {

@@ -123,7 +123,7 @@ if (!isset($_GET['editGender'])) {
                     <span class="material-symbols-rounded">
                         magic_button
                     </span>
-                    Editar Gênero
+                    Alterar Gênero
                 </h1>
                 <button title="Cancelar" onclick="location.href='?p=genders'" class="close">
                     <span class="material-symbols-rounded">
@@ -143,7 +143,7 @@ if (!isset($_GET['editGender'])) {
                             </span>Excluir Gênero</a>
                         <a onclick="genderVerify()"><span class="material-symbols-rounded">
                                 edit
-                            </span>Editar Gênero</a>
+                            </span>Alterar Gênero</a>
                     </fieldset>
                 </form>
             </div>

@@ -25,9 +25,9 @@ $turma = $_POST['turma'];
 $query = mysqli_query($conn, "UPDATE tb_pessoa SET nomePessoa = '$nome', turmaPessoa = '$turma' WHERE idPessoa = '$id';");
 
 if ($query) {
-  $_SESSION['toast_aviso'] = "Aluno alterado com sucesso!";
+  $_SESSION['toast_success'] = "Aluno alterado com sucesso!";
   header("Location: ../../../index.php?p=alunos");
 } else {
-  $_SESSION['toast_error'] = "Erro ao alterar aluno";
+  $_SESSION['toast_error'] = "Erro ao editar aluno";
   header("Location: ../../../index.php?p=alunos");
 }

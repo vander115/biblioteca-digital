@@ -17,6 +17,6 @@ if ($query_edit) {
   $_SESSION['toast_success'] = "Gênero alterado com sucesso!";
   header('Location: ../../../index.php?p=genders');
 } else {
-  $_SESSION['toast_success'] = "Erro ao alterar gênero :(";
+  $_SESSION['toast_success'] = "Erro ao editar gênero :(";
   header('Location: ../../../index.php?p=genders');
 }

@@ -25,9 +25,9 @@ $tipo = $_POST['tipo'];
 $query = mysqli_query($conn, "UPDATE tb_pessoa SET nomePessoa = '$nome', tipoPessoa = '$tipo' WHERE idPessoa = '$id';");
 
 if ($query) {
-  $_SESSION['toast_aviso'] = "Funcionário alterado com sucesso!";
+  $_SESSION['toast_success'] = "Funcionário alterado com sucesso!";
   header("Location: ../../../index.php?p=funcionarios");
 } else {
-  $_SESSION['toast_error'] = "Erro ao alterar funcionário :(";
+  $_SESSION['toast_error'] = "Erro ao editar funcionário :(";
   header("Location: ../../../index.php?p=funcionarios");
 }

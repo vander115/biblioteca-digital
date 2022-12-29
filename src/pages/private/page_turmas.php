@@ -140,7 +140,7 @@ if (!isset($_GET['edit_turma'])) {
           <span class="material-symbols-rounded">
             magic_button
           </span>
-          Editar Turma
+          Alterar Turma
         </h1>
         <button onclick="location.href='?p=turmas'" class="close">
           <span class="material-symbols-rounded">

@@ -180,7 +180,7 @@ if (isset($_GET['pr'])) {
               <main>
                 <h1><?php echo $pessoa['nomePessoa']; ?></h1>
                 <p>
-                  <?php if ($pessoa['turmaPessoa'] == 0) {
+                  <?php if ($pessoa['turmaPessoa'] == 'funcionarios') {
                     echo $pessoa['tipoPessoa'];
                   } else {
                     echo $pessoa['anoTurma'] . 'º ' . $pessoa['nomeTurma'];
@@ -365,8 +365,18 @@ if (isset($_GET['pr'])) {
 
               setlocale(LC_TIME, 'pt_BR', 'pt_BR.utf-8', 'pt_BR.utf-8', 'portuguese');
               date_default_timezone_set('America/Sao_Paulo');
-              $dataReq = strftime('%d de %B de %Y', strtotime($req['dataReq']));
-              $dataEnt = strftime('%d de %B de %Y', strtotime($req['dataEntregaReq']));
+
+              $formatter = new IntlDateFormatter(
+                'pt_BR',
+                IntlDateFormatter::FULL,
+                IntlDateFormatter::NONE,
+                'America/Sao_Paulo',
+                IntlDateFormatter::GREGORIAN,
+                "dd 'de' MMMM 'de' YYYY"
+              );
+
+              $dataReq = $formatter->format(strtotime($req['dataReq']));
+              $dataEnt = $formatter->format(strtotime($req['dataEntregaReq']));
           ?>
               <div class="req-info <?php if ($diasRestantes <= 0) {
                                       echo 'pendente';

@@ -13,6 +13,10 @@ if (!isset($_GET['user']) and !isset($_GET['pass'])) {
   <main class="cont">
     <section class="dados">
       <div class="options">
+        <div class="version">
+          <h2>Versão: 1.0</h2>
+          <h3>De: 28/12/2022</h3>
+        </div>
         <div class="option-item" onclick="location.href='pdf'">
           <span class="material-symbols-rounded">
             receipt_long

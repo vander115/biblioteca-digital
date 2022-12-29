@@ -80,11 +80,16 @@ $editLivro = mysqli_fetch_assoc($query_edit_livro);
           <label for="">Temáticas</label><input maxlenght="255" name="tags" id="tags" type="text">
         </fieldset>
         <fieldset class="oneline-modal">
+          <a type="buttton" class="del" onclick="return confirm('Deseja realmente ARQUIVAR esse livro?')" href="src/modules/page_livros/del_livro.php?id_del=<?php echo $editLivro['idLivro'] ?>">
+            <span class="material-symbols-rounded">
+              archive
+            </span>
+            Arquivar</a>
           <a type="buttton" onclick="livrosVerify()">
             <span class="material-symbols-rounded">
               edit
             </span>
-            Alterar Livro</a>
+            Alterar</a>
         </fieldset>
       </form>
     </div>
