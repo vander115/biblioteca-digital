@@ -1,0 +1,7 @@
+{
+    "poppins": {
+        "300": "C:\\laragon\\www\\biblioteca-digital\\pdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/poppins_300_4a08cccbc2911e3077321a0298f4e093",
+        "normal": "poppins_normal_442dffd12abdf0df26c14405d3f49bfa",
+        "bold": "C:\\laragon\\www\\biblioteca-digital\\pdf\\vendor\\dompdf\\dompdf\/lib\/fonts\/poppins_bold_2d1c4b360c3ac297e98fc2cfd808a2cc"
+    }
+}
