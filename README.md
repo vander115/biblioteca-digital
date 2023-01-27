@@ -1,11 +1,5 @@
 <div align="center">
-![Logo BD sem nome](https://user-images.githubusercontent.com/101757815/215226396-f58a6596-28c4-461c-bea7-30b48cd4124b.png)
-
-
-
-
-
-
+<img src="https://user-images.githubusercontent.com/101757815/215226396-f58a6596-28c4-461c-bea7-30b48cd4124b.png" style="width: 20rem"/>
 </div>
 <h1 align="center" style="font-weight: bold">
   Sistema Biblioteca Digital
