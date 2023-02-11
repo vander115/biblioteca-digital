@@ -1,6 +1,6 @@
-<div align="center">
-<img src="https://user-images.githubusercontent.com/101757815/215226396-f58a6596-28c4-461c-bea7-30b48cd4124b.png" style="width: 20rem"/>
-</div>
+<h1 align="center">
+<img width="1280" alt="biblioteca-digital-banner" src="https://user-images.githubusercontent.com/101757815/218226520-209ede57-3033-41fc-9d53-9b7612629307.png">
+</h1>
 <h1 align="center" style="font-weight: bold">
  Biblioteca Digital | Digital Library
 </h1>
@@ -16,8 +16,7 @@ In 2022, I, together with my class: 3rd Informatics, built a web application tha
 &nbsp;
 
 <h2 align="center" style="font-weight: bold">
-
-  Linguagens e Frameworks utilizados
+  🚀 Technologies
 </h2>
 &nbsp;
 <div align="center" style="display: inline_block">
@@ -27,6 +26,6 @@ In 2022, I, together with my class: 3rd Informatics, built a web application tha
 &nbsp;
 
 <h2 align="center" style="font-weight: bold">
-  Saiba mais
+ 🤔 Have More?
 </h2>
-O sistema possui uma site de apresentação que, atualmente, se encontra disponível na internet para ser visitada e explorada. Conhaça mais sobre o sistema: https://bdneilyta.vercel.app/
+Yes! The system has a presentation site that is currently available on the internet to be visited and explored. Know more about the system: https://bdneilyta.vercel.app/
